@@ -55,7 +55,21 @@ namespace FitnessCenter.Data
                          Role = Role.Administrator,
                          PasswordSalt = "_",
                          PasswordHash = "_",
-                     }
+                     },
+
+                     modelBuilder.Entity<User>()
+                .HasData(
+                    new User
+                    {
+                        Id = 3,
+                        FirstName = "Emina",
+                        LastName = "Brkan",
+                        Username = "emina.brkan",
+                        Email = "emina.brkan@edu.fit.ba",
+                        Role = Role.Client,
+                        PasswordSalt = "_",
+                        PasswordHash = "_"
+                    })
                 );
 
             modelBuilder.Entity<Announcement>()
