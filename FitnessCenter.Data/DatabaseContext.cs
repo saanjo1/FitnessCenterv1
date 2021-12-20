@@ -25,10 +25,11 @@ namespace FitnessCenter.Data
         public DbSet<Workout> Workouts { get; set; }
 
 
-        public DatabaseContext(DbContextOptions options) : base(options)
+        public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options)
         {
-
+            
         }
+      
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>()

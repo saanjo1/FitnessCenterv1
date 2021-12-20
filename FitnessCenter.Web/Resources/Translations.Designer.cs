@@ -106,11 +106,38 @@ namespace FitnessCenter.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to User preview.
+        ///   Looks up a localized string similar to E-mail.
         /// </summary>
-        public static string Preview {
+        public static string Email {
             get {
-                return ResourceManager.GetString("Preview", resourceCulture);
+                return ResourceManager.GetString("Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to First name.
+        /// </summary>
+        public static string FirstName {
+            get {
+                return ResourceManager.GetString("FirstName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last name.
+        /// </summary>
+        public static string LastName {
+            get {
+                return ResourceManager.GetString("LastName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password.
+        /// </summary>
+        public static string Password {
+            get {
+                return ResourceManager.GetString("Password", resourceCulture);
             }
         }
         
@@ -120,6 +147,15 @@ namespace FitnessCenter.Web.Resources {
         public static string Profile {
             get {
                 return ResourceManager.GetString("Profile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Role.
+        /// </summary>
+        public static string Role {
+            get {
+                return ResourceManager.GetString("Role", resourceCulture);
             }
         }
         

@@ -1,4 +1,4 @@
-﻿using FitnessCenter.Web.Models;
+﻿using FitnessCenter.Web.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 

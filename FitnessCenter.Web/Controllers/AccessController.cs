@@ -10,13 +10,7 @@ namespace FitnessCenter.Web.Controllers
 
             return View();
         }
-        public IActionResult SignUp()
-        {
-            return View("SignUp");
-        }
-        [HttpPost]
-
-        [HttpGet]
+       
         public IActionResult SignIn()
         {
             return View("SignOut");
