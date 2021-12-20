@@ -144,4 +144,7 @@
   <data name="SignOutConfirmation" xml:space="preserve">
     <value>Odaberite dugme "Odjava" ukoliko želite da se odjavite.</value>
   </data>
+  <data name="Users" xml:space="preserve">
+    <value>Korisnici</value>
+  </data>
 </root>

@@ -516,13 +516,11 @@ kbd kbd {
   font-size: 100%;
   font-weight: 700;
 }
-
 pre {
   display: block;
   font-size: 87.5%;
   color: #3a3b45;
 }
-
 pre code {
   font-size: inherit;
   color: inherit;
@@ -534,7 +532,8 @@ pre code {
   overflow-y: scroll;
 }
 .pozicija{
-    padding-top:150px;
+    position:center;
+    padding-top:200px;
 }
 .container,
 .container-fluid,
@@ -542,7 +541,6 @@ pre code {
 .container-md,
 .container-lg,
 .container-xl {
-   
     width: 100%;
     padding-right: 0.75rem;
     padding-left: 0.75rem;
@@ -601,6 +599,7 @@ pre code {
 .col-md-auto, .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg,
 .col-lg-auto, .col-xl-1, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl,
 .col-xl-auto {
+    
   position: relative;
   width: 100%;
   padding-right: 0.75rem;
@@ -1202,7 +1201,7 @@ pre code {
     max-width: 41.66667%;
   }
   .col-lg-6 {
-    flex: 0 0 50%;
+    flex: 0 0 60%;
     max-width: 50%;
   }
   .col-lg-7 {
@@ -4480,15 +4479,15 @@ input[type="button"].btn-block {
 }
 
 .card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-  word-wrap: break-word;
-  background-color: #fff;
-  background-clip: border-box;
-  border: 1px solid #e3e6f0;
-  border-radius: 1.35rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid #e3e6f0;
+    border-radius: 1.35rem;
 }
 
 .card > hr {
@@ -4517,7 +4516,14 @@ input[type="button"].btn-block {
 .card > .list-group + .card-footer {
   border-top: 0;
 }
-
+.col-lg-6-reg{
+    flex:100%;
+    width:100%;
+}
+.card-body-register{
+    flex:0 0 100%;
+    max-width:100%;
+}
 .card-body {
     flex: 1 1 auto;
     min-height: 1px;
@@ -7570,7 +7576,7 @@ button.bg-dark:focus {
 }
 
 .shadow-lg {
-  box-shadow: 0 3rem 1rem rgb(0, 0, 0, 0.77) !important;
+  box-shadow: 0 0rem 3rem rgb(0, 0, 0, 0.77) !important;
 }
 
 .shadow-none {
@@ -9801,13 +9807,17 @@ a:focus {
 #wrapper #content-wrapper #content {
   flex: 1 0 auto;
 }
-
+.container-register{
+    margin:auto;
+    width:550px;
+}
 .container,
 .container-fluid,
 .container-sm,
 .container-md,
 .container-lg,
 .container-xl {
+    width:100%;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
 }
@@ -10848,7 +10858,6 @@ a:focus {
     height: 20rem;
   }
 }
-
 .chart-pie {
   position: relative;
   height: 15rem;

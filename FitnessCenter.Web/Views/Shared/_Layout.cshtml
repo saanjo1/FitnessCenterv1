@@ -20,7 +20,7 @@
                 </div>
                 <div class="sidebar-brand-text mx-3">@Translations.ApplicationName</div>
             </a>
-
+            @*dashboard*@
             <hr class="sidebar-divider my-0">
 
             <li class="nav-item">
@@ -29,9 +29,38 @@
                     <span>@Translations.Dashboard</span>
                 </a>
             </li>
+            <hr class="sidebar-divider my-0">
 
-            <hr class="sidebar-divider d-none d-md-block">
+             @*<hr class="sidebar-divider d-none d-md-block">*@
+             @*registration*@
+            <li class="nav-item">
+                <a asp-action="Register" asp-controller="Access" class="nav-link">
+                    <i class="fas fa-fw fa-users"></i>
+                    <span>@Translations.Users</span>
+                </a>
+            </li>
+            <hr class="sidebar-divider my-0">
 
+              @*registration*@
+            <li class="nav-item">
+                <a asp-action="Register" asp-controller="Home" class="nav-link">
+                    <i class="fas fa-fw fa-users"></i>
+                    <span>@Translations.Users</span>
+                </a>
+            </li>
+
+             <hr class="sidebar-divider my-0">
+
+              @*registration*@
+            <li class="nav-item">
+                <a asp-action="Register" asp-controller="Home" class="nav-link">
+                    <i class="fas fa-fw fa-users"></i>
+                    <span>@Translations.Users</span>
+                </a>
+            </li>
+
+            <hr class="sidebar-divider my-0">
+             <hr class="sidebar-divider d-none d-md-block">
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>

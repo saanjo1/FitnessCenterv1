@@ -36,40 +36,36 @@ namespace FitnessCenter.Data
                     new User
                     {
                         Id = 1,
+                        FirstName = "admin",
+                        LastName = "admin",
+                        Username = "admin",
+                        Email = "admin@admin",
+                        Role = Role.Administrator,
+                        PasswordSalt = "admin",
+                        PasswordHash = "admin"
+                    },
+                    new User
+                    {
+                        Id = 2,
                         FirstName = "Muhamed",
                         LastName = "Brkan",
                         Username = "muhamed.brkan",
                         Email = "muhamed.brkan@edu.fit.ba",
-                        Role = Role.Administrator,
+                        Role = Role.Client,
                         PasswordSalt = "_",
                         PasswordHash = "_"
                     },
-
                      new User
                      {
-                         Id = 2,
+                         Id = 3,
                          FirstName = "Sanjin",
                          LastName = "Gološ",
                          Username = "sanjin.golos",
                          Email = "sanjin.golos@edu.fit.ba",
-                         Role = Role.Administrator,
+                         Role = Role.Coach,
                          PasswordSalt = "_",
                          PasswordHash = "_",
-                     },
-
-                     modelBuilder.Entity<User>()
-                .HasData(
-                    new User
-                    {
-                        Id = 3,
-                        FirstName = "Emina",
-                        LastName = "Brkan",
-                        Username = "emina.brkan",
-                        Email = "emina.brkan@edu.fit.ba",
-                        Role = Role.Client,
-                        PasswordSalt = "_",
-                        PasswordHash = "_"
-                    })
+                     }
                 );
 
             modelBuilder.Entity<Announcement>()

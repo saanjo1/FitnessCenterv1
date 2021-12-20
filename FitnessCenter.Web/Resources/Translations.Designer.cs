@@ -140,5 +140,14 @@ namespace FitnessCenter.Web.Resources {
                 return ResourceManager.GetString("SignOutConfirmation", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Korisnici.
+        /// </summary>
+        public static string Users {
+            get {
+                return ResourceManager.GetString("Users", resourceCulture);
+            }
+        }
     }
 }

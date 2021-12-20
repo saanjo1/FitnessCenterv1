@@ -11,6 +11,16 @@ namespace FitnessCenter.Web.Controllers
             return View();
         }
 
+        public IActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult SaveRegisterDetails()
+        {
+            return View("Register");
+        }
         public IActionResult SignIn()
         {
             return View("SignOut");
