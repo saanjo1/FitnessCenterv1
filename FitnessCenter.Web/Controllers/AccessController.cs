@@ -23,7 +23,7 @@ namespace FitnessCenter.Web.Controllers
         }
         public IActionResult SignIn()
         {
-            return View("SignOutMuha");
+            return View("SignOut");
         }
 
         public new IActionResult SignOut()
