@@ -533,18 +533,22 @@ pre code {
   max-height: 340px;
   overflow-y: scroll;
 }
-
+.pozicija{
+    padding-top:150px;
+}
 .container,
 .container-fluid,
 .container-sm,
 .container-md,
 .container-lg,
 .container-xl {
-  width: 100%;
-  padding-right: 0.75rem;
-  padding-left: 0.75rem;
-  margin-right: auto;
-  margin-left: auto;
+   
+    width: 100%;
+    padding-right: 0.75rem;
+    padding-left: 0.75rem;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: auto;
 }
 
 @media (min-width: 576px) {
@@ -588,7 +592,9 @@ pre code {
   padding-right: 0;
   padding-left: 0;
 }
-
+.col-lg-6{
+    border-left:1px solid;
+}
 .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12, .col,
 .col-auto, .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm,
 .col-sm-auto, .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12, .col-md,
@@ -599,6 +605,7 @@ pre code {
   width: 100%;
   padding-right: 0.75rem;
   padding-left: 0.75rem;
+
 }
 
 .col {
@@ -4481,7 +4488,7 @@ input[type="button"].btn-block {
   background-color: #fff;
   background-clip: border-box;
   border: 1px solid #e3e6f0;
-  border-radius: 0.35rem;
+  border-radius: 1.35rem;
 }
 
 .card > hr {
@@ -4512,9 +4519,9 @@ input[type="button"].btn-block {
 }
 
 .card-body {
-  flex: 1 1 auto;
-  min-height: 1px;
-  padding: 1.25rem;
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1.25rem;
 }
 
 .card-title {
@@ -7563,7 +7570,7 @@ button.bg-dark:focus {
 }
 
 .shadow-lg {
-  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important;
+  box-shadow: 0 3rem 1rem rgb(0, 0, 0, 0.77) !important;
 }
 
 .shadow-none {
@@ -9887,11 +9894,16 @@ a:focus {
   -webkit-animation-timing-function: opacity cubic-bezier(0, 1, 0.4, 1);
   animation-timing-function: opacity cubic-bezier(0, 1, 0.4, 1);
 }
-
+.bg-gradient-wallpaper {
+    background: url("/img/background.jpg");
+    background-size: cover;
+}
 .bg-gradient-primary {
   background-color: #4e73df;
   background-image: linear-gradient(180deg, #4e73df 10%, #224abe 100%);
   background-size: cover;
+
+   
 }
 
 .bg-gradient-secondary {
@@ -10850,7 +10862,7 @@ a:focus {
 }
 
 .bg-login-image {
-  background: url("https://source.unsplash.com/K4mSJ7kc0As/600x800");
+  background: url(/img/login_logo.png);
   background-position: center;
   background-size: cover;
 }
@@ -10878,6 +10890,7 @@ form.user .form-control-user {
 }
 
 form.user .btn-user {
+  margin-top:20px;
   font-size: 0.8rem;
   border-radius: 10rem;
   padding: 0.75rem 1rem;
