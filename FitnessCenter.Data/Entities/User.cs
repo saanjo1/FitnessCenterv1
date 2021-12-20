@@ -23,7 +23,5 @@
         public ICollection<UserSubscription> UserSubscriptions { get; set; } //UserSubscription
         public ICollection<Reservation> UserReservations { get; set; } //UserReservation
         public ICollection<Reservation> CoachReservations { get; set; } //CoachReservation
-
-
     }
 }

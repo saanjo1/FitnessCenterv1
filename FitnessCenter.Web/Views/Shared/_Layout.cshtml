@@ -34,7 +34,7 @@
              @*<hr class="sidebar-divider d-none d-md-block">*@
              @*registration*@
             <li class="nav-item">
-                <a asp-action="Register" asp-controller="Access" class="nav-link">
+                <a asp-action="SignUp" asp-controller="Access" class="nav-link">
                     <i class="fas fa-fw fa-users"></i>
                     <span>@Translations.Users</span>
                 </a>
@@ -43,7 +43,7 @@
 
               @*registration*@
             <li class="nav-item">
-                <a asp-action="Register" asp-controller="Home" class="nav-link">
+                <a asp-action="UserPreview" asp-controller="User" class="nav-link">
                     <i class="fas fa-fw fa-users"></i>
                     <span>@Translations.Users</span>
                 </a>
@@ -80,7 +80,7 @@
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Muhamed Brkan</span>
                                 <img class="img-profile rounded-circle"
-                                     src="img/undraw_profile.svg">
+                                     src="~/img/undraw_profile.svg">
                             </a>
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                  aria-labelledby="userDropdown">

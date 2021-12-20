@@ -121,30 +121,36 @@
     <value>Fitness Center</value>
   </data>
   <data name="AreYouSure" xml:space="preserve">
-    <value>Da li ste sigurni?</value>
+    <value>Are you sure?</value>
   </data>
   <data name="Cancel" xml:space="preserve">
-    <value>Otkaži</value>
+    <value>Cancel</value>
   </data>
   <data name="Copyright" xml:space="preserve">
     <value>Copyright</value>
   </data>
   <data name="Dashboard" xml:space="preserve">
-    <value>Kontrolna ploča</value>
+    <value>Dashboard</value>
+  </data>
+  <data name="Preview" xml:space="preserve">
+    <value>User preview</value>
   </data>
   <data name="Profile" xml:space="preserve">
-    <value>Profil</value>
+    <value>Profile</value>
   </data>
   <data name="SignIn" xml:space="preserve">
-    <value>Prijava</value>
+    <value>Sign in</value>
   </data>
   <data name="SignOut" xml:space="preserve">
-    <value>Odjava</value>
+    <value>Sign out</value>
   </data>
   <data name="SignOutConfirmation" xml:space="preserve">
-    <value>Odaberite dugme "Odjava" ukoliko želite da se odjavite.</value>
+    <value>Choose button "Sign out" if you want to sign out?</value>
+  </data>
+  <data name="SignUp" xml:space="preserve">
+    <value>Sign up</value>
   </data>
   <data name="Users" xml:space="preserve">
-    <value>Korisnici</value>
+    <value>Users</value>
   </data>
 </root>

@@ -70,7 +70,7 @@ namespace FitnessCenter.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Da li ste sigurni?.
+        ///   Looks up a localized string similar to Are you sure?.
         /// </summary>
         public static string AreYouSure {
             get {
@@ -79,7 +79,7 @@ namespace FitnessCenter.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Otkaži.
+        ///   Looks up a localized string similar to Cancel.
         /// </summary>
         public static string Cancel {
             get {
@@ -97,7 +97,7 @@ namespace FitnessCenter.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Kontrolna ploča.
+        ///   Looks up a localized string similar to Dashboard.
         /// </summary>
         public static string Dashboard {
             get {
@@ -106,7 +106,16 @@ namespace FitnessCenter.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Profil.
+        ///   Looks up a localized string similar to User preview.
+        /// </summary>
+        public static string Preview {
+            get {
+                return ResourceManager.GetString("Preview", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profile.
         /// </summary>
         public static string Profile {
             get {
@@ -115,7 +124,7 @@ namespace FitnessCenter.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Prijava.
+        ///   Looks up a localized string similar to Sign in.
         /// </summary>
         public static string SignIn {
             get {
@@ -124,7 +133,7 @@ namespace FitnessCenter.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Odjava.
+        ///   Looks up a localized string similar to Sign out.
         /// </summary>
         public static string SignOut {
             get {
@@ -133,7 +142,7 @@ namespace FitnessCenter.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Odaberite dugme &quot;Odjava&quot; ukoliko želite da se odjavite..
+        ///   Looks up a localized string similar to Choose button &quot;Sign out&quot; if you want to sign out?.
         /// </summary>
         public static string SignOutConfirmation {
             get {
@@ -142,7 +151,16 @@ namespace FitnessCenter.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Korisnici.
+        ///   Looks up a localized string similar to Sign up.
+        /// </summary>
+        public static string SignUp {
+            get {
+                return ResourceManager.GetString("SignUp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Users.
         /// </summary>
         public static string Users {
             get {
