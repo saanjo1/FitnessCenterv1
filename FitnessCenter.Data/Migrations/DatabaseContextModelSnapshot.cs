@@ -221,14 +221,21 @@ namespace FitnessCenter.Data.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
+<<<<<<< HEAD
                     b.Property<DateTime?>("OpenFrom")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("OpenTo")
-                        .HasColumnType("datetime2");
-
+=======
                     b.Property<double>("Price")
                         .HasColumnType("float");
+
+                    b.Property<DateTime?>("ReservedFrom")
+>>>>>>> d7ad962a58aacdaba5c368ffeafdf203e6b00dba
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("ReservedTo")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
