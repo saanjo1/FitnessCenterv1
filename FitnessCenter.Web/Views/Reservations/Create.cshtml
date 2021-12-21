@@ -1,3 +1,19 @@
 ﻿
-@{
-}
+@model ReservationsCreateViewModel
+
+<form asp-action="Create">
+
+    <label>Date time from</label>
+    <input asp-for="DateTimeFrom"/>
+
+    <label>Date time to</label>
+    <input asp-for="DateTimeTo"/>
+
+    <label>Fitness rooms</label>
+    <select asp-for="FitnessRoomId" asp-items="Model.FitnessRooms"></select>
+    
+    <label>Total price</label>
+    <input asp-for="TotalPrice"/>
+    
+    <input type="submit" value="Create"/>
+</form>

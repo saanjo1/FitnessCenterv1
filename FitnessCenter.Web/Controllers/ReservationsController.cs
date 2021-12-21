@@ -2,6 +2,7 @@
 using FitnessCenter.Data.Entities;
 using FitnessCenter.Web.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace FitnessCenter.Web.Controllers
 {
@@ -12,13 +13,25 @@ namespace FitnessCenter.Web.Controllers
         {
             _databaseContext = databaseContext;   
         }
+
+      
+
+
         public IActionResult Create()
         {
-            var ReservationModel = new ReservationsCreateViewModel()
+            var reservation = new ReservationsCreateViewModel
             {
-                Reservation = new Reservation(),
-            };
-            return View();
+                FitnessRooms = _databaseContext.FitnessRooms.Select(selector => new SelectListItem
+                {
+                    Text = selector.Name,
+                    Value = selector.Id.ToString()
+                }).ToList(),
+                DateTimeFrom = DateTime.Now,
+                DateTimeTo = DateTime.Now,
+                TotalPrice = 0
+        };
+           
+            return View(reservation);
         }
     }
 }

@@ -23,6 +23,7 @@ namespace FitnessCenter.Web.Controllers
                 FirstName = selector.FirstName,
                 LastName = selector.LastName,
                 Email = selector.Email,
+                Username = selector.Username,
             }).ToList();
 
             var userIndex = new UsersIndexViewModel();
@@ -30,5 +31,7 @@ namespace FitnessCenter.Web.Controllers
 
             return View(userIndex);
         }
+
+
     }
 }
