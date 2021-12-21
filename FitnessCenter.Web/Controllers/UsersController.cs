@@ -18,9 +18,11 @@ namespace FitnessCenter.Web.Controllers
         
         public IActionResult Index()
         {
-            var optionList = new List<User>(new User
+            var users = _databaseContext.Users.Select(selector => new User
             {
-                Email = 
+                FirstName = selector.FirstName,
+                LastName = selector.LastName,
+                Email = selector.Email,
             }).ToList();
 
             var userIndex = new UsersIndexViewModel();

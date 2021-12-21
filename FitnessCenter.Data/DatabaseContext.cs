@@ -29,7 +29,7 @@ namespace FitnessCenter.Data
         {
             
         }
-      
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>()
@@ -69,7 +69,73 @@ namespace FitnessCenter.Data
                      }
                 );
 
-            modelBuilder.Entity<Announcement>()
+            modelBuilder.Entity<Excercise>()
+               .HasData(
+                    new Excercise
+                    {
+                        Id = 1,
+                        Name = "Private"
+                    },
+                    new Excercise
+                    {
+                        Id = 2,
+                        Name = "Functional"
+                    },
+                     new Excercise
+                     {
+                         Id = 3,
+                         Name = "Full body"
+                     },
+                      new Excercise
+                      {
+                          Id = 4,
+                          Name = "Focus gluteus"
+                      },
+                       new Excercise
+                       {
+                           Id = 5,
+                           Name = "Pilates"
+                       },
+                        new Excercise
+                        {
+                            Id = 6,
+                            Name = "Zumba"
+                        },
+                         new Excercise
+                         {
+                             Id = 7,
+                             Name = "Core and cardio"
+                         }
+                );
+
+            modelBuilder.Entity<FitnessRoom>()
+              .HasData(
+                new FitnessRoom
+                {
+                    Id=1,
+                    Name = "Functional room",
+                    Price = 20.00,
+                },
+                new FitnessRoom
+                {
+                    Id = 2,
+                    Name = "Cardio room",
+                    Price = 25.00,
+                },
+                new FitnessRoom
+                {
+                    Id = 3,
+                    Name = "Piletes room",
+                    Price = 30.00,
+                },
+                new FitnessRoom
+                {
+                    Id = 4,
+                    Name = "Private traingins room",
+                    Price = 50.00,
+                }
+                );
+          modelBuilder.Entity<Announcement>()
                 .HasOne<User>(a => a.Author)
                 .WithMany(a => a.AuthorAnnouncements)
                 .HasForeignKey(a => a.AuthorId)
