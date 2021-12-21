@@ -14,24 +14,48 @@ namespace FitnessCenter.Web.Controllers
             _databaseContext = databaseContext;   
         }
 
-      
-
-
-        public IActionResult Create()
+        public IActionResult Create(int UserId)
         {
             var reservation = new ReservationsCreateViewModel
             {
                 FitnessRooms = _databaseContext.FitnessRooms.Select(selector => new SelectListItem
                 {
-                    Text = selector.Name,
+                    Text = selector.Name + " - " + selector.Price,
                     Value = selector.Id.ToString()
                 }).ToList(),
+
                 DateTimeFrom = DateTime.Now,
                 DateTimeTo = DateTime.Now,
-                TotalPrice = 0
+                UserId = UserId
+                
         };
            
             return View(reservation);
         }
+
+        public string Submit(ReservationsCreateViewModel reservation)
+        {
+            Reservation _reservation = new Reservation
+            {
+                DateTimeFrom = reservation.DateTimeFrom,
+                DateTimeTo = reservation.DateTimeTo,
+                FitnessRoomId = reservation.FitnessRoomId,
+                Confirmed = false,
+                UserId = reservation.UserId
+            };
+
+            _databaseContext.Reservations.Add(_reservation);
+            _databaseContext.SaveChanges();
+
+            return "OK";
+        }
+
+
+        //public double DateDiff(DateTime d1, DateTime d2)
+        //{
+        //    TimeSpan ts = d2 - d1;
+
+        //    return ts.TotalHours;
+        //}
     }
 }

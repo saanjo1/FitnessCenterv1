@@ -7,7 +7,6 @@ namespace FitnessCenter.Web.ViewModels
     {
             public DateTime DateTimeFrom { get; set; }
             public DateTime DateTimeTo { get; set; }
-            public double TotalPrice { get; set; }
             public int UserId { get; set; }
 
 

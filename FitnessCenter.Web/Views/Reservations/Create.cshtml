@@ -1,7 +1,7 @@
 ﻿
 @model ReservationsCreateViewModel
 
-<form asp-action="Create">
+<form asp-action="Submit">
 
     <label>Date time from</label>
     <input asp-for="DateTimeFrom"/>
@@ -11,9 +11,9 @@
 
     <label>Fitness rooms</label>
     <select asp-for="FitnessRoomId" asp-items="Model.FitnessRooms"></select>
+
+    <label>User</label>
+    <input asp-for="UserId"/>
     
-    <label>Total price</label>
-    <input asp-for="TotalPrice"/>
-    
-    <input type="submit" value="Create"/>
+    <input type="submit" value="Submit"/>
 </form>
