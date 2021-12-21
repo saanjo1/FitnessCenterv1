@@ -2,18 +2,33 @@
 @model ReservationsCreateViewModel
 
 <form asp-action="Submit">
+    <div class="form-control">
+        <label>Date time from</label>
+        <input asp-for="DateTimeFrom" />
+    </div>
+    <div class="form-control">
+        <label>Date time from</label>
+        <input asp-for="DateTimeFrom" />
 
-    <label>Date time from</label>
-    <input asp-for="DateTimeFrom"/>
+    </div>
+    <div class="form-control">
+        <label>Fitness rooms</label>
+        <select asp-for="FitnessRoomId" asp-items="Model.FitnessRooms"></select>
 
-    <label>Date time to</label>
-    <input asp-for="DateTimeTo"/>
+    </div>
+    <div class="form-control">
 
-    <label>Fitness rooms</label>
-    <select asp-for="FitnessRoomId" asp-items="Model.FitnessRooms"></select>
+        <label>User</label>
+        <input asp-for="UserId" readonly />
 
-    <label>User</label>
-    <input asp-for="UserId"/>
-    
-    <input type="submit" value="Submit"/>
+    </div>
+    <div class="form-control">
+        <label>Coach</label>
+        <select asp-for="CoachId" asp-items="Model.Coaches"></select>
+
+    </div>
+
+    <input class="btn btn-warning"type="submit" value="Submit" />
+
+
 </form>
