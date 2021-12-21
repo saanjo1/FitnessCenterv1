@@ -1,7 +1,9 @@
-﻿
-@model ReservationsCreateViewModel
+﻿@model ReservationsCreateViewModel
+@{
+    ViewData["Title"] = @Translations.Reservation;
+}
 
-<form asp-action="Submit">
+<form asp-action="Add">
 
     <label>Date time from</label>
     <input asp-for="DateTimeFrom"/>
@@ -15,5 +17,6 @@
     <label>User</label>
     <input asp-for="UserId"/>
     
-    <input type="submit" value="Submit"/>
+    <input type="submit" value="Add"/>
+
 </form>

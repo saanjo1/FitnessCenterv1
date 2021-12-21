@@ -4,8 +4,8 @@
     {
         public string Name { get; set; }
         public double Price { get; set; }
-        public DateTime? ReservedFrom { get; set; }
-        public DateTime? ReservedTo { get; set; }
+        public DateTime? OpenFrom { get; set; }
+        public DateTime? OpenTo { get; set; }
 
         public ICollection<Reservation> Reservations { get; set; }
     }

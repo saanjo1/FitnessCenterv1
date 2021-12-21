@@ -151,6 +151,15 @@ namespace FitnessCenter.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Reservation.
+        /// </summary>
+        public static string Reservation {
+            get {
+                return ResourceManager.GetString("Reservation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Role.
         /// </summary>
         public static string Role {

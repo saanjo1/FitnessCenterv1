@@ -4,6 +4,7 @@ using FitnessCenter.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FitnessCenter.Data.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20211221193426_Reservations1")]
+    partial class Reservations1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -221,14 +223,14 @@ namespace FitnessCenter.Data.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("OpenFrom")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("OpenTo")
-                        .HasColumnType("datetime2");
-
                     b.Property<double>("Price")
                         .HasColumnType("float");
+
+                    b.Property<DateTime?>("ReservedFrom")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("ReservedTo")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 

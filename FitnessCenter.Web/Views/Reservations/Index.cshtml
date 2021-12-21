@@ -1,1 +1,35 @@
-﻿
+﻿    @model ReservationsCreateViewModel
+@{
+    ViewData["Title"] = @Translations.Reservation;
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary"></h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Reserved from</th>
+                        <th>Reserved to</th>
+                        <th>Fitness room</th>
+                        <th>User</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var reservation in Model.Reservations)
+                    {
+                        <tr>
+                            <td>@reservation.DateTimeFrom.ToString()</td>
+                            <td>@reservation.DateTimeTo.ToString()</td>
+                            <td>@reservation.FitnessRoomId</td>
+                            <td>@reservation.UserId</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

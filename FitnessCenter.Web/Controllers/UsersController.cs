@@ -15,7 +15,6 @@ namespace FitnessCenter.Web.Controllers
             _databaseContext = databaseContext;
         }
 
-        
         public IActionResult Index()
         {
             var users = _databaseContext.Users.Select(selector => new User
@@ -31,7 +30,5 @@ namespace FitnessCenter.Web.Controllers
 
             return View(userIndex);
         }
-
-
     }
 }

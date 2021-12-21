@@ -147,6 +147,9 @@
   <data name="Profile" xml:space="preserve">
     <value>Profile</value>
   </data>
+  <data name="Reservation" xml:space="preserve">
+    <value>Reservation</value>
+  </data>
   <data name="Role" xml:space="preserve">
     <value>Role</value>
   </data>
