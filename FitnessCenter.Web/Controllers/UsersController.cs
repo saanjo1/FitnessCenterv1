@@ -15,10 +15,18 @@ namespace FitnessCenter.Web.Controllers
             _databaseContext = databaseContext;
         }
 
-        [HttpGet]
+        
         public IActionResult Index()
         {
-            return View();
+            var optionList = new List<User>(new User
+            {
+                Email = 
+            }).ToList();
+
+            var userIndex = new UsersIndexViewModel();
+            userIndex.Users = users;
+
+            return View(userIndex);
         }
     }
 }
