@@ -3,46 +3,22 @@
     ViewData["Title"] = @Translations.Reservation;
 }
 
-<<<<<<< HEAD:FitnessCenter.Web/Views/Reservations/Add.cshtml
 <form asp-action="Add">
-=======
-<form asp-action="Submit">
-    <div class="form-control">
-        <label>Date time from</label>
-        <input asp-for="DateTimeFrom" />
-    </div>
-    <div class="form-control">
-        <label>Date time from</label>
-        <input asp-for="DateTimeFrom" />
->>>>>>> d7ad962a58aacdaba5c368ffeafdf203e6b00dba:FitnessCenter.Web/Views/Reservations/Create.cshtml
 
-    </div>
-    <div class="form-control">
-        <label>Fitness rooms</label>
-        <select asp-for="FitnessRoomId" asp-items="Model.FitnessRooms"></select>
+    <label>Date time from</label>
+    <input asp-for="DateTimeFrom" />
 
-    </div>
-    <div class="form-control">
-
-        <label>User</label>
-        <input asp-for="UserId" readonly />
-
-    </div>
-    <div class="form-control">
-        <label>Coach</label>
-        <select asp-for="CoachId" asp-items="Model.Coaches"></select>
-
-    </div>
-
-    <input class="btn btn-warning"type="submit" value="Submit" />
+    <label>Date time from</label>
+    <input asp-for="DateTimeFrom" />
 
 
-<<<<<<< HEAD:FitnessCenter.Web/Views/Reservations/Add.cshtml
+    <label>Fitness rooms</label>
+    <select asp-for="FitnessRoomId" asp-items="Model.FitnessRooms"></select>
+
+
     <label>User</label>
-    <input asp-for="UserId"/>
-    
-    <input type="submit" value="Add"/>
+    <input asp-for="UserId" />
 
-=======
->>>>>>> d7ad962a58aacdaba5c368ffeafdf203e6b00dba:FitnessCenter.Web/Views/Reservations/Create.cshtml
+    <input type="submit" value="Add" />
+
 </form>

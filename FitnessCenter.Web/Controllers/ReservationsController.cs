@@ -39,21 +39,6 @@ namespace FitnessCenter.Web.Controllers
                     Text = fr.Name,
                     Value = fr.Id.ToString()
                 }).ToList(),
-<<<<<<< HEAD
-                
-=======
-
-                Coaches = _databaseContext.Users.Where(s => s.Role == Role.Coach)
-                .Select(selector => new SelectListItem
-                {
-                    Text = selector.FirstName + " " + selector.LastName,
-                    Value = selector.Id.ToString()
-                }).ToList(),
-
->>>>>>> d7ad962a58aacdaba5c368ffeafdf203e6b00dba
-                DateTimeFrom = DateTime.Now,
-                DateTimeTo = DateTime.Now,
-                UserId = userId
             };
 
             return View(viewModel);
@@ -67,13 +52,8 @@ namespace FitnessCenter.Web.Controllers
                 DateTimeTo = viewModel.DateTimeTo,
                 FitnessRoomId = viewModel.FitnessRoomId,
                 Confirmed = false,
-<<<<<<< HEAD
                 UserId = viewModel.UserId,
                 CoachId = 3,
-=======
-                UserId = reservation.UserId,
-                CoachId = reservation.CoachId
->>>>>>> d7ad962a58aacdaba5c368ffeafdf203e6b00dba
             };
             
             _databaseContext.Reservations.Add(reservation);
