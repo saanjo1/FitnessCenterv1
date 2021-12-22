@@ -15,9 +15,11 @@
     <label>Fitness rooms</label>
     <select asp-for="FitnessRoomId" asp-items="Model.FitnessRooms"></select>
 
+    <label>Coaches</label>
+    <select asp-for="CoachId" asp-items="Model.Coaches"></select>
 
     <label>User</label>
-    <input asp-for="UserId" />
+    <input asp-for="UserId" readonly />
 
     <input type="submit" value="Add" />
 

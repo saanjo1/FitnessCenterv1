@@ -23,7 +23,7 @@ namespace FitnessCenter.Web.Controllers
                 DateTimeTo = r.DateTimeTo,
                 UserId = r.UserId,
                 FitnessRoomId = r.FitnessRoomId,
-                CoachId = 3,
+                CoachId = r.CoachId,
                 Confirmed = r.Confirmed
             }).ToList();
 
@@ -39,8 +39,15 @@ namespace FitnessCenter.Web.Controllers
                     Text = fr.Name,
                     Value = fr.Id.ToString()
                 }).ToList(),
+                Coaches = _databaseContext.Users.Where(r=> r.Role == Role.Coach).Select(u => new SelectListItem
+                {
+                    Text = u.FirstName + " " + u.LastName,
+                    Value = u.Id.ToString()
+                }).ToList(),
+                DateTimeFrom = DateTime.Now,
+                DateTimeTo = DateTime.Now,
             };
-
+            
             return View(viewModel);
         }
         [HttpPost]
@@ -53,7 +60,7 @@ namespace FitnessCenter.Web.Controllers
                 FitnessRoomId = viewModel.FitnessRoomId,
                 Confirmed = false,
                 UserId = viewModel.UserId,
-                CoachId = 3,
+                CoachId = viewModel.CoachId,
             };
             
             _databaseContext.Reservations.Add(reservation);
