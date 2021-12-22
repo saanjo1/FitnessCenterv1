@@ -4,27 +4,30 @@
 }
 
 <form asp-action="Add">
+    <div class="form-control-reservations">
+        <label class="form-controll-label">Date time from</label>
+    </div>
+        <input class ="form-control-input" asp-for="DateTimeFrom" />
+    <div class="form-control-reservations">
+       <label class="form-controll-label">Date time from</label>
+    </div>
+        <input class ="form-control-input" asp-for="DateTimeFrom" />
 
-    <div class="form-control">
-        <label>Date time from</label>
+    <div class="form-control-reservations">
+        <label class="form-controll-label">Fitness rooms</label>
     </div>
-    <input asp-for="DateTimeFrom" />
-    <div class="form-control">
-        <label>Date time from</label>
-        <input asp-for="DateTimeFrom" />
-    </div>
-    <div class="form-control">
-        <label>Fitness rooms</label>
-        <select asp-for="FitnessRoomId" asp-items="Model.FitnessRooms"></select>
-    </div>
-    <div class="form-control">
-        <label>Coaches</label>
-        <select asp-for="CoachId" asp-items="Model.Coaches"></select>
-    </div>
-    <div class="form-control">
-        <label>User</label>
-        <input asp-for="UserId" readonly />
-    </div>
-    <input class="btn btn-block btn-facebook" type="submit" value="Add" />
+        <select class ="form-control-input" asp-for="FitnessRoomId" asp-items="Model.FitnessRooms"></select>
 
+    <div class="form-control-reservations">
+        <label class="form-controll-label">Coaches</label>
+    </div>
+        <select class ="form-control-input" asp-for="CoachId" asp-items="Model.Coaches"></select>
+
+    <div class="form-control-reservations">
+        <label class="form-controll-label">User</label>
+    </div>
+        <input class ="form-control-input" asp-for="UserId" readonly />
+<div class="btn-input-reservation">
+    <input class="btn btn-facebook btn-block" type="submit" value="Add" />
+    </div>
 </form>
