@@ -39,13 +39,14 @@ namespace FitnessCenter.Web.Controllers
                     Text = fr.Name,
                     Value = fr.Id.ToString()
                 }).ToList(),
-                Coaches = _databaseContext.Users.Where(r=> r.Role == Role.Coach).Select(u => new SelectListItem
+                Coaches = _databaseContext.Users.Where(r => r.Role == Role.Coach).Select(u => new SelectListItem
                 {
                     Text = u.FirstName + " " + u.LastName,
                     Value = u.Id.ToString()
                 }).ToList(),
                 DateTimeFrom = DateTime.Now,
                 DateTimeTo = DateTime.Now,
+                UserId = userId
             };
             
             return View(viewModel);
@@ -67,6 +68,22 @@ namespace FitnessCenter.Web.Controllers
             _databaseContext.SaveChanges();
 
             return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult Edit (int ReservationId)
+        {
+            var k = _databaseContext.Reservations
+                .Where(s => s.Id == ReservationId)
+                .Select(r => new ReservationsCreateViewModel
+                {
+                    ReservationId = r.Id,
+                    DateTimeFrom = r.DateTimeFrom,
+                    DateTimeTo = r.DateTimeTo,
+                    FitnessRoomId = r.FitnessRoomId        
+                }).Single();
+
+            return View("Edit", k);
         }
     }
 }

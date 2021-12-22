@@ -1,0 +1,22 @@
+﻿@model ReservationsCreateViewModel
+
+
+<form asp-action="Add">
+    <div class="form-control-reservations">
+        <label class="form-controll-label">Date time from</label>
+    </div>
+        <input class ="form-control-input" asp-for="DateTimeFrom" />
+    <div class="form-control-reservations">
+       <label class="form-controll-label">Date time to</label>
+    </div>
+        <input class ="form-control-input" asp-for="DateTimeTo" />
+
+    <div class="form-control-reservations">
+        <label class="form-controll-label">Fitness rooms</label>
+    </div>
+        <select class ="form-control-input" asp-for="FitnessRoomId" asp-items="Model.FitnessRooms"></select>
+
+<div class="btn-input-reservation">
+    <input class="btn btn-facebook btn-block" type="submit" value="Add" />
+    </div>
+</form>

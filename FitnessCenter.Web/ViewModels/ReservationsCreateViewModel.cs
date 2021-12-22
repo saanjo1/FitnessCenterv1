@@ -5,9 +5,11 @@ namespace FitnessCenter.Web.ViewModels
 {
     public class ReservationsCreateViewModel
     {
+       
         public DateTime DateTimeFrom { get; set; }
         public DateTime DateTimeTo { get; set; }
 
+        public int ReservationId { get; set; }  
         public int UserId { get; set; }
         public int CoachId  { get; set; }
         public int FitnessRoomId { get; set; }

@@ -17,6 +17,7 @@
                         <th>Fitness room</th>
                         <th>User</th>
                         <th>Coach</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -28,6 +29,10 @@
                             <td>@reservation.FitnessRoomId</td>
                             <td>@reservation.UserId</td>
                             <td>@reservation.CoachId</td>
+                            <td>
+                                <a href="/Reservations/Edit?ReservationId=@reservation.Id">Edit</a>
+                                <button>Delete</button>
+                            </td>
                         </tr>
                     }
                 </tbody>
