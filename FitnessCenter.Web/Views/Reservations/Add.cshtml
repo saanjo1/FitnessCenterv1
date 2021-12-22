@@ -5,22 +5,26 @@
 
 <form asp-action="Add">
 
-    <label>Date time from</label>
+    <div class="form-control">
+        <label>Date time from</label>
+    </div>
     <input asp-for="DateTimeFrom" />
-
-    <label>Date time from</label>
-    <input asp-for="DateTimeFrom" />
-
-
-    <label>Fitness rooms</label>
-    <select asp-for="FitnessRoomId" asp-items="Model.FitnessRooms"></select>
-
-    <label>Coaches</label>
-    <select asp-for="CoachId" asp-items="Model.Coaches"></select>
-
-    <label>User</label>
-    <input asp-for="UserId" readonly />
-
-    <input type="submit" value="Add" />
+    <div class="form-control">
+        <label>Date time from</label>
+        <input asp-for="DateTimeFrom" />
+    </div>
+    <div class="form-control">
+        <label>Fitness rooms</label>
+        <select asp-for="FitnessRoomId" asp-items="Model.FitnessRooms"></select>
+    </div>
+    <div class="form-control">
+        <label>Coaches</label>
+        <select asp-for="CoachId" asp-items="Model.Coaches"></select>
+    </div>
+    <div class="form-control">
+        <label>User</label>
+        <input asp-for="UserId" readonly />
+    </div>
+    <input class="btn btn-block btn-facebook" type="submit" value="Add" />
 
 </form>
