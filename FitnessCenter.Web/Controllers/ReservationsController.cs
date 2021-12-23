@@ -13,7 +13,7 @@ namespace FitnessCenter.Web.Controllers
         private readonly DatabaseContext _databaseContext;
         public ReservationsController(DatabaseContext databaseContext)
         {
-            _databaseContext = databaseContext;   
+            _databaseContext = databaseContext;
         }
         [HttpGet]
         public IActionResult Index()
@@ -32,80 +32,128 @@ namespace FitnessCenter.Web.Controllers
             return View(new ReservationsCreateViewModel { Reservations = reservations });
         }
 
-       
-        [HttpGet]
-        public IActionResult Add(int userId)
-        {
-            var viewModel = new ReservationsCreateViewModel
-            {
-                FitnessRooms = _databaseContext.FitnessRooms.Select(fr => new SelectListItem
-                {
-                    Text = fr.Name,
-                    Value = fr.Id.ToString()
-                }).ToList(),
-                Coaches = _databaseContext.Users.Where(r => r.Role == Role.Coach).Select(u => new SelectListItem
-                {
-                    Text = u.FirstName + " " + u.LastName,
-                    Value = u.Id.ToString()
-                }).ToList(),
-                DateTimeFrom = DateTime.Now,
-                DateTimeTo = DateTime.Now,
-                UserId = userId
-            };
-            
-            return View(viewModel);
-        }
-
-        [HttpPost]
-        public IActionResult Add(ReservationsCreateViewModel viewModel)
-        {
-            var reservation = new Reservation
-            {
-                DateTimeFrom = viewModel.DateTimeFrom,
-                DateTimeTo = viewModel.DateTimeTo,
-                FitnessRoomId = viewModel.FitnessRoomId,
-                Confirmed = false,
-                UserId = viewModel.UserId,
-                CoachId = viewModel.CoachId,
-            };
-            _databaseContext.SaveChanges();
-
-            return RedirectToAction("Index");
-        }
 
         [HttpGet]
-        public IActionResult Edit(int reservationId, int coachId, int userId)
+        public IActionResult Add(int userId, int reservationId, int coachId)
         {
-            var FitnessRoomsList = _databaseContext.FitnessRooms.OrderBy(fr => fr.Name)
+            var FitnessRoomsList = _databaseContext.FitnessRooms
                 .Select(fr => new SelectListItem
                 {
                     Text = fr.Name,
                     Value = fr.Id.ToString()
                 }).ToList();
 
-            var coachesList = _databaseContext.Users.OrderBy(fr => fr.Id)
+            var coachesList = _databaseContext.Users.Where(r => r.Role == Role.Coach)
                .Select(fr => new SelectListItem
                {
-                   Text = fr.FirstName,
+                   Text = fr.FirstName + " " + fr.LastName,
                    Value = fr.Id.ToString()
                }).ToList();
 
-            var reservations = _databaseContext.Reservations
-                .Where(r => r.Id == reservationId)
-                .Select(rc => new ReservationsCreateViewModel
-                {
-                    UserId = userId,
-                    CoachId= rc.Id,
-                    ReservationId = rc.Id,
-                    DateTimeFrom = rc.DateTimeFrom,
-                    DateTimeTo = rc.DateTimeTo,
-                    FitnessRoomId = rc.FitnessRoomId
-                }).Single();
 
-            reservations.FitnessRooms = FitnessRoomsList;
-            reservations.Coaches = coachesList;
+            ReservationsCreateViewModel viewModel;
+            if(reservationId == 0)
+            {
+                viewModel = new ReservationsCreateViewModel();
+            }
+            else
+            {
+                viewModel = _databaseContext.Reservations.Where(r => r.Id == reservationId)
+                            .Select(s => new ReservationsCreateViewModel
+                            {
+                                UserId = userId,
+                                DateTimeFrom = s.DateTimeFrom,
+                                DateTimeTo = s.DateTimeTo,
+                                CoachId = coachId,
+                                FitnessRoomId = s.FitnessRoomId,
+                                ReservationId = 5
+                            }).Single();
+            }
 
-            return View("Edit", reservations);
+            viewModel.FitnessRooms = FitnessRoomsList;
+            viewModel.Coaches = coachesList;
+
+
+                //FitnessRooms = _databaseContext.FitnessRooms.Select(fr => new SelectListItem
+                //{
+                //    Text = fr.Name,
+                //    Value = fr.Id.ToString()
+                //}).ToList(),
+                //Coaches = _databaseContext.Users.Where(r => r.Role == Role.Coach).Select(u => new SelectListItem
+                //{
+                //    Text = u.FirstName + " " + u.LastName,
+                //    Value = u.Id.ToString()
+                //}).ToList(),
+                //DateTimeFrom = DateTime.Now,
+                //DateTimeTo = DateTime.Now,
+                //UserId = userId
+            
+
+            return View("Add", viewModel);
         }
+
+        [HttpPost]
+        public IActionResult Edit(ReservationsCreateViewModel viewModel)
+        {
+
+            Reservation _reservation;
+
+            if (viewModel.ReservationId == 0)
+            {
+                _reservation = new Reservation();
+                _databaseContext.Add(_reservation);
+            }
+            else
+            {
+                _reservation = _databaseContext.Reservations.Find(viewModel.ReservationId);
+            }
+
+            _reservation.DateTimeTo = viewModel.DateTimeTo;
+            _reservation.DateTimeFrom = viewModel.DateTimeFrom;
+            _reservation.CoachId = viewModel.CoachId;
+            _reservation.UserId = viewModel.UserId;
+            _reservation.FitnessRoomId = viewModel.FitnessRoomId;
+
+            _databaseContext.SaveChanges();
+
+
+
+            return RedirectToAction("Index");
+        }
+
+        //[HttpGet]
+        //public IActionResult Edit(int reservationId, int coachId, int userId)
+        //{
+        //    var FitnessRoomsList = _databaseContext.FitnessRooms.OrderBy(fr => fr.Name)
+        //        .Select(fr => new SelectListItem
+        //        {
+        //            Text = fr.Name,
+        //            Value = fr.Id.ToString()
+        //        }).ToList();
+
+        //    var coachesList = _databaseContext.Users.OrderBy(fr => fr.Id)
+        //       .Select(fr => new SelectListItem
+        //       {
+        //           Text = fr.FirstName,
+        //           Value = fr.Id.ToString()
+        //       }).ToList();
+
+        //    var reservations = _databaseContext.Reservations
+        //        .Where(r => r.Id == reservationId)
+        //        .Select(rc => new ReservationsCreateViewModel
+        //        {
+        //            UserId = userId,
+        //            CoachId= rc.Id,
+        //            ReservationId = rc.Id,
+        //            DateTimeFrom = rc.DateTimeFrom,
+        //            DateTimeTo = rc.DateTimeTo,
+        //            FitnessRoomId = rc.FitnessRoomId
+        //        }).Single();
+
+        //    reservations.FitnessRooms = FitnessRoomsList;
+        //    reservations.Coaches = coachesList;
+
+        //    return View("Edit", reservations);
+        //}
     }
 }
