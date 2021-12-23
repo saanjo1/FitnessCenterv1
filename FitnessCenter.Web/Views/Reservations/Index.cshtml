@@ -12,6 +12,7 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
+                        <th>Reservation Id</th>
                         <th>Reserved from</th>
                         <th>Reserved to</th>
                         <th>Fitness room</th>
@@ -24,14 +25,14 @@
                     @foreach (var reservation in Model.Reservations)
                     {
                         <tr>
+                            <td>@reservation.Id</td>
                             <td>@reservation.DateTimeFrom.ToString()</td>
                             <td>@reservation.DateTimeTo.ToString()</td>
                             <td>@reservation.FitnessRoomId</td>
                             <td>@reservation.UserId</td>
                             <td>@reservation.CoachId</td>
                             <td>
-                                <a href="/Reservations/Edit?ReservationId=@reservation.Id">Edit</a>
-                                <button>Delete</button>
+                            <a asp-action="Edit" asp-controller="Reservations"                                                                            asp-route-ReservationId=@reservation.Id asp-route-CoachId=@reservation.CoachId asp-route-UserId=@reservation.UserId>Edit</a>
                             </td>
                         </tr>
                     }

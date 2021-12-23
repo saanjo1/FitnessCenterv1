@@ -14,7 +14,6 @@ namespace FitnessCenter.Web.ViewModels
         public int CoachId  { get; set; }
         public int FitnessRoomId { get; set; }
 
-
         public List<SelectListItem> Coaches { get; set; }
         public List<Reservation> Reservations { get; set; }
         public List<SelectListItem> FitnessRooms { get; set; }

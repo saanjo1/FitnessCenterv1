@@ -3,6 +3,7 @@ using FitnessCenter.Data.Entities;
 using FitnessCenter.Web.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 
 namespace FitnessCenter.Web.Controllers
 {
@@ -19,6 +20,7 @@ namespace FitnessCenter.Web.Controllers
         {
             var reservations = _databaseContext.Reservations.Select(r => new Reservation
             {
+                Id = r.Id,
                 DateTimeFrom = r.DateTimeFrom,
                 DateTimeTo = r.DateTimeTo,
                 UserId = r.UserId,
@@ -29,6 +31,8 @@ namespace FitnessCenter.Web.Controllers
 
             return View(new ReservationsCreateViewModel { Reservations = reservations });
         }
+
+       
         [HttpGet]
         public IActionResult Add(int userId)
         {
@@ -51,6 +55,7 @@ namespace FitnessCenter.Web.Controllers
             
             return View(viewModel);
         }
+
         [HttpPost]
         public IActionResult Add(ReservationsCreateViewModel viewModel)
         {
@@ -63,27 +68,53 @@ namespace FitnessCenter.Web.Controllers
                 UserId = viewModel.UserId,
                 CoachId = viewModel.CoachId,
             };
+            if(reservation.UserId != 1)
+            {
+                _databaseContext.Reservations.Add(reservation);
+            }
+            else
+            {
+                _databaseContext.Entry(reservation).State = EntityState.Modified;
+            }
             
-            _databaseContext.Reservations.Add(reservation);
             _databaseContext.SaveChanges();
 
             return RedirectToAction("Index");
         }
 
         [HttpGet]
-        public IActionResult Edit (int ReservationId)
+        public IActionResult Edit(int reservationId, int coachId, int userId)
         {
-            var k = _databaseContext.Reservations
-                .Where(s => s.Id == ReservationId)
-                .Select(r => new ReservationsCreateViewModel
+            var FitnessRoomsList = _databaseContext.FitnessRooms.OrderBy(fr => fr.Name)
+                .Select(fr => new SelectListItem
                 {
-                    ReservationId = r.Id,
-                    DateTimeFrom = r.DateTimeFrom,
-                    DateTimeTo = r.DateTimeTo,
-                    FitnessRoomId = r.FitnessRoomId        
+                    Text = fr.Name,
+                    Value = fr.Id.ToString()
+                }).ToList();
+
+            var coachesList = _databaseContext.Users.OrderBy(fr => fr.Id)
+               .Select(fr => new SelectListItem
+               {
+                   Text = fr.FirstName,
+                   Value = fr.Id.ToString()
+               }).ToList();
+
+            var reservations = _databaseContext.Reservations
+                .Where(r => r.Id == reservationId)
+                .Select(rc => new ReservationsCreateViewModel
+                {
+                    UserId = userId,
+                    CoachId= rc.Id,
+                    ReservationId = rc.Id,
+                    DateTimeFrom = rc.DateTimeFrom,
+                    DateTimeTo = rc.DateTimeTo,
+                    FitnessRoomId = rc.FitnessRoomId
                 }).Single();
 
-            return View("Edit", k);
+            reservations.FitnessRooms = FitnessRoomsList;
+            reservations.Coaches = coachesList;
+
+            return View("Edit", reservations);
         }
     }
 }
