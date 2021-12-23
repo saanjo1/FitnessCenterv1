@@ -1,4 +1,4 @@
-﻿    @model ReservationsCreateViewModel
+﻿    @model ReservationIndexViewModel
 @{
     ViewData["Title"] = @Translations.Reservation;
 }
@@ -18,21 +18,21 @@
                         <th>Fitness room</th>
                         <th>User</th>
                         <th>Coach</th>
-                        <th>Actions</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var reservation in Model.Reservations)
+                    @foreach (var reservation in Model.Rows)
                     {
                         <tr>
-                            <td>@reservation.Id</td>
+                            <td>@reservation.ReservationId</td>
                             <td>@reservation.DateTimeFrom.ToString()</td>
                             <td>@reservation.DateTimeTo.ToString()</td>
-                            <td>@reservation.FitnessRoomId</td>
-                            <td>@reservation.UserId</td>
-                            <td>@reservation.CoachId</td>
+                            <td>@reservation.FitnessRoom</td>
+                            <td>@reservation.User</td>
+                            <td>@reservation.Coach</td>   
                             <td>
-                                <a asp-action="Add" asp-controller="Reservations" asp-route-ReservationId=@reservation.Id asp-route-CoachId=@reservation.CoachId asp-route-UserId=@reservation.UserId>Edit</a>
+                                <a href="/Reservations/Create?reservationId="@reservation.ReservationId>Edit</a>
                             </td>
                         </tr>
                     }
@@ -41,3 +41,4 @@
         </div>
     </div>
 </div>
+<a href="/Reservations/Create" class="btn btn-primary">Add new reservation</a>

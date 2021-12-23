@@ -11,6 +11,13 @@
     </div>
         <input class ="form-control-input" asp-for="DateTimeTo" />
 
+        <div class="form-control-reservations">
+        <label class="form-controll-label">Users</label>
+    </div>
+        <select class ="form-control-input" asp-for="UserId" asp-items="Model.Users" readonly></select>
+
+
+
     <div class="form-control-reservations">
         <label class="form-controll-label">Fitness rooms</label>
     </div>
