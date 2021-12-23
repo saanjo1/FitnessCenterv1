@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Add" xml:space="preserve">
+    <value>Add</value>
+  </data>
   <data name="ApplicationName" xml:space="preserve">
     <value>Fitness Center</value>
   </data>
@@ -126,11 +129,20 @@
   <data name="Cancel" xml:space="preserve">
     <value>Cancel</value>
   </data>
+  <data name="Coach" xml:space="preserve">
+    <value>Coach</value>
+  </data>
   <data name="Copyright" xml:space="preserve">
     <value>Copyright</value>
   </data>
   <data name="Dashboard" xml:space="preserve">
     <value>Dashboard</value>
+  </data>
+  <data name="DateTimeFrom" xml:space="preserve">
+    <value>Date time from</value>
+  </data>
+  <data name="DateTimeTo" xml:space="preserve">
+    <value>Date time to</value>
   </data>
   <data name="Email" xml:space="preserve">
     <value>E-mail</value>
@@ -138,17 +150,44 @@
   <data name="FirstName" xml:space="preserve">
     <value>First name</value>
   </data>
+  <data name="FitnessRoom" xml:space="preserve">
+    <value>Fitness room</value>
+  </data>
   <data name="LastName" xml:space="preserve">
     <value>Last name</value>
+  </data>
+  <data name="NoResultsToShow" xml:space="preserve">
+    <value>No results to show</value>
   </data>
   <data name="Password" xml:space="preserve">
     <value>Password</value>
   </data>
+  <data name="PickDate" xml:space="preserve">
+    <value>Pick a date</value>
+  </data>
   <data name="Profile" xml:space="preserve">
     <value>Profile</value>
   </data>
-  <data name="Reservation" xml:space="preserve">
-    <value>Reservation</value>
+  <data name="ReservationAdd" xml:space="preserve">
+    <value>Adding reservation</value>
+  </data>
+  <data name="ReservationAddFailure" xml:space="preserve">
+    <value>An error occured while adding a new reservation.</value>
+  </data>
+  <data name="ReservationAddSuccess" xml:space="preserve">
+    <value>Reservation added succesfully.</value>
+  </data>
+  <data name="ReservationEdit" xml:space="preserve">
+    <value>Editing reservation</value>
+  </data>
+  <data name="ReservationEditFailure" xml:space="preserve">
+    <value>An error occured while editing a reservation.</value>
+  </data>
+  <data name="ReservationEditSuccess" xml:space="preserve">
+    <value>Reservation edited succesfully.</value>
+  </data>
+  <data name="Reservations" xml:space="preserve">
+    <value>Reservations</value>
   </data>
   <data name="Role" xml:space="preserve">
     <value>Role</value>
@@ -164,6 +203,12 @@
   </data>
   <data name="SignUp" xml:space="preserve">
     <value>Sign up</value>
+  </data>
+  <data name="Submit" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+  <data name="User" xml:space="preserve">
+    <value>User</value>
   </data>
   <data name="Users" xml:space="preserve">
     <value>Users</value>

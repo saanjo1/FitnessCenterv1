@@ -61,6 +61,15 @@ namespace FitnessCenter.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add.
+        /// </summary>
+        public static string Add {
+            get {
+                return ResourceManager.GetString("Add", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Fitness Center.
         /// </summary>
         public static string ApplicationName {
@@ -88,6 +97,15 @@ namespace FitnessCenter.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Coach.
+        /// </summary>
+        public static string Coach {
+            get {
+                return ResourceManager.GetString("Coach", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Copyright.
         /// </summary>
         public static string Copyright {
@@ -102,6 +120,24 @@ namespace FitnessCenter.Web.Resources {
         public static string Dashboard {
             get {
                 return ResourceManager.GetString("Dashboard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Date time from.
+        /// </summary>
+        public static string DateTimeFrom {
+            get {
+                return ResourceManager.GetString("DateTimeFrom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Date time to.
+        /// </summary>
+        public static string DateTimeTo {
+            get {
+                return ResourceManager.GetString("DateTimeTo", resourceCulture);
             }
         }
         
@@ -124,11 +160,29 @@ namespace FitnessCenter.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Fitness room.
+        /// </summary>
+        public static string FitnessRoom {
+            get {
+                return ResourceManager.GetString("FitnessRoom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Last name.
         /// </summary>
         public static string LastName {
             get {
                 return ResourceManager.GetString("LastName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No results to show.
+        /// </summary>
+        public static string NoResultsToShow {
+            get {
+                return ResourceManager.GetString("NoResultsToShow", resourceCulture);
             }
         }
         
@@ -142,6 +196,15 @@ namespace FitnessCenter.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Pick a date.
+        /// </summary>
+        public static string PickDate {
+            get {
+                return ResourceManager.GetString("PickDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Profile.
         /// </summary>
         public static string Profile {
@@ -151,11 +214,65 @@ namespace FitnessCenter.Web.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Reservation.
+        ///   Looks up a localized string similar to Adding reservation.
         /// </summary>
-        public static string Reservation {
+        public static string ReservationAdd {
             get {
-                return ResourceManager.GetString("Reservation", resourceCulture);
+                return ResourceManager.GetString("ReservationAdd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An error occured while adding a new reservation..
+        /// </summary>
+        public static string ReservationAddFailure {
+            get {
+                return ResourceManager.GetString("ReservationAddFailure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reservation added succesfully..
+        /// </summary>
+        public static string ReservationAddSuccess {
+            get {
+                return ResourceManager.GetString("ReservationAddSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Editing reservation.
+        /// </summary>
+        public static string ReservationEdit {
+            get {
+                return ResourceManager.GetString("ReservationEdit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An error occured while editing a reservation..
+        /// </summary>
+        public static string ReservationEditFailure {
+            get {
+                return ResourceManager.GetString("ReservationEditFailure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reservation edited succesfully..
+        /// </summary>
+        public static string ReservationEditSuccess {
+            get {
+                return ResourceManager.GetString("ReservationEditSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reservations.
+        /// </summary>
+        public static string Reservations {
+            get {
+                return ResourceManager.GetString("Reservations", resourceCulture);
             }
         }
         
@@ -201,6 +318,24 @@ namespace FitnessCenter.Web.Resources {
         public static string SignUp {
             get {
                 return ResourceManager.GetString("SignUp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Submit.
+        /// </summary>
+        public static string Submit {
+            get {
+                return ResourceManager.GetString("Submit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User.
+        /// </summary>
+        public static string User {
+            get {
+                return ResourceManager.GetString("User", resourceCulture);
             }
         }
         

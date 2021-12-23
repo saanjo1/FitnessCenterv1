@@ -27,7 +27,7 @@ namespace FitnessCenter.Data
 
         public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options)
         {
-            
+
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -81,38 +81,38 @@ namespace FitnessCenter.Data
                         Id = 2,
                         Name = "Functional"
                     },
-                     new Excercise
-                     {
-                         Id = 3,
-                         Name = "Full body"
-                     },
-                      new Excercise
-                      {
-                          Id = 4,
-                          Name = "Focus gluteus"
-                      },
-                       new Excercise
-                       {
-                           Id = 5,
-                           Name = "Pilates"
-                       },
-                        new Excercise
-                        {
-                            Id = 6,
-                            Name = "Zumba"
-                        },
-                         new Excercise
-                         {
-                             Id = 7,
-                             Name = "Core and cardio"
-                         }
+                    new Excercise
+                    {
+                        Id = 3,
+                        Name = "Full body"
+                    },
+                    new Excercise
+                    {
+                        Id = 4,
+                        Name = "Focus gluteus"
+                    },
+                    new Excercise
+                    {
+                        Id = 5,
+                        Name = "Pilates"
+                    },
+                    new Excercise
+                    {
+                        Id = 6,
+                        Name = "Zumba"
+                    },
+                    new Excercise
+                    {
+                        Id = 7,
+                        Name = "Core and cardio"
+                    }
                 );
 
             modelBuilder.Entity<FitnessRoom>()
               .HasData(
                 new FitnessRoom
                 {
-                    Id=1,
+                    Id = 1,
                     Name = "Functional room",
                     Price = 20.00,
                 },
@@ -125,21 +125,22 @@ namespace FitnessCenter.Data
                 new FitnessRoom
                 {
                     Id = 3,
-                    Name = "Piletes room",
+                    Name = "Pilates room",
                     Price = 30.00,
                 },
                 new FitnessRoom
                 {
                     Id = 4,
-                    Name = "Private traingins room",
+                    Name = "Private trainings room",
                     Price = 50.00,
                 }
-                );
-          modelBuilder.Entity<Announcement>()
-                .HasOne<User>(a => a.Author)
-                .WithMany(a => a.AuthorAnnouncements)
-                .HasForeignKey(a => a.AuthorId)
-                .OnDelete(DeleteBehavior.Restrict);
+            );
+
+            modelBuilder.Entity<Announcement>()
+               .HasOne<User>(a => a.Author)
+               .WithMany(a => a.AuthorAnnouncements)
+               .HasForeignKey(a => a.AuthorId)
+               .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<Announcement>()
                .HasOne<User>(a => a.User)
@@ -148,9 +149,9 @@ namespace FitnessCenter.Data
                .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<Reservation>()
-                .HasOne<User>(r => r.Coach)
-                .WithMany(c => c.CoachReservations)
-                .HasForeignKey(r => r.CoachId)
+               .HasOne<User>(r => r.Coach)
+               .WithMany(c => c.CoachReservations)
+               .HasForeignKey(r => r.CoachId)
                .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<Reservation>()

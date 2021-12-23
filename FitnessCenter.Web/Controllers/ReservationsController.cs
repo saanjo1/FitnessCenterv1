@@ -1,110 +1,101 @@
-﻿using FitnessCenter.Data;
+﻿using AutoMapper;
+using FitnessCenter.Data;
 using FitnessCenter.Data.Entities;
+using FitnessCenter.Web.Resources;
 using FitnessCenter.Web.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
+
+using Vereyon.Web;
 
 namespace FitnessCenter.Web.Controllers
 {
     public class ReservationsController : Controller
     {
+        private readonly IMapper _mapper;
+        private readonly IFlashMessage _flashMessage;
         private readonly DatabaseContext _databaseContext;
-        public ReservationsController(DatabaseContext databaseContext)
+
+        public ReservationsController(IMapper mapper, IFlashMessage flashMessage, DatabaseContext databaseContext)
         {
+            _mapper = mapper;
+            _flashMessage = flashMessage;
             _databaseContext = databaseContext;
         }
 
         [HttpGet]
         public IActionResult Index()
         {
-            var _reservations = _databaseContext.Reservations.Select(r => new Reservation
+            var reservations = _databaseContext.Reservations.ToList();
+
+            return View(new ReservationsIndexViewModel
             {
-                DateTimeFrom = r.DateTimeFrom,
-                DateTimeTo = r.DateTimeTo,
-                UserId = r.UserId,
-                FitnessRoomId = r.FitnessRoomId,
-                CoachId = r.CoachId,
-                Id = r.Id,
-                Confirmed = r.Confirmed,
-            }).ToList();
-
-            var reservationIndex = new ReservationsCreateViewModel();
-            reservationIndex.reservations = _reservations;
-
-            return View(reservationIndex);
+                Reservations = reservations
+            });
         }
 
         [HttpGet]
-        public IActionResult Add(int reservationId, int userId, int coachId)
+        public IActionResult Manage(int id)
         {
-            var fitnessRooms = _databaseContext.FitnessRooms
-                .Select(fr => new SelectListItem
-                {
-                    Text = fr.Name,
-                    Value = fr.Id.ToString()
-                }).ToList();
+            ReservationsManageViewModel viewModel;
 
-            var coaches = _databaseContext.Users
-                .Where(r => r.Role == Data.Entities.Role.Coach)
-                .Select(s => new SelectListItem
-                {
-                    Text = s.FirstName + " " + s.LastName,
-                    Value = s.Id.ToString(),
-                }).ToList();
-
-            var users = _databaseContext.Users    
-                .Select(s => new SelectListItem
-                {
-                    Text = s.FirstName + " " + s.LastName,
-                    Value = s.Id.ToString(),
-                }).ToList();
-
-            ReservationsCreateViewModel _reservationsCreateViewModel;
-            if(reservationId == 0)
+            if (id == 0)
             {
-                _reservationsCreateViewModel = new ReservationsCreateViewModel();
+                viewModel = new ReservationsManageViewModel
+                {
+                    DateTimeFrom = DateTime.Now,
+                    DateTimeTo = DateTime.Now
+                };
             }
             else
             {
-                _reservationsCreateViewModel = _databaseContext.Reservations
-                    .Where(r => r.Id == reservationId)
-                    .Select(s => new ReservationsCreateViewModel
-                    {
-                        DateTimeFrom = DateTime.Now,
-                        DateTimeTo = DateTime.Now,
-                        CoachId = s.CoachId,
-                        UserId = s.UserId,
-                        FitnessRoomId = s.FitnessRoomId,
-                        Confirmed = s.Confirmed,
-                        Id = s.Id
-                    }).Single();
+                viewModel = _databaseContext.Reservations
+                    .Where(r => r.Id == id)
+                    .Select(s => _mapper.Map<ReservationsManageViewModel>(s)).Single();
             }
-            _reservationsCreateViewModel.FitnessRooms = fitnessRooms;
-            _reservationsCreateViewModel.Coaches = coaches;
-            _reservationsCreateViewModel.Users = users;
 
-            return View("Add",_reservationsCreateViewModel);
+            return View(viewModel);
         }
-        [HttpPost]
-        public IActionResult Add(ReservationsCreateViewModel _viewModel)
-        {
-            Reservation reservation;
 
-            if(_viewModel.Id == 0)
+        [HttpPost]
+        public IActionResult Manage(ReservationsManageViewModel viewModel)
+        {
+            if (!ModelState.IsValid)
+                return View(viewModel);
+
+            try
             {
-                reservation = new Reservation();
-                _databaseContext.Add(reservation);
+                Reservation reservation;
+
+                if (viewModel.Id == 0)
+                {
+                    reservation = new Reservation
+                    {
+                        Confirmed = false
+                    };
+                    _databaseContext.Add(reservation);
+                }
+                else
+                {
+                    reservation = _databaseContext.Reservations.Find(viewModel.Id);
+                }
+
+                _mapper.Map(viewModel, reservation);
+                reservation.UserId = 2;
+
+                _databaseContext.SaveChanges();
+
+                if (viewModel.Id == 0)
+                    _flashMessage.Confirmation(Translations.ReservationAddSuccess);
+                else
+                    _flashMessage.Confirmation(Translations.ReservationEditSuccess);
             }
-            else
+            catch
             {
-                reservation = _databaseContext.Reservations.Find(_viewModel.Id);
+                if (viewModel.Id == 0)
+                    _flashMessage.Danger(Translations.ReservationAddFailure);
+                else
+                    _flashMessage.Danger(Translations.ReservationEditFailure);
             }
-            reservation.DateTimeTo = _viewModel.DateTimeTo;
-            reservation.DateTimeFrom = _viewModel.DateTimeFrom;
-            reservation.CoachId = _viewModel.CoachId;
-            reservation.UserId = _viewModel.UserId;
-            reservation.FitnessRoomId = _viewModel.FitnessRoomId;
-            reservation.Confirmed = _viewModel.Confirmed;
 
             return RedirectToAction("Index");
         }

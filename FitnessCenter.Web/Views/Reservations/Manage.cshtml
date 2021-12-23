@@ -1,0 +1,46 @@
+﻿@model ReservationsManageViewModel
+
+@inject SelectLists _selectLists
+
+@{
+    if (Model.Id == 0)
+    {
+        ViewData["Title"] = Translations.ReservationAdd;
+    }
+    else
+    {
+        ViewData["Title"] = Translations.ReservationEdit;
+    }
+}
+
+<form asp-action="Manage" asp-controller="Reservations" method="post">
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h5 class="m-0 font-weight-bold text-primary">@ViewData["Title"]</h5>
+        </div>
+        <div class="card-body">
+            <input asp-for="Id" type="hidden" />
+            <input asp-for="UserId" type="hidden" />
+
+            <div class="form-group">
+                <label asp-for="FitnessRoomId"></label>
+                <select class="form-control" asp-for="FitnessRoomId" asp-items="_selectLists.FitnessRooms()"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="CoachId"></label>
+                <select class="form-control" asp-for="CoachId" asp-items="_selectLists.Users(Role.Coach)"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateTimeFrom"></label>
+                <input asp-for="DateTimeFrom" type="date" class="form-control" placeholder="@Translations.PickDate">
+            </div>
+            <div class="form-group mb-0">
+                <label asp-for="DateTimeTo"></label>
+                <input asp-for="DateTimeTo" type="date" class="form-control" placeholder="@Translations.PickDate">
+            </div>
+        </div>
+        <div class="card-footer py-3">
+            <button type="submit" class="btn btn-primary">@Translations.Submit</button>
+        </div>
+    </div>
+</form>

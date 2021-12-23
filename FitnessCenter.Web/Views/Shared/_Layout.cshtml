@@ -24,18 +24,18 @@
             <hr class="sidebar-divider my-0">
 
             <li class="nav-item">
-                <a asp-action="Add" asp-controller="Reservations" asp-route-UserID="1" class="nav-link">
-                   <i class="fas fa-calendar-check"></i>
-                    <span>@Translations.Reservation</span>
+                <a asp-action="Index" asp-controller="Reservations" class="nav-link">
+                    <i class="fas fa-calendar-check"></i>
+                    <span>@Translations.Reservations</span>
                 </a>
             </li>
             <hr class="sidebar-divider my-0">
 
-             @*<hr class="sidebar-divider d-none d-md-block">*@
-           
+            @*<hr class="sidebar-divider d-none d-md-block">*@
+
             <hr class="sidebar-divider my-0">
 
-              @*registration*@
+            @*registration*@
             <li class="nav-item">
                 <a asp-action="Index" asp-controller="Users" class="nav-link">
                     <i class="fas fa-fw fa-users"></i>
@@ -43,7 +43,7 @@
                 </a>
             </li>
             <hr class="sidebar-divider my-0">
-             <hr class="sidebar-divider d-none d-md-block">
+            <hr class="sidebar-divider d-none d-md-block">
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
@@ -81,6 +81,7 @@
                     </ul>
                 </nav>
                 <div class="container-fluid">
+                    <flash />
                     @RenderBody()
                 </div>
             </div>
