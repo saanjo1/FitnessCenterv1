@@ -68,15 +68,6 @@ namespace FitnessCenter.Web.Controllers
                 UserId = viewModel.UserId,
                 CoachId = viewModel.CoachId,
             };
-            if(reservation.UserId != 1)
-            {
-                _databaseContext.Reservations.Add(reservation);
-            }
-            else
-            {
-                _databaseContext.Entry(reservation).State = EntityState.Modified;
-            }
-            
             _databaseContext.SaveChanges();
 
             return RedirectToAction("Index");
