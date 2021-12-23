@@ -11,6 +11,8 @@ namespace FitnessCenter.Web.ViewModels
         public DateTime DateTimeTo { get; set; }
         public bool Confirmed { get; set; }
 
+
+        public List<Reservation> reservations { get; set; }
         public int? UserId { get; set; }
         public List<SelectListItem> Users { get; set; }
         public int? CoachId { get; set; }

@@ -8,46 +8,43 @@ namespace FitnessCenter.Web.Controllers
 {
     public class ReservationsController : Controller
     {
-
         private readonly DatabaseContext _databaseContext;
         public ReservationsController(DatabaseContext databaseContext)
         {
             _databaseContext = databaseContext;
         }
+
         [HttpGet]
         public IActionResult Index()
         {
-            List<ReservationIndexViewModel.Row> reservations =
-                _databaseContext.Reservations.Select(r => new ReservationIndexViewModel.Row
-                {
-                    ReservationId = r.Id,
-                    DateTimeFrom = r.DateTimeFrom,
-                    DateTimeTo = r.DateTimeTo,
-                    Coach = r.Coach.FirstName + " " + r.Coach.LastName,
-                    User = r.User.FirstName + " " + r.User.LastName,
-                    FitnessRoom = r.FitnessRoom.Name
-
-                }).ToList();
-
-            ReservationIndexViewModel ReservationModel = new()
+            var _reservations = _databaseContext.Reservations.Select(r => new Reservation
             {
-                Rows = reservations
-            };
+                DateTimeFrom = r.DateTimeFrom,
+                DateTimeTo = r.DateTimeTo,
+                UserId = r.UserId,
+                FitnessRoomId = r.FitnessRoomId,
+                CoachId = r.CoachId,
+                Id = r.Id,
+                Confirmed = r.Confirmed,
+            }).ToList();
 
-            return View(ReservationModel);
+            var reservationIndex = new ReservationsCreateViewModel();
+            reservationIndex.reservations = _reservations;
 
+            return View(reservationIndex);
         }
 
-        public IActionResult Create(int reservationId)
+        [HttpGet]
+        public IActionResult Add(int reservationId, int userId, int coachId)
         {
-            List<SelectListItem> fitnessRooms = _databaseContext.FitnessRooms
+            var fitnessRooms = _databaseContext.FitnessRooms
                 .Select(fr => new SelectListItem
                 {
                     Text = fr.Name,
                     Value = fr.Id.ToString()
                 }).ToList();
 
-            List<SelectListItem> coaches = _databaseContext.Users
+            var coaches = _databaseContext.Users
                 .Where(r => r.Role == Data.Entities.Role.Coach)
                 .Select(s => new SelectListItem
                 {
@@ -55,7 +52,7 @@ namespace FitnessCenter.Web.Controllers
                     Value = s.Id.ToString(),
                 }).ToList();
 
-            List<SelectListItem> users = _databaseContext.Users    
+            var users = _databaseContext.Users    
                 .Select(s => new SelectListItem
                 {
                     Text = s.FirstName + " " + s.LastName,
@@ -73,8 +70,8 @@ namespace FitnessCenter.Web.Controllers
                     .Where(r => r.Id == reservationId)
                     .Select(s => new ReservationsCreateViewModel
                     {
-                        DateTimeFrom = s.DateTimeFrom,
-                        DateTimeTo = s.DateTimeTo,
+                        DateTimeFrom = DateTime.Now,
+                        DateTimeTo = DateTime.Now,
                         CoachId = s.CoachId,
                         UserId = s.UserId,
                         FitnessRoomId = s.FitnessRoomId,
@@ -86,12 +83,11 @@ namespace FitnessCenter.Web.Controllers
             _reservationsCreateViewModel.Coaches = coaches;
             _reservationsCreateViewModel.Users = users;
 
-            return View(_reservationsCreateViewModel);
+            return View("Add",_reservationsCreateViewModel);
         }
-
+        [HttpPost]
         public IActionResult Add(ReservationsCreateViewModel _viewModel)
         {
-
             Reservation reservation;
 
             if(_viewModel.Id == 0)
@@ -103,7 +99,6 @@ namespace FitnessCenter.Web.Controllers
             {
                 reservation = _databaseContext.Reservations.Find(_viewModel.Id);
             }
-
             reservation.DateTimeTo = _viewModel.DateTimeTo;
             reservation.DateTimeFrom = _viewModel.DateTimeFrom;
             reservation.CoachId = _viewModel.CoachId;
@@ -111,9 +106,7 @@ namespace FitnessCenter.Web.Controllers
             reservation.FitnessRoomId = _viewModel.FitnessRoomId;
             reservation.Confirmed = _viewModel.Confirmed;
 
-            return Redirect("/Reservations");
+            return RedirectToAction("Index");
         }
-
-
     }
 }
