@@ -6,12 +6,13 @@ using Vereyon.Web;
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("Main");
 
-builder.Services.AddRouting(options => options.LowercaseUrls = true);
-builder.Services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(connectionString));
-builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 builder.Services.AddFlashMessage();
 builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddScoped<SelectLists>();
+builder.Services.AddRouting(options => options.LowercaseUrls = true);
+
+builder.Services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(connectionString));
+builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
 var app = builder.Build();
 

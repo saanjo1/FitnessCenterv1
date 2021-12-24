@@ -4,7 +4,6 @@ using FitnessCenter.Data.Entities;
 using FitnessCenter.Web.Resources;
 using FitnessCenter.Web.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-
 using Vereyon.Web;
 
 namespace FitnessCenter.Web.Controllers
