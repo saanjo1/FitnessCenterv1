@@ -11,6 +11,11 @@
         public Role Role { get; set; }
         public double? ServicePrice { get; set; }
 
+        public override string ToString()
+        {
+            return FirstName + " " + LastName;
+        }
+
         public ICollection<Announcement> UserAnnouncements { get; set; } //userId
         public ICollection<Announcement> AuthorAnnouncements { get; set; } //authorId
         public ICollection<Contact> Contacts { get; set; } //contact

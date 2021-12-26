@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Action" xml:space="preserve">
+    <value>Action</value>
+  </data>
   <data name="Add" xml:space="preserve">
     <value>Add</value>
   </data>
@@ -143,6 +146,9 @@
   </data>
   <data name="DateTimeTo" xml:space="preserve">
     <value>Date time to</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Edit</value>
   </data>
   <data name="Email" xml:space="preserve">
     <value>E-mail</value>
@@ -188,6 +194,12 @@
   </data>
   <data name="Reservations" xml:space="preserve">
     <value>Reservations</value>
+  </data>
+  <data name="ReservedFrom" xml:space="preserve">
+    <value>Reserved from</value>
+  </data>
+  <data name="ReservedTo" xml:space="preserve">
+    <value>Reserved to</value>
   </data>
   <data name="Role" xml:space="preserve">
     <value>Role</value>

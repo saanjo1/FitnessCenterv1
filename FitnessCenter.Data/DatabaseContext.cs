@@ -66,7 +66,18 @@ namespace FitnessCenter.Data
                          Role = Role.Coach,
                          PasswordSalt = "_",
                          PasswordHash = "_",
-                     }
+                     },
+                       new User
+                       {
+                           Id = 4,
+                           FirstName = "Adil",
+                           LastName = "Joldić",
+                           Username = "adil.joldic",
+                           Email = "adil@edu.fit.ba",
+                           Role = Role.Coach,
+                           PasswordSalt = "_",
+                           PasswordHash = "_",
+                       }
                 );
 
             modelBuilder.Entity<Excercise>()

@@ -61,6 +61,15 @@ namespace FitnessCenter.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Action.
+        /// </summary>
+        public static string Action {
+            get {
+                return ResourceManager.GetString("Action", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add.
         /// </summary>
         public static string Add {
@@ -138,6 +147,15 @@ namespace FitnessCenter.Web.Resources {
         public static string DateTimeTo {
             get {
                 return ResourceManager.GetString("DateTimeTo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit.
+        /// </summary>
+        public static string Edit {
+            get {
+                return ResourceManager.GetString("Edit", resourceCulture);
             }
         }
         
@@ -273,6 +291,24 @@ namespace FitnessCenter.Web.Resources {
         public static string Reservations {
             get {
                 return ResourceManager.GetString("Reservations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reserved from.
+        /// </summary>
+        public static string ReservedFrom {
+            get {
+                return ResourceManager.GetString("ReservedFrom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reserved to.
+        /// </summary>
+        public static string ReservedTo {
+            get {
+                return ResourceManager.GetString("ReservedTo", resourceCulture);
             }
         }
         

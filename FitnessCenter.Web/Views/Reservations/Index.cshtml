@@ -19,12 +19,12 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>Reserved from</th>
-                        <th>Reserved to</th>
-                        <th>Fitness room</th>
-                        <th>User</th>
-                        <th>Coach</th>
-                        <th>Action</th>
+                        <th>@Translations.ReservedFrom</th>
+                        <th>@Translations.ReservedTo</th>
+                        <th>@Translations.FitnessRoom</th>
+                        <th>@Translations.User</th>
+                        <th>@Translations.Coach</th>
+                        <th>@Translations.Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -35,11 +35,13 @@
                             <tr>
                                 <td>@reservation.DateTimeFrom.ToString()</td>
                                 <td>@reservation.DateTimeTo.ToString()</td>
-                                <td>@reservation.FitnessRoomId</td>
-                                <td>@reservation.UserId</td>
-                                <td>@reservation.CoachId</td>
+                                <td>@reservation.FitnessRoom.ToString()</td>
+                                <td>@reservation.User.ToString()</td>
+                                <td>@reservation.Coach.ToString()</td>
                                 <td>
-                                    <a asp-action="Manage" asp-controller="Reservations" asp-route-id="@reservation.Id">Edit</a>
+                                    <a asp-action="Manage" asp-controller="Reservations" asp-route-id="@reservation.Id" class="btn btn-sm btn-primary">
+                                          @Translations.Edit
+                                    </a>
                                 </td>
                             </tr>
                         }

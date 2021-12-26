@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
+using CloudinaryDotNet.Actions;
 using FitnessCenter.Data;
 using FitnessCenter.Data.Entities;
 using FitnessCenter.Web.Resources;
 using FitnessCenter.Web.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Vereyon.Web;
 
 namespace FitnessCenter.Web.Controllers
@@ -24,19 +26,23 @@ namespace FitnessCenter.Web.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            var reservations = _databaseContext.Reservations.ToList();
+            var reservations = _databaseContext.Reservations
+                 .Include(r => r.FitnessRoom).Where(r => r.FitnessRoom.Id == r.FitnessRoomId)
+                 .Include(r=>r.User).Where(r=>r.User.Id == r.UserId && r.User.Role == Data.Entities.Role.Client)
+                 .Include(r=>r.Coach).Where(r=>r.Coach.Id == r.CoachId && r.Coach.Role == Data.Entities.Role.Coach)
+                 .ToList();
 
             return View(new ReservationsIndexViewModel
             {
                 Reservations = reservations
             });
         }
-
+        
         [HttpGet]
         public IActionResult Manage(int id)
         {
             ReservationsManageViewModel viewModel;
-
+            
             if (id == 0)
             {
                 viewModel = new ReservationsManageViewModel
@@ -51,7 +57,6 @@ namespace FitnessCenter.Web.Controllers
                     .Where(r => r.Id == id)
                     .Select(s => _mapper.Map<ReservationsManageViewModel>(s)).Single();
             }
-
             return View(viewModel);
         }
 
