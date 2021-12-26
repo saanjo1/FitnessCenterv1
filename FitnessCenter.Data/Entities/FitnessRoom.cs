@@ -8,10 +8,5 @@
         public DateTime? OpenTo { get; set; }
 
         public ICollection<Reservation> Reservations { get; set; }
-
-        public override string ToString()
-        {
-            return Name;
-        }
     }
 }

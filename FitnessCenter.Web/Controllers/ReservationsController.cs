@@ -27,9 +27,9 @@ namespace FitnessCenter.Web.Controllers
         public IActionResult Index()
         {
             var reservations = _databaseContext.Reservations
-                 .Include(r => r.FitnessRoom).Where(r => r.FitnessRoom.Id == r.FitnessRoomId)
-                 .Include(r=>r.User).Where(r=>r.User.Id == r.UserId && r.User.Role == Data.Entities.Role.Client)
-                 .Include(r=>r.Coach).Where(r=>r.Coach.Id == r.CoachId && r.Coach.Role == Data.Entities.Role.Coach)
+                 .Include(r => r.FitnessRoom)
+                 .Include(r=>r.User)
+                 .Include(r=>r.Coach)
                  .ToList();
 
             return View(new ReservationsIndexViewModel

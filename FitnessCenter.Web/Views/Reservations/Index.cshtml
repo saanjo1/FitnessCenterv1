@@ -1,5 +1,4 @@
 ﻿@model ReservationsIndexViewModel
-
 @{
     ViewData["Title"] = @Translations.Reservations;
 }
@@ -33,11 +32,16 @@
                         foreach (var reservation in Model.Reservations)
                         {
                             <tr>
-                                <td>@reservation.DateTimeFrom.ToString()</td>
-                                <td>@reservation.DateTimeTo.ToString()</td>
-                                <td>@reservation.FitnessRoom.ToString()</td>
-                                <td>@reservation.User.ToString()</td>
-                                <td>@reservation.Coach.ToString()</td>
+                                <td>@reservation.DateTimeFrom.ToString("dd.MM.yyyy.")</td>
+                                <td>@reservation.DateTimeTo.ToString("dd.MM.yyyy.")</td>
+                                <td>@reservation.FitnessRoom.Name</td>
+                                <td>
+                                    @if (@reservation.User != null)
+                                    {
+                                        @reservation.User.FirstName @reservation.User.LastName
+                                    }
+                                </td>
+                                <td>@reservation.Coach.FirstName @reservation.Coach.LastName</td>
                                 <td>
                                     <a asp-action="Manage" asp-controller="Reservations" asp-route-id="@reservation.Id"
                                class="btn btn-sm btn-outline-primary">
@@ -47,21 +51,27 @@
                                data-toggle="modal" data-target="#confirm-delete" class="btn btn-outline-danger btn-sm ">
                                         @Translations.Delete
                                     </a>
-                                    <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
+                                    <div class="modal fade" id="confirm-delete"
+                                 tabindex="-1" role="dialog" aria-labelledby="modalLabel"
                                  aria-hidden="true">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h5 class="modal-title" id="modalLabel">@Translations.AreYouSure</h5>
-                                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                                    <button class="close" type="button" data-dismiss="modal"
+                                                    aria-label="Close">
                                                         <span aria-hidden="true">×</span>
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">@Translations.DeleteConfirmation</div>
                                                 <div class="modal-footer">
-                                                    <button class="btn btn-secondary" type="button" data-dismiss="modal">@Translations.Cancel</button>
-                                                    <a asp-action="Delete" asp-controller="Reservations" asp-route-id="@reservation.Id"
-                                                    class="btn btn-danger">@Translations.Delete</a>
+                                                    <button class="btn btn-secondary" type="button"
+                                                    data-dismiss="modal">
+                                                        @Translations.Cancel
+                                                    </button>
+                                                    <a asp-action="Delete" asp-controller="Reservations"
+                                               asp-route-id="@reservation.Id"
+                                               class="btn btn-danger">@Translations.Delete</a>
                                                 </div>
                                             </div>
                                         </div>
