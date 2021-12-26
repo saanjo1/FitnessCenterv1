@@ -5,7 +5,6 @@ namespace FitnessCenter.Web.ViewModels
 {
     public class ReservationsIndexViewModel
     {
-        public string UserName { get; set; }
         public List<Reservation> Reservations { get; set; }
     }
 }
