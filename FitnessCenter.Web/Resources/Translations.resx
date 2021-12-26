@@ -147,6 +147,18 @@
   <data name="DateTimeTo" xml:space="preserve">
     <value>Date time to</value>
   </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="DeleteConfirmation" xml:space="preserve">
+    <value>Are you sure you want to delete?</value>
+  </data>
+  <data name="DeleteFail" xml:space="preserve">
+    <value>Failed to delete.</value>
+  </data>
+  <data name="DeleteSuccess" xml:space="preserve">
+    <value>Successfully deleted.</value>
+  </data>
   <data name="Edit" xml:space="preserve">
     <value>Edit</value>
   </data>

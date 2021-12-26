@@ -59,6 +59,24 @@ namespace FitnessCenter.Web.Controllers
             }
             return View(viewModel);
         }
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            try
+            {
+                var reservation = _databaseContext.Reservations.Find(id);
+                _databaseContext.Remove(reservation);
+                _databaseContext.SaveChanges();
+                
+                _flashMessage.Confirmation(Translations.DeleteSuccess);
+            }
+            catch 
+            {
+                _flashMessage.Confirmation(Translations.DeleteFail);
+            }
+
+            return RedirectToAction("Index");
+        }
 
         [HttpPost]
         public IActionResult Manage(ReservationsManageViewModel viewModel)
