@@ -1,9 +1,12 @@
-﻿using FitnessCenter.Web.ViewModels;
+﻿using FitnessCenter.Data.Entities;
+using FitnessCenter.Web.Utilities;
+using FitnessCenter.Web.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
 namespace FitnessCenter.Web.Controllers
 {
+    [Authentication()]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;

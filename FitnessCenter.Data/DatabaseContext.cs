@@ -42,8 +42,8 @@ namespace FitnessCenter.Data
                         Username = "admin",
                         Email = "admin@admin",
                         Role = Role.Administrator,
-                        PasswordSalt = "admin",
-                        PasswordHash = "admin"
+                        PasswordSalt = "ZNWv2EKaW8VNB6ZjXUAevw==",
+                        PasswordHash = "yVKb7CTcH+6eS7Y+Xzhp4Us8FK5sHv4Tt5ZBDfTcuoU="
                     },
                     new User
                     {
@@ -53,8 +53,8 @@ namespace FitnessCenter.Data
                         Username = "muhamed.brkan",
                         Email = "muhamed.brkan@edu.fit.ba",
                         Role = Role.Client,
-                        PasswordSalt = "_",
-                        PasswordHash = "_"
+                        PasswordSalt = "ZNWv2EKaW8VNB6ZjXUAevw==",
+                        PasswordHash = "yVKb7CTcH+6eS7Y+Xzhp4Us8FK5sHv4Tt5ZBDfTcuoU="
                     },
                      new User
                      {
@@ -64,8 +64,8 @@ namespace FitnessCenter.Data
                          Username = "sanjin.golos",
                          Email = "sanjin.golos@edu.fit.ba",
                          Role = Role.Coach,
-                         PasswordSalt = "_",
-                         PasswordHash = "_",
+                         PasswordSalt = "ZNWv2EKaW8VNB6ZjXUAevw==",
+                         PasswordHash = "yVKb7CTcH+6eS7Y+Xzhp4Us8FK5sHv4Tt5ZBDfTcuoU=",
                      },
                        new User
                        {
@@ -75,8 +75,8 @@ namespace FitnessCenter.Data
                            Username = "adil.joldic",
                            Email = "adil@edu.fit.ba",
                            Role = Role.Coach,
-                           PasswordSalt = "_",
-                           PasswordHash = "_",
+                           PasswordSalt = "ZNWv2EKaW8VNB6ZjXUAevw==",
+                           PasswordHash = "yVKb7CTcH+6eS7Y+Xzhp4Us8FK5sHv4Tt5ZBDfTcuoU=",
                        }
                 );
 
