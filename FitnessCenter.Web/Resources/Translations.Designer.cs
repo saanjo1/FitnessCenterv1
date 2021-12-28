@@ -457,6 +457,15 @@ namespace FitnessCenter.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Failed to add a supplement..
+        /// </summary>
+        public static string UserSupplementFail {
+            get {
+                return ResourceManager.GetString("UserSupplementFail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to User supplements.
         /// </summary>
         public static string UserSupplements {

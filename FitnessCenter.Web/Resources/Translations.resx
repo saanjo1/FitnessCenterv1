@@ -249,6 +249,9 @@
   <data name="Users" xml:space="preserve">
     <value>Users</value>
   </data>
+  <data name="UserSupplementFail" xml:space="preserve">
+    <value>Failed to add a supplement.</value>
+  </data>
   <data name="UserSupplements" xml:space="preserve">
     <value>User supplements</value>
   </data>
