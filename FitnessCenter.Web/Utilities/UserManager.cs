@@ -1,7 +1,4 @@
-﻿using System.Linq;
-using Microsoft.AspNetCore.Http;
-using FitnessCenter.Data.Entities;
-using Microsoft.AspNet.Identity;
+﻿using FitnessCenter.Data.Entities;
 
 namespace FitnessCenter.Web.Utilities.Constants
 {

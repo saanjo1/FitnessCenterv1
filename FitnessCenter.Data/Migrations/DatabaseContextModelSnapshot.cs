@@ -411,6 +411,15 @@ namespace FitnessCenter.Data.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Sponsors");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "Description",
+                            Name = "Proteini.si",
+                            UserId = 2
+                        });
                 });
 
             modelBuilder.Entity("FitnessCenter.Data.Entities.Subscription", b =>
@@ -463,6 +472,24 @@ namespace FitnessCenter.Data.Migrations
                     b.HasIndex("SponsorId");
 
                     b.ToTable("Supplements");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "Whey protein description",
+                            Name = "Whey protein (1kg)",
+                            Price = 40.0,
+                            SponsorId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Description = "Creatine description",
+                            Name = "Creatine 200mg",
+                            Price = 25.0,
+                            SponsorId = 1
+                        });
                 });
 
             modelBuilder.Entity("FitnessCenter.Data.Entities.User", b =>
@@ -508,8 +535,8 @@ namespace FitnessCenter.Data.Migrations
                             Email = "admin@admin",
                             FirstName = "admin",
                             LastName = "admin",
-                            PasswordHash = "admin",
-                            PasswordSalt = "admin",
+                            PasswordHash = "yVKb7CTcH+6eS7Y+Xzhp4Us8FK5sHv4Tt5ZBDfTcuoU=",
+                            PasswordSalt = "ZNWv2EKaW8VNB6ZjXUAevw==",
                             Role = 0,
                             Username = "admin"
                         },
@@ -519,8 +546,8 @@ namespace FitnessCenter.Data.Migrations
                             Email = "muhamed.brkan@edu.fit.ba",
                             FirstName = "Muhamed",
                             LastName = "Brkan",
-                            PasswordHash = "_",
-                            PasswordSalt = "_",
+                            PasswordHash = "yVKb7CTcH+6eS7Y+Xzhp4Us8FK5sHv4Tt5ZBDfTcuoU=",
+                            PasswordSalt = "ZNWv2EKaW8VNB6ZjXUAevw==",
                             Role = 2,
                             Username = "muhamed.brkan"
                         },
@@ -530,8 +557,8 @@ namespace FitnessCenter.Data.Migrations
                             Email = "sanjin.golos@edu.fit.ba",
                             FirstName = "Sanjin",
                             LastName = "Gološ",
-                            PasswordHash = "_",
-                            PasswordSalt = "_",
+                            PasswordHash = "yVKb7CTcH+6eS7Y+Xzhp4Us8FK5sHv4Tt5ZBDfTcuoU=",
+                            PasswordSalt = "ZNWv2EKaW8VNB6ZjXUAevw==",
                             Role = 1,
                             Username = "sanjin.golos"
                         },
@@ -541,8 +568,8 @@ namespace FitnessCenter.Data.Migrations
                             Email = "adil@edu.fit.ba",
                             FirstName = "Adil",
                             LastName = "Joldić",
-                            PasswordHash = "_",
-                            PasswordSalt = "_",
+                            PasswordHash = "yVKb7CTcH+6eS7Y+Xzhp4Us8FK5sHv4Tt5ZBDfTcuoU=",
+                            PasswordSalt = "ZNWv2EKaW8VNB6ZjXUAevw==",
                             Role = 1,
                             Username = "adil.joldic"
                         });
@@ -597,6 +624,9 @@ namespace FitnessCenter.Data.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
+                    b.Property<int>("SupplementId")
+                        .HasColumnType("int");
+
                     b.Property<double>("TotalPrice")
                         .HasColumnType("float");
 
@@ -606,6 +636,8 @@ namespace FitnessCenter.Data.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("DiscountId");
+
+                    b.HasIndex("SupplementId");
 
                     b.HasIndex("UserId");
 
@@ -660,7 +692,7 @@ namespace FitnessCenter.Data.Migrations
                     b.HasOne("FitnessCenter.Data.Entities.User", "User")
                         .WithMany("Contacts")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("User");
@@ -671,7 +703,7 @@ namespace FitnessCenter.Data.Migrations
                     b.HasOne("FitnessCenter.Data.Entities.User", "User")
                         .WithMany("Equipment")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("User");
@@ -682,7 +714,7 @@ namespace FitnessCenter.Data.Migrations
                     b.HasOne("FitnessCenter.Data.Entities.User", "User")
                         .WithMany("Events")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("User");
@@ -693,7 +725,7 @@ namespace FitnessCenter.Data.Migrations
                     b.HasOne("FitnessCenter.Data.Entities.GoalType", "GoalType")
                         .WithMany("Goals")
                         .HasForeignKey("GoalTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("FitnessCenter.Data.Entities.User", "User")
@@ -722,19 +754,17 @@ namespace FitnessCenter.Data.Migrations
                 {
                     b.HasOne("FitnessCenter.Data.Entities.User", "Coach")
                         .WithMany("CoachReservations")
-                        .HasForeignKey("CoachId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .HasForeignKey("CoachId");
 
                     b.HasOne("FitnessCenter.Data.Entities.FitnessRoom", "FitnessRoom")
                         .WithMany("Reservations")
                         .HasForeignKey("FitnessRoomId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("FitnessCenter.Data.Entities.User", "User")
                         .WithMany("UserReservations")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .HasForeignKey("UserId");
 
                     b.Navigation("Coach");
 
@@ -748,13 +778,13 @@ namespace FitnessCenter.Data.Migrations
                     b.HasOne("FitnessCenter.Data.Entities.Excercise", "Excercise")
                         .WithMany("ReservationSchedules")
                         .HasForeignKey("ExcerciseId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("FitnessCenter.Data.Entities.Reservation", "Reservation")
                         .WithMany("ReservationSchedules")
                         .HasForeignKey("ReservationId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Excercise");
@@ -767,7 +797,7 @@ namespace FitnessCenter.Data.Migrations
                     b.HasOne("FitnessCenter.Data.Entities.User", "User")
                         .WithMany("Sponsors")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("User");
@@ -778,7 +808,7 @@ namespace FitnessCenter.Data.Migrations
                     b.HasOne("FitnessCenter.Data.Entities.Sponsor", "Sponsor")
                         .WithMany("Supplements")
                         .HasForeignKey("SponsorId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Sponsor");
@@ -789,13 +819,13 @@ namespace FitnessCenter.Data.Migrations
                     b.HasOne("FitnessCenter.Data.Entities.Subscription", "Subscription")
                         .WithMany("UserSubscriptions")
                         .HasForeignKey("SubscriptionId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("FitnessCenter.Data.Entities.User", "User")
                         .WithMany("UserSubscriptions")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Subscription");
@@ -808,16 +838,24 @@ namespace FitnessCenter.Data.Migrations
                     b.HasOne("FitnessCenter.Data.Entities.Discount", "Discount")
                         .WithMany("UserSupplements")
                         .HasForeignKey("DiscountId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("FitnessCenter.Data.Entities.Supplement", "Supplement")
+                        .WithMany("UserSupplements")
+                        .HasForeignKey("SupplementId")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("FitnessCenter.Data.Entities.User", "User")
                         .WithMany("UserSupplements")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Discount");
+
+                    b.Navigation("Supplement");
 
                     b.Navigation("User");
                 });
@@ -827,7 +865,7 @@ namespace FitnessCenter.Data.Migrations
                     b.HasOne("FitnessCenter.Data.Entities.UserSubscription", "UserSubscription")
                         .WithMany("Workouts")
                         .HasForeignKey("UserSubscriptionId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("UserSubscription");
@@ -866,6 +904,11 @@ namespace FitnessCenter.Data.Migrations
             modelBuilder.Entity("FitnessCenter.Data.Entities.Subscription", b =>
                 {
                     b.Navigation("UserSubscriptions");
+                });
+
+            modelBuilder.Entity("FitnessCenter.Data.Entities.Supplement", b =>
+                {
+                    b.Navigation("UserSupplements");
                 });
 
             modelBuilder.Entity("FitnessCenter.Data.Entities.User", b =>

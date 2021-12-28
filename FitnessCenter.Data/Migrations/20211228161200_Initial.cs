@@ -45,8 +45,8 @@ namespace FitnessCenter.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Price = table.Column<double>(type: "float", nullable: false),
-                    OpenFrom = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    OpenTo = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    OpenFrom = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    OpenTo = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -135,7 +135,7 @@ namespace FitnessCenter.Data.Migrations
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -156,7 +156,7 @@ namespace FitnessCenter.Data.Migrations
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -181,7 +181,7 @@ namespace FitnessCenter.Data.Migrations
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -213,8 +213,8 @@ namespace FitnessCenter.Data.Migrations
                     DateTimeFrom = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DateTimeTo = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Confirmed = table.Column<bool>(type: "bit", nullable: false),
-                    UserId = table.Column<int>(type: "int", nullable: false),
-                    CoachId = table.Column<int>(type: "int", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: true),
+                    CoachId = table.Column<int>(type: "int", nullable: true),
                     FitnessRoomId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -225,19 +225,17 @@ namespace FitnessCenter.Data.Migrations
                         column: x => x.FitnessRoomId,
                         principalTable: "FitnessRooms",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Reservations_Users_CoachId",
                         column: x => x.CoachId,
                         principalTable: "Users",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Reservations_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -259,7 +257,7 @@ namespace FitnessCenter.Data.Migrations
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -282,42 +280,13 @@ namespace FitnessCenter.Data.Migrations
                         column: x => x.SubscriptionId,
                         principalTable: "Subscriptions",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_UserSubscriptions_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "UserSupplements",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Price = table.Column<double>(type: "float", nullable: false),
-                    Quantity = table.Column<int>(type: "int", nullable: false),
-                    TotalPrice = table.Column<double>(type: "float", nullable: false),
-                    UserId = table.Column<int>(type: "int", nullable: false),
-                    DiscountId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_UserSupplements", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_UserSupplements_Discounts_DiscountId",
-                        column: x => x.DiscountId,
-                        principalTable: "Discounts",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_UserSupplements_Users_UserId",
-                        column: x => x.UserId,
-                        principalTable: "Users",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -341,7 +310,7 @@ namespace FitnessCenter.Data.Migrations
                         column: x => x.GoalTypeId,
                         principalTable: "GoalTypes",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Goals_Users_UserId",
                         column: x => x.UserId,
@@ -370,13 +339,13 @@ namespace FitnessCenter.Data.Migrations
                         column: x => x.ExcerciseId,
                         principalTable: "Excercises",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_ReservationSchedules_Reservations_ReservationId",
                         column: x => x.ReservationId,
                         principalTable: "Reservations",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -398,7 +367,7 @@ namespace FitnessCenter.Data.Migrations
                         column: x => x.SponsorId,
                         principalTable: "Sponsors",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -419,8 +388,95 @@ namespace FitnessCenter.Data.Migrations
                         column: x => x.UserSubscriptionId,
                         principalTable: "UserSubscriptions",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "UserSupplements",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Price = table.Column<double>(type: "float", nullable: false),
+                    Quantity = table.Column<int>(type: "int", nullable: false),
+                    TotalPrice = table.Column<double>(type: "float", nullable: false),
+                    SupplementId = table.Column<int>(type: "int", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    DiscountId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UserSupplements", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_UserSupplements_Discounts_DiscountId",
+                        column: x => x.DiscountId,
+                        principalTable: "Discounts",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_UserSupplements_Supplements_SupplementId",
+                        column: x => x.SupplementId,
+                        principalTable: "Supplements",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_UserSupplements_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.InsertData(
+                table: "Excercises",
+                columns: new[] { "Id", "Name" },
+                values: new object[,]
+                {
+                    { 1, "Private" },
+                    { 2, "Functional" },
+                    { 3, "Full body" },
+                    { 4, "Focus gluteus" },
+                    { 5, "Pilates" },
+                    { 6, "Zumba" },
+                    { 7, "Core and cardio" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "FitnessRooms",
+                columns: new[] { "Id", "Name", "OpenFrom", "OpenTo", "Price" },
+                values: new object[,]
+                {
+                    { 1, "Functional room", null, null, 20.0 },
+                    { 2, "Cardio room", null, null, 25.0 },
+                    { 3, "Pilates room", null, null, 30.0 },
+                    { 4, "Private trainings room", null, null, 50.0 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Users",
+                columns: new[] { "Id", "Email", "FirstName", "LastName", "PasswordHash", "PasswordSalt", "Role", "ServicePrice", "Username" },
+                values: new object[,]
+                {
+                    { 1, "admin@admin", "admin", "admin", "yVKb7CTcH+6eS7Y+Xzhp4Us8FK5sHv4Tt5ZBDfTcuoU=", "ZNWv2EKaW8VNB6ZjXUAevw==", 0, null, "admin" },
+                    { 2, "muhamed.brkan@edu.fit.ba", "Muhamed", "Brkan", "yVKb7CTcH+6eS7Y+Xzhp4Us8FK5sHv4Tt5ZBDfTcuoU=", "ZNWv2EKaW8VNB6ZjXUAevw==", 2, null, "muhamed.brkan" },
+                    { 3, "sanjin.golos@edu.fit.ba", "Sanjin", "Gološ", "yVKb7CTcH+6eS7Y+Xzhp4Us8FK5sHv4Tt5ZBDfTcuoU=", "ZNWv2EKaW8VNB6ZjXUAevw==", 1, null, "sanjin.golos" },
+                    { 4, "adil@edu.fit.ba", "Adil", "Joldić", "yVKb7CTcH+6eS7Y+Xzhp4Us8FK5sHv4Tt5ZBDfTcuoU=", "ZNWv2EKaW8VNB6ZjXUAevw==", 1, null, "adil.joldic" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Sponsors",
+                columns: new[] { "Id", "Description", "Name", "Photo", "UserId" },
+                values: new object[] { 1, "Description", "Proteini.si", null, 2 });
+
+            migrationBuilder.InsertData(
+                table: "Supplements",
+                columns: new[] { "Id", "Description", "Name", "Price", "SponsorId" },
+                values: new object[] { 1, "Whey protein description", "Whey protein (1kg)", 40.0, 1 });
+
+            migrationBuilder.InsertData(
+                table: "Supplements",
+                columns: new[] { "Id", "Description", "Name", "Price", "SponsorId" },
+                values: new object[] { 2, "Creatine description", "Creatine 200mg", 25.0, 1 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Announcements_AuthorId",
@@ -513,6 +569,11 @@ namespace FitnessCenter.Data.Migrations
                 column: "DiscountId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_UserSupplements_SupplementId",
+                table: "UserSupplements",
+                column: "SupplementId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_UserSupplements_UserId",
                 table: "UserSupplements",
                 column: "UserId");
@@ -544,9 +605,6 @@ namespace FitnessCenter.Data.Migrations
                 name: "ReservationSchedules");
 
             migrationBuilder.DropTable(
-                name: "Supplements");
-
-            migrationBuilder.DropTable(
                 name: "UserSupplements");
 
             migrationBuilder.DropTable(
@@ -562,16 +620,19 @@ namespace FitnessCenter.Data.Migrations
                 name: "Reservations");
 
             migrationBuilder.DropTable(
-                name: "Sponsors");
+                name: "Discounts");
 
             migrationBuilder.DropTable(
-                name: "Discounts");
+                name: "Supplements");
 
             migrationBuilder.DropTable(
                 name: "UserSubscriptions");
 
             migrationBuilder.DropTable(
                 name: "FitnessRooms");
+
+            migrationBuilder.DropTable(
+                name: "Sponsors");
 
             migrationBuilder.DropTable(
                 name: "Subscriptions");

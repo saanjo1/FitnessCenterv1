@@ -147,42 +147,80 @@ namespace FitnessCenter.Data
                 }
             );
 
+            modelBuilder.Entity<Sponsor>()
+              .HasData(
+                new Sponsor
+                {
+                    Id = 1,
+                    Name = "Proteini.si",
+                    Description = "Description",
+                    UserId = 2
+                });
+
+            modelBuilder.Entity<Supplement>()
+              .HasData(
+                new Supplement
+                {
+                    Id = 1,
+                    SponsorId = 1,
+                    Name = "Whey protein (1kg)",
+                    Description = "Whey protein description",
+                    Price = 40.00,
+                },
+                new Supplement
+                {
+                    Id = 2,
+                    SponsorId = 1,
+                    Name = "Creatine 200mg",
+                    Description = "Creatine description",
+                    Price = 25.00,
+                });
+
             modelBuilder.Entity<Announcement>()
-               .HasOne<User>(a => a.Author)
+               .HasOne(a => a.Author)
                .WithMany(a => a.AuthorAnnouncements)
-               .HasForeignKey(a => a.AuthorId)
-               .OnDelete(DeleteBehavior.Restrict);
+               .HasForeignKey(a => a.AuthorId);
 
             modelBuilder.Entity<Announcement>()
-               .HasOne<User>(a => a.User)
+               .HasOne(a => a.User)
                .WithMany(u => u.UserAnnouncements)
-               .HasForeignKey(a => a.UserId)
-               .OnDelete(DeleteBehavior.Restrict);
+               .HasForeignKey(a => a.UserId);
 
             modelBuilder.Entity<Reservation>()
-               .HasOne<User>(r => r.Coach)
+               .HasOne(r => r.Coach)
                .WithMany(c => c.CoachReservations)
-               .HasForeignKey(r => r.CoachId)
-               .OnDelete(DeleteBehavior.Restrict);
+               .HasForeignKey(r => r.CoachId);
 
             modelBuilder.Entity<Reservation>()
-               .HasOne<User>(r => r.User)
+               .HasOne(r => r.User)
                .WithMany(u => u.UserReservations)
-               .HasForeignKey(r => r.UserId)
-               .OnDelete(DeleteBehavior.Restrict);
+               .HasForeignKey(r => r.UserId);
 
             modelBuilder.Entity<Goal>()
-               .HasOne<User>(g => g.User)
+               .HasOne(g => g.User)
                .WithMany(u => u.Goals)
-               .HasForeignKey(g => g.UserId)
-               .OnDelete(DeleteBehavior.Restrict);
+               .HasForeignKey(g => g.UserId);
 
             modelBuilder.Entity<GoalType>()
-               .HasOne<User>(gt => gt.User)
+               .HasOne(gt => gt.User)
                .WithMany(u => u.GoalTypes)
-               .HasForeignKey(gt => gt.UserId)
-               .OnDelete(DeleteBehavior.Restrict);
+               .HasForeignKey(gt => gt.UserId);
 
+            modelBuilder.Entity<UserSupplement>()
+               .HasOne(us => us.User)
+               .WithMany(u => u.UserSupplements)
+               .HasForeignKey(us => us.UserId);
+
+            modelBuilder.Entity<UserSupplement>()
+               .HasOne(us => us.Supplement)
+               .WithMany(s => s.UserSupplements)
+               .HasForeignKey(us => us.SupplementId);
+
+            var foreignKeys = modelBuilder.Model.GetEntityTypes().SelectMany(t => t.GetForeignKeys()).Where(fk => !fk.IsOwnership && fk.DeleteBehavior == DeleteBehavior.Cascade);
+
+            foreach (var fk in foreignKeys)
+                fk.DeleteBehavior = DeleteBehavior.Restrict;
+            
             base.OnModelCreating(modelBuilder);
         }
     }

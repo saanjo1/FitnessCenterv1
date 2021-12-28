@@ -430,6 +430,15 @@ namespace FitnessCenter.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Supplements.
+        /// </summary>
+        public static string Supplements {
+            get {
+                return ResourceManager.GetString("Supplements", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to User.
         /// </summary>
         public static string User {
@@ -444,6 +453,15 @@ namespace FitnessCenter.Web.Resources {
         public static string Users {
             get {
                 return ResourceManager.GetString("Users", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User supplements.
+        /// </summary>
+        public static string UserSupplements {
+            get {
+                return ResourceManager.GetString("UserSupplements", resourceCulture);
             }
         }
     }

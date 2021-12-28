@@ -8,5 +8,7 @@
 
         public int SponsorId { get; set; }
         public Sponsor Sponsor { get; set; }
+
+        public ICollection<UserSupplement> UserSupplements { get; set; }
     }
 }

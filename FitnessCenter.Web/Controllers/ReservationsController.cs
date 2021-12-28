@@ -28,8 +28,8 @@ namespace FitnessCenter.Web.Controllers
         {
             var reservations = _databaseContext.Reservations
                  .Include(r => r.FitnessRoom)
-                 .Include(r=>r.User)
-                 .Include(r=>r.Coach)
+                 .Include(r => r.User)
+                 .Include(r => r.Coach)
                  .ToList();
 
             return View(new ReservationsIndexViewModel
@@ -37,12 +37,12 @@ namespace FitnessCenter.Web.Controllers
                 Reservations = reservations
             });
         }
-        
+
         [HttpGet]
         public IActionResult Manage(int id)
         {
             ReservationsManageViewModel viewModel;
-            
+
             if (id == 0)
             {
                 viewModel = new ReservationsManageViewModel
@@ -67,10 +67,10 @@ namespace FitnessCenter.Web.Controllers
                 var reservation = _databaseContext.Reservations.Find(id);
                 _databaseContext.Remove(reservation);
                 _databaseContext.SaveChanges();
-                
+
                 _flashMessage.Confirmation(Translations.DeleteSuccess);
             }
-            catch 
+            catch
             {
                 _flashMessage.Confirmation(Translations.DeleteFail);
             }

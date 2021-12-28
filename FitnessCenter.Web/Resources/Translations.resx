@@ -240,10 +240,16 @@
   <data name="Submit" xml:space="preserve">
     <value>Submit</value>
   </data>
+  <data name="Supplements" xml:space="preserve">
+    <value>Supplements</value>
+  </data>
   <data name="User" xml:space="preserve">
     <value>User</value>
   </data>
   <data name="Users" xml:space="preserve">
     <value>Users</value>
+  </data>
+  <data name="UserSupplements" xml:space="preserve">
+    <value>User supplements</value>
   </data>
 </root>
