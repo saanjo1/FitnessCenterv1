@@ -223,6 +223,24 @@ namespace FitnessCenter.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please insert password..
+        /// </summary>
+        public static string InsertPassword {
+            get {
+                return ResourceManager.GetString("InsertPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please insert username..
+        /// </summary>
+        public static string InsertUsername {
+            get {
+                return ResourceManager.GetString("InsertUsername", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Last name.
         /// </summary>
         public static string LastName {
@@ -363,6 +381,15 @@ namespace FitnessCenter.Web.Resources {
         public static string SignIn {
             get {
                 return ResourceManager.GetString("SignIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please insert valid credentials..
+        /// </summary>
+        public static string SignInFailed {
+            get {
+                return ResourceManager.GetString("SignInFailed", resourceCulture);
             }
         }
         
