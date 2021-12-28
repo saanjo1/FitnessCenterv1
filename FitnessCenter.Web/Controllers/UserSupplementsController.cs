@@ -35,12 +35,14 @@ namespace FitnessCenter.Web.Controllers
             {
                 viewModel = new UserSupplementsManageViewModel
                 {
-                    TotalPrice = 10
+                 
                 };
             }
             else
             {
-                viewModel = _databaseContext.UserSupplements.Where(us => us.Id == id).Select(s => _mapper.Map<UserSupplementsManageViewModel>(s)).Single();
+                viewModel = _databaseContext.UserSupplements
+                    .Where(us => us.Id == id)
+                    .Select(s => _mapper.Map<UserSupplementsManageViewModel>(s)).Single();
             }
             return View(viewModel);
         }

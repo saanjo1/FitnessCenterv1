@@ -3,6 +3,7 @@ using CloudinaryDotNet.Actions;
 using FitnessCenter.Data;
 using FitnessCenter.Data.Entities;
 using FitnessCenter.Web.Resources;
+using FitnessCenter.Web.Utilities.Constants;
 using FitnessCenter.Web.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -15,12 +16,14 @@ namespace FitnessCenter.Web.Controllers
         private readonly IMapper _mapper;
         private readonly IFlashMessage _flashMessage;
         private readonly DatabaseContext _databaseContext;
+        private readonly UserManager _userManager;
 
-        public ReservationsController(IMapper mapper, IFlashMessage flashMessage, DatabaseContext databaseContext)
+        public ReservationsController(IMapper mapper, IFlashMessage flashMessage, DatabaseContext databaseContext,UserManager userManager)
         {
             _mapper = mapper;
             _flashMessage = flashMessage;
             _databaseContext = databaseContext;
+            _userManager = userManager;
         }
 
         [HttpGet]
@@ -48,7 +51,8 @@ namespace FitnessCenter.Web.Controllers
                 viewModel = new ReservationsManageViewModel
                 {
                     DateTimeFrom = DateTime.Now,
-                    DateTimeTo = DateTime.Now
+                    DateTimeTo = DateTime.Now,
+                    UserId = _userManager.Get().Id
                 };
             }
             else
@@ -92,7 +96,8 @@ namespace FitnessCenter.Web.Controllers
                 {
                     reservation = new Reservation
                     {
-                        Confirmed = false
+                        Confirmed = false,
+                        
                     };
                     _databaseContext.Add(reservation);
                 }
@@ -100,9 +105,7 @@ namespace FitnessCenter.Web.Controllers
                 {
                     reservation = _databaseContext.Reservations.Find(viewModel.Id);
                 }
-
                 _mapper.Map(viewModel, reservation);
-                reservation.UserId = 2;
 
                 _databaseContext.SaveChanges();
 
