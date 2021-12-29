@@ -187,6 +187,15 @@ namespace FitnessCenter.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Description.
+        /// </summary>
+        public static string Description {
+            get {
+                return ResourceManager.GetString("Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Edit.
         /// </summary>
         public static string Edit {
@@ -250,6 +259,15 @@ namespace FitnessCenter.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string Name {
+            get {
+                return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No results to show.
         /// </summary>
         public static string NoResultsToShow {
@@ -273,6 +291,15 @@ namespace FitnessCenter.Web.Resources {
         public static string PickDate {
             get {
                 return ResourceManager.GetString("PickDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Price.
+        /// </summary>
+        public static string Price {
+            get {
+                return ResourceManager.GetString("Price", resourceCulture);
             }
         }
         
@@ -421,11 +448,74 @@ namespace FitnessCenter.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sponsor.
+        /// </summary>
+        public static string Sponsor {
+            get {
+                return ResourceManager.GetString("Sponsor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Submit.
         /// </summary>
         public static string Submit {
             get {
                 return ResourceManager.GetString("Submit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Adding supplement.
+        /// </summary>
+        public static string SupplementAdd {
+            get {
+                return ResourceManager.GetString("SupplementAdd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An error occured while adding a new supplement.
+        /// </summary>
+        public static string SupplementAddFailure {
+            get {
+                return ResourceManager.GetString("SupplementAddFailure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Supplement added successfully..
+        /// </summary>
+        public static string SupplementAddSuccess {
+            get {
+                return ResourceManager.GetString("SupplementAddSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Editing supplement.
+        /// </summary>
+        public static string SupplementEdit {
+            get {
+                return ResourceManager.GetString("SupplementEdit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An error occured while editing a supplement..
+        /// </summary>
+        public static string SupplementEditFailure {
+            get {
+                return ResourceManager.GetString("SupplementEditFailure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Supplement edited successfully..
+        /// </summary>
+        public static string SupplementEditSuccess {
+            get {
+                return ResourceManager.GetString("SupplementEditSuccess", resourceCulture);
             }
         }
         

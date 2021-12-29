@@ -23,6 +23,16 @@ namespace FitnessCenter.Web.Services
                 }).ToList();
         }
 
+        public List<SelectListItem> Sponsors()
+        {
+            return _databaseContext.Sponsors
+                .Select(fr => new SelectListItem
+                {
+                    Text = fr.Name,
+                    Value = fr.Id.ToString()
+                }).ToList();
+        }
+
         public List<SelectListItem> Users(Role? role)
         {
             return _databaseContext.Users

@@ -1,0 +1,44 @@
+﻿@model SupplementsManageViewModel
+@inject SelectLists _selectLists
+
+@{
+    if (Model.Id == 0)
+    {
+        ViewData["Title"] = Translations.SupplementAdd;
+    }
+    else
+    {
+        ViewData["Title"] = Translations.SupplementEdit;
+    }
+}
+
+<form asp-action="Manage" asp-controller="Supplement" method="post">
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h5 class="m-0 font-weight-bold text-primary">@ViewData["Title"]</h5>
+        </div>
+        <div class="card-body">
+            <input asp-for="Id" type="hidden" />
+
+            <div class="form-group">
+                <label asp-for="Name"></label>
+                <input class="form-control" asp-for="Name" />
+            </div>
+            <div class="form-group">
+                <label asp-for="SponsorId"></label>
+                <select class="form-control" asp-for="SponsorId" asp-items="_selectLists.Sponsors()"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description"></label>
+                <input asp-for="Description" class="form-control" placeholder="@Translations.Description">
+            </div>
+            <div class="form-group mb-0">
+                <label asp-for="Price"></label>
+                <input asp-for="Price" class="form-control" placeholder="@Translations.Price">
+            </div>
+        </div>
+        <div class="card-footer py-3">
+            <button type="submit" class="btn btn-primary">@Translations.Submit</button>
+        </div>
+    </div>
+</form>
