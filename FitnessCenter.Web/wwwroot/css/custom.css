@@ -1,4 +1,167 @@
-﻿.action-column {
-    width:1px;
-    white-space:nowrap;
+﻿@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+
+.action-column {
+    width: 1px;
+    white-space: nowrap;
+}
+.grid {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    background-color: rgb(242,242,242);
+}
+div {
+    display: block;
+}
+
+.container {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 750px;
+}
+
+
+.container:after {
+    clear: both;
+}
+
+.container:before, .container:after {
+    content: " ";
+    display: table;
+}
+
+.row {
+    margin-left: -15px;
+    margin-right: -15px;
+}
+
+.row:before, .row:after {
+        content: " ";
+        display: table;
+    }
+
+.row:after {
+     clear: both;
+    }
+
+.grid .supplement {
+    margin-bottom: 30px;
+    border-radius: 3px;
+}
+
+
+.supplement {
+    position: relative;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+    display: block;
+}
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+article {
+    display: block;
+}
+
+
+html {
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+*:before, *:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+
+}
+.grid .supplement a {
+    display: inline-block;
+    padding: 10px;
+    width: 75px;
+    margin: 10px;
+    background-color: rgb(65,103,214);
+    color: white;
+    -webkit-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    border-radius: 5px;
+    font-family: bebas neue,helvetica neue,Helvetica,Arial,sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+.product-card {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    position: relative;
+    background: white;
+    padding: 0.625rem;
+    margin: 0.3125rem;
+    text-align: center;
+    position: relative;
+    width: 32%;
+    padding-right: 0.75rem;
+    padding-left: 0.75rem;
+}
+
+body {
+    background: #000;
+    line-height: 1.5;
+}
+
+.grid .supplement .info {
+    margin: 5px;
+    min-height: 80px;
+    background-color: white;
+    text-align: center;
+    cursor: default;
+    color: black;
+}
+.supplement .info .description {
+    margin: 5px;
+    color: black;
+    font-weight:lighter;
+}
+.grid .supplement .info .title {
+    line-height: 1.4;
+    font-size:20px;
+    font-weight:bold;
+}
+.supplement .info .price {
+    font-size: 1.78rem !important;
+}
+
+.supplement .info .price, .supplement .info .title, .supplement .info .sponsor {
+    margin-top: 15 px;
+    margin-bottom: 0;
+    color: black;
+    font-family: bebas neue,helvetica neue,Helvetica,Arial,sans-serif;
+}
+
+
+
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+h5 {
+    display: block;
+    margin-block-start: 1.67em;
+    margin-block-end: 1.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+p {
+    margin: 0 0 10px;
 }

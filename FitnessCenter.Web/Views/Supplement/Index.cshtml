@@ -13,77 +13,38 @@
             </a>
         </h5>
     </div>
-    <div class="card-body">
-        <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <thead>
-                    <tr>
-                        <td>@Translations.Name</td>
-                        <td>@Translations.Description</td>
-                        <td>@Translations.Price</td>
-                        <td>@Translations.Sponsor</td>
-                        <th>@Translations.Action</th>
+    <div class="grid">
+        <div class="container" style="display: block">
+            <div class="row">
+                @if (Model.supplements.Any())
+                {
 
-                    </tr>
-                </thead>
-                <tbody>
-                    @if (Model.supplements.Any())
+                    foreach (var supplement in Model.supplements)
                     {
-                        foreach (var supplement in Model.supplements)
-                        {
-                            <tr>
-                                <td>@supplement.Name</td>
-                                <td>@supplement.Description</td>
-                                <td>@supplement.Price</td>
-                                <td>@supplement.Sponsor.Name</td>
-                                <td class="action-column">
-                                    <a asp-action="Manage" asp-controller="Supplement" asp-route-id="@supplement.Id"
-                               class="btn btn-sm btn-outline-primary">
-                                        @Translations.Edit
-                                    </a>
-                                    <a asp-action="Delete" asp-controller="Supplement" asp-route-id="@supplement.Id"
-                               data-toggle="modal" data-target="#confirm-delete" class="btn btn-outline-danger btn-sm ">
-                                        @Translations.Delete
-                                    </a>
-                                    <div class="modal fade" id="confirm-delete"
-                                 tabindex="-1" role="dialog" aria-labelledby="modalLabel"
-                                 aria-hidden="true">
-                                        <div class="modal-dialog" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="modalLabel">@Translations.AreYouSure</h5>
-                                                    <button class="close" type="button" data-dismiss="modal"
-                                                    aria-label="Close">
-                                                        <span aria-hidden="true">×</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">@Translations.DeleteConfirmation</div>
-                                                <div class="modal-footer">
-                                                    <button class="btn btn-secondary" type="button"
-                                                    data-dismiss="modal">
-                                                        @Translations.Cancel
-                                                    </button>
-                                                    <a asp-action="Delete" asp-controller="Supplement"
-                                               asp-route-id="@supplement.Id"
-                                               class="btn btn-danger">@Translations.Delete</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                        }
-                    }
-                    else
-                    {
-                        <tr>
-                            <td colspan="6" class="text-center">@Translations.NoResultsToShow</td>
-                        </tr>
-                    }
+
+                        <div class="product-card">
+                            <article class="supplement">
+                                <div class="common">
+                                    <div class="image"></div>
+                                    <div class="info">
+                                        <h5 class="title">@supplement.Name</h5>
+                                        <div class="description">@supplement.Description</div>
+                                        <div class="price">@supplement.Price  KM</div>
+                                        <div class="sponsor"> @supplement.Sponsor.Name</div>
+                                        <div>
+                                            <a asp-action="Manage" asp-controller="Supplement" asp-route-id="@supplement.Id">
+                                                @Translations.Edit
+                                            </a>
+
+                                            <a asp-action="Delete" asp-controller="Supplement" asp-route-id="@supplement.Id">
+                                                @Translations.Delete
+                                            </a>
+                            </article>
+                        </div>
 
                     }
-                </tbody>
-            </table>
+
+                }
+            </div>
         </div>
     </div>
-</div>
