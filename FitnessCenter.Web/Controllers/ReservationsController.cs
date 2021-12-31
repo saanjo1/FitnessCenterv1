@@ -97,7 +97,6 @@ namespace FitnessCenter.Web.Controllers
                     reservation = new Reservation
                     {
                         Confirmed = false,
-                        
                     };
                     _databaseContext.Add(reservation);
                 }

@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using FitnessCenter.Data;
 using FitnessCenter.Data.Entities;
+using FitnessCenter.Web.Resources;
+using FitnessCenter.Web.Utilities.Constants;
 using FitnessCenter.Web.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Vereyon.Web;
@@ -12,12 +14,14 @@ namespace FitnessCenter.Web.Controllers
         public DatabaseContext _databaseContext;
         public readonly IFlashMessage _flashMessage;
         public readonly IMapper _mapper;
+        private readonly UserManager _userManager;
 
-        public UserSupplementsController(DatabaseContext databaseContext, IFlashMessage flashMessage, IMapper mapper)
+        public UserSupplementsController(IMapper mapper, IFlashMessage flashMessage, DatabaseContext databaseContext, UserManager userManager)
         {
-            _databaseContext = databaseContext;
-            _flashMessage = flashMessage;
             _mapper = mapper;
+            _flashMessage = flashMessage;
+            _databaseContext = databaseContext;
+            _userManager = userManager;
         }
 
         [HttpGet]
@@ -35,7 +39,7 @@ namespace FitnessCenter.Web.Controllers
             {
                 viewModel = new UserSupplementsManageViewModel
                 {
-                 
+                    UserId = _userManager.Get().Id,
                 };
             }
             else
@@ -48,7 +52,6 @@ namespace FitnessCenter.Web.Controllers
         }
 
         [HttpPost]
-
         public IActionResult Manage(UserSupplementsManageViewModel viewModel)
         {
             if (!ModelState.IsValid)
@@ -72,7 +75,7 @@ namespace FitnessCenter.Web.Controllers
             }
             catch
             {
-                _flashMessage.Danger("test");
+                _flashMessage.Danger(Translations.UserSupplementFail);
             }
             return RedirectToAction("Index");
         }
