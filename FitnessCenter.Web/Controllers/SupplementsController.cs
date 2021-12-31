@@ -33,7 +33,6 @@ namespace FitnessCenter.Web.Controllers
                 .Include(s => s.Sponsor)
                 .ToList();
 
-
             return View(new SupplementsIndexViewModel
             {
                 Supplements = _supplements
@@ -47,10 +46,7 @@ namespace FitnessCenter.Web.Controllers
 
             if (id == 0)
             {
-                viewModel = new SupplementsManageViewModel
-                {
-                    Price = 0
-                };
+                viewModel = new SupplementsManageViewModel();
             }
             else
             {
@@ -65,9 +61,7 @@ namespace FitnessCenter.Web.Controllers
         public IActionResult Manage(SupplementsManageViewModel viewModel)
         {
             if(!ModelState.IsValid)
-            {
                 return View(viewModel);
-            }
 
             try
             {
@@ -89,7 +83,6 @@ namespace FitnessCenter.Web.Controllers
                     _flashMessage.Confirmation(Translations.SupplementAddSuccess);
                 else
                     _flashMessage.Confirmation(Translations.SupplementEditSuccess);
-
             }
             catch
             {
