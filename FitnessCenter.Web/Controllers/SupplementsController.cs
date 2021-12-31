@@ -10,7 +10,7 @@ using Vereyon.Web;
 
 namespace FitnessCenter.Web.Controllers
 {
-    public class SupplementController : Controller
+    public class SupplementsController : Controller
     {
         private readonly IMapper _mapper;
         private readonly IFlashMessage _flashMessage;
@@ -18,7 +18,7 @@ namespace FitnessCenter.Web.Controllers
         private readonly UserManager _userManager;
 
 
-        public SupplementController(IMapper mapper, IFlashMessage flashMessage, DatabaseContext databaseContext, UserManager userManager)
+        public SupplementsController(IMapper mapper, IFlashMessage flashMessage, DatabaseContext databaseContext, UserManager userManager)
         {
             _mapper = mapper;
             _flashMessage = flashMessage;
@@ -34,7 +34,7 @@ namespace FitnessCenter.Web.Controllers
                 .ToList();
 
 
-            return View(new SupplementIndexViewModel
+            return View(new SupplementsIndexViewModel
             {
                 supplements = _supplements
             });
