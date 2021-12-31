@@ -2,7 +2,7 @@
 
 namespace FitnessCenter.Web.ViewModels
 {
-    public class SupplementsIndexViewModel
+    public class SupplementIndexViewModel
     {
         public List<Supplement> supplements { get; set; }
     }

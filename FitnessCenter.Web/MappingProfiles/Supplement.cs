@@ -8,7 +8,7 @@ namespace FitnessCenter.Web.MappingProfiles
     {
         public SupplementProfile()
         {
-            CreateMap<Supplement, SupplementsManageViewModel>().ReverseMap();
+            CreateMap<Supplement, SupplementManageViewModel>().ReverseMap();
         }
     }
 }

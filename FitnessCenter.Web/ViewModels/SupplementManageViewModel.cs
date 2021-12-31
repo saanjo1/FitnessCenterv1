@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace FitnessCenter.Web.ViewModels
 {
-    public class SupplementsManageViewModel
+    public class SupplementManageViewModel
     {
         public int Id { get; set; }
 

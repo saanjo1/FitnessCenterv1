@@ -10,7 +10,7 @@ using Vereyon.Web;
 
 namespace FitnessCenter.Web.Controllers
 {
-    public class SupplementsController : Controller
+    public class SupplementController : Controller
     {
         private readonly IMapper _mapper;
         private readonly IFlashMessage _flashMessage;
@@ -18,7 +18,7 @@ namespace FitnessCenter.Web.Controllers
         private readonly UserManager _userManager;
 
 
-        public SupplementsController(IMapper mapper, IFlashMessage flashMessage, DatabaseContext databaseContext, UserManager userManager)
+        public SupplementController(IMapper mapper, IFlashMessage flashMessage, DatabaseContext databaseContext, UserManager userManager)
         {
             _mapper = mapper;
             _flashMessage = flashMessage;
@@ -34,7 +34,7 @@ namespace FitnessCenter.Web.Controllers
                 .ToList();
 
 
-            return View(new SupplementsIndexViewModel
+            return View(new SupplementIndexViewModel
             {
                 supplements = _supplements
             });
@@ -43,11 +43,11 @@ namespace FitnessCenter.Web.Controllers
         [HttpGet]
         public IActionResult Manage(int id)
         {
-            SupplementsManageViewModel viewModel;
+            SupplementManageViewModel viewModel;
 
             if (id == 0)
             {
-                viewModel = new SupplementsManageViewModel
+                viewModel = new SupplementManageViewModel
                 {
                     Price = 0
                 };
@@ -56,13 +56,13 @@ namespace FitnessCenter.Web.Controllers
             {
                 viewModel = _databaseContext.Supplements
                     .Where(s => s.Id == id)
-                    .Select(s => _mapper.Map<SupplementsManageViewModel>(s)).Single();
+                    .Select(s => _mapper.Map<SupplementManageViewModel>(s)).Single();
             }
             return View(viewModel);
         }
 
         [HttpPost]
-        public IActionResult Manage(SupplementsManageViewModel viewModel)
+        public IActionResult Manage(SupplementManageViewModel viewModel)
         {
             if(!ModelState.IsValid)
             {
