@@ -132,6 +132,9 @@
   <data name="Cancel" xml:space="preserve">
     <value>Cancel</value>
   </data>
+  <data name="ChooseASupplement" xml:space="preserve">
+    <value>Choose a supplement</value>
+  </data>
   <data name="Coach" xml:space="preserve">
     <value>Coach</value>
   </data>

@@ -106,6 +106,15 @@ namespace FitnessCenter.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Choose a supplement.
+        /// </summary>
+        public static string ChooseASupplement {
+            get {
+                return ResourceManager.GetString("ChooseASupplement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Coach.
         /// </summary>
         public static string Coach {
