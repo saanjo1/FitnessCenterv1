@@ -17,7 +17,6 @@ namespace FitnessCenter.Web.Controllers
         private readonly DatabaseContext _databaseContext;
         private readonly UserManager _userManager;
 
-
         public SupplementsController(IMapper mapper, IFlashMessage flashMessage, DatabaseContext databaseContext, UserManager userManager)
         {
             _mapper = mapper;
@@ -46,7 +45,10 @@ namespace FitnessCenter.Web.Controllers
 
             if (id == 0)
             {
-                viewModel = new SupplementsManageViewModel();
+                viewModel = new SupplementsManageViewModel()
+                {
+
+                };
             }
             else
             {
@@ -58,14 +60,13 @@ namespace FitnessCenter.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult Manage(SupplementsManageViewModel viewModel)
+        public async Task<IActionResult> Manage(SupplementsManageViewModel viewModel)
         {
-            if(!ModelState.IsValid)
-                return View(viewModel);
 
             try
             {
                 Supplement supplement;
+
                 if (viewModel.Id == 0)
                 {
                     supplement = new Supplement();
@@ -75,8 +76,13 @@ namespace FitnessCenter.Web.Controllers
                 {
                     supplement = _databaseContext.Supplements.Find(viewModel.Id);
                 }
-                _mapper.Map(viewModel, supplement);
 
+                supplement.Photo = new Photo
+                {
+                    Data = await viewModel.Photo.GetBytes()
+                };
+
+                _mapper.Map(viewModel, supplement);
                 _databaseContext.SaveChanges();
 
                 if (viewModel.Id == 0)
@@ -115,4 +121,3 @@ namespace FitnessCenter.Web.Controllers
         }
     }
 }
-      

@@ -1,40 +1,102 @@
-﻿@model SupplementsIndexViewModel
+﻿@using FitnessCenter.Web.Utilities.Constants
+@model SupplementsIndexViewModel
+@inject UserManager _userManager
 @{
     ViewData["Title"] = @Translations.Supplements;
 }
-<div class="card shadow mb-4">
-    <div class="card-header py-3">
-        <h5 class="m-0 font-weight-bold text-primary d-flex
+@if (_userManager.IsInRoles(Role.Administrator))
+{
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h5 class="m-0 font-weight-bold text-primary d-flex
 justify-content-between align-items-center">
-            @ViewData["Title"]
-            <a asp-action="Manage" asp-controller="Supplements" class="btn btn-sm btn-primary">
-                <i class="fas fa-plus"></i>
-                @Translations.Add
-            </a>
-        </h5>
-    </div>
-
-    <div class="card-body">
-        <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <tbody>
-                    @if (Model.Supplements.Any())
-                    {
-                        foreach (var supplement in Model.Supplements)
+                @ViewData["Title"]
+                <a asp-action="Manage" asp-controller="Supplements" class="btn btn-sm btn-primary">
+                    <i class="fas fa-plus"></i>
+                    @Translations.Add
+                </a>
+            </h5>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <tbody>
+                        @if (Model.Supplements.Any())
                         {
-                            <a asp-action="Manage" asp-controller="Supplements"
-                       asp-route-id="@supplement.Id">
-                                @Translations.Edit
-                            </a>
-
-                            <a asp-action="Delete" asp-controller="Supplements"
-                       asp-route-id="@supplement.Id">
-                                @Translations.Delete
-                            </a>
+                            foreach (var supplement in Model.Supplements)
+                            {
+                                <tr>
+                                    <td>@supplement.Name</td>
+                                    <td>@supplement.Description</td>
+                                    <td>@supplement.Price</td>
+                                    <td class="action-column">
+                                        <img class="rounded" src="@Url.Action("Index","Photos",new {id=supplement.PhotoId})" width="30" height="30" />
+                                    </td>
+                                    <td class="action-column">
+                                        <a asp-action="Manage" asp-controller="Reservations"
+                               asp-route-id="@supplement.Id"
+                               class="btn btn-sm btn-outline-primary">
+                                            @Translations.Edit
+                                        </a>
+                                        <a asp-action="Delete" asp-controller="Reservations" asp-route-id="@supplement.Id"
+                               data-toggle="modal" data-target="#confirm-delete" class="btn btn-outline-danger btn-sm ">
+                                            @Translations.Delete
+                                        </a>
+                                        <div class="modal fade" id="confirm-delete"
+                                 tabindex="-1" role="dialog" aria-labelledby="modalLabel"
+                                 aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="modalLabel">@Translations.AreYouSure</h5>
+                                                        <button class="close" type="button" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                            <span aria-hidden="true">×</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">@Translations.DeleteConfirmation</div>
+                                                    <div class="modal-footer">
+                                                        <button class="btn btn-secondary" type="button"
+                                                    data-dismiss="modal">
+                                                            @Translations.Cancel
+                                                        </button>
+                                                        <a asp-action="Delete" asp-controller="Reservations"
+                                               asp-route-id="@supplement.Id"
+                                               class="btn btn-danger">@Translations.Delete</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
                         }
-                    }
-                </tbody>
-            </table>
+                        else
+                        {
+                            <tr>
+                                <td colspan="6" class="text-center">@Translations.NoResultsToShow</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-</div>
+}
+else
+{
+    @if (Model.Supplements.Any())
+    {
+        foreach (var supplement in Model.Supplements)
+        {
+            <div class="card" style="width: 18rem;">
+                <img src="~/img/background.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">@supplement.Name</h5>
+                    <p class="card-text">@supplement.Description</p>
+                    <a href="#" class="btn btn-primary">Add to cart</a>
+                </div>
+            </div>
+        }
+    }
+}

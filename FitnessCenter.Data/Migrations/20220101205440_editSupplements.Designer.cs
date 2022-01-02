@@ -4,6 +4,7 @@ using FitnessCenter.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FitnessCenter.Data.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20220101205440_editSupplements")]
+    partial class editSupplements
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -89,12 +91,10 @@ namespace FitnessCenter.Data.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PhotoId")
-                        .HasColumnType("int");
+                    b.Property<byte[]>("Photo")
+                        .HasColumnType("varbinary(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("PhotoId");
 
                     b.ToTable("Discounts");
                 });
@@ -110,15 +110,13 @@ namespace FitnessCenter.Data.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PhotoId")
-                        .HasColumnType("int");
+                    b.Property<byte[]>("Photo")
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("PhotoId");
 
                     b.HasIndex("UserId");
 
@@ -145,8 +143,8 @@ namespace FitnessCenter.Data.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PhotoId")
-                        .HasColumnType("int");
+                    b.Property<byte[]>("Photo")
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<int>("Rate")
                         .HasColumnType("int");
@@ -155,8 +153,6 @@ namespace FitnessCenter.Data.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("PhotoId");
 
                     b.HasIndex("UserId");
 
@@ -323,22 +319,6 @@ namespace FitnessCenter.Data.Migrations
                     b.ToTable("GoalTypes");
                 });
 
-            modelBuilder.Entity("FitnessCenter.Data.Entities.Photo", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<byte[]>("Data")
-                        .HasColumnType("varbinary(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Photo");
-                });
-
             modelBuilder.Entity("FitnessCenter.Data.Entities.Reservation", b =>
                 {
                     b.Property<int>("Id")
@@ -422,15 +402,13 @@ namespace FitnessCenter.Data.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PhotoId")
-                        .HasColumnType("int");
+                    b.Property<byte[]>("Photo")
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("PhotoId");
 
                     b.HasIndex("UserId");
 
@@ -442,7 +420,6 @@ namespace FitnessCenter.Data.Migrations
                             Id = 1,
                             Description = "Description",
                             Name = "Proteini.si",
-                            PhotoId = 0,
                             UserId = 2
                         });
                 });
@@ -486,9 +463,6 @@ namespace FitnessCenter.Data.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PhotoId")
-                        .HasColumnType("int");
-
                     b.Property<double>("Price")
                         .HasColumnType("float");
 
@@ -496,8 +470,6 @@ namespace FitnessCenter.Data.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("PhotoId");
 
                     b.HasIndex("SponsorId");
 
@@ -509,7 +481,6 @@ namespace FitnessCenter.Data.Migrations
                             Id = 1,
                             Description = "Whey protein description",
                             Name = "Whey protein (1kg)",
-                            PhotoId = 0,
                             Price = 40.0,
                             SponsorId = 1
                         },
@@ -518,7 +489,6 @@ namespace FitnessCenter.Data.Migrations
                             Id = 2,
                             Description = "Creatine description",
                             Name = "Creatine 200mg",
-                            PhotoId = 0,
                             Price = 25.0,
                             SponsorId = 1
                         });
@@ -730,51 +700,24 @@ namespace FitnessCenter.Data.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("FitnessCenter.Data.Entities.Discount", b =>
-                {
-                    b.HasOne("FitnessCenter.Data.Entities.Photo", "Photo")
-                        .WithMany("Discount")
-                        .HasForeignKey("PhotoId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Photo");
-                });
-
             modelBuilder.Entity("FitnessCenter.Data.Entities.Equipment", b =>
                 {
-                    b.HasOne("FitnessCenter.Data.Entities.Photo", "Photo")
-                        .WithMany("Equipment")
-                        .HasForeignKey("PhotoId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
                     b.HasOne("FitnessCenter.Data.Entities.User", "User")
                         .WithMany("Equipment")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
-
-                    b.Navigation("Photo");
 
                     b.Navigation("User");
                 });
 
             modelBuilder.Entity("FitnessCenter.Data.Entities.Event", b =>
                 {
-                    b.HasOne("FitnessCenter.Data.Entities.Photo", "Photo")
-                        .WithMany("Events")
-                        .HasForeignKey("PhotoId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
                     b.HasOne("FitnessCenter.Data.Entities.User", "User")
                         .WithMany("Events")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
-
-                    b.Navigation("Photo");
 
                     b.Navigation("User");
                 });
@@ -853,38 +796,22 @@ namespace FitnessCenter.Data.Migrations
 
             modelBuilder.Entity("FitnessCenter.Data.Entities.Sponsor", b =>
                 {
-                    b.HasOne("FitnessCenter.Data.Entities.Photo", "Photo")
-                        .WithMany("Sponsors")
-                        .HasForeignKey("PhotoId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
                     b.HasOne("FitnessCenter.Data.Entities.User", "User")
                         .WithMany("Sponsors")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.Navigation("Photo");
-
                     b.Navigation("User");
                 });
 
             modelBuilder.Entity("FitnessCenter.Data.Entities.Supplement", b =>
                 {
-                    b.HasOne("FitnessCenter.Data.Entities.Photo", "Photo")
-                        .WithMany("Supplements")
-                        .HasForeignKey("PhotoId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
                     b.HasOne("FitnessCenter.Data.Entities.Sponsor", "Sponsor")
                         .WithMany("Supplements")
                         .HasForeignKey("SponsorId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
-
-                    b.Navigation("Photo");
 
                     b.Navigation("Sponsor");
                 });
@@ -964,19 +891,6 @@ namespace FitnessCenter.Data.Migrations
             modelBuilder.Entity("FitnessCenter.Data.Entities.GoalType", b =>
                 {
                     b.Navigation("Goals");
-                });
-
-            modelBuilder.Entity("FitnessCenter.Data.Entities.Photo", b =>
-                {
-                    b.Navigation("Discount");
-
-                    b.Navigation("Equipment");
-
-                    b.Navigation("Events");
-
-                    b.Navigation("Sponsors");
-
-                    b.Navigation("Supplements");
                 });
 
             modelBuilder.Entity("FitnessCenter.Data.Entities.Reservation", b =>

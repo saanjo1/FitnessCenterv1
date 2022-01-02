@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using CloudinaryDotNet.Actions;
 using FitnessCenter.Data;
 using FitnessCenter.Data.Entities;
 using FitnessCenter.Web.Resources;
@@ -29,15 +28,24 @@ namespace FitnessCenter.Web.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            var reservations = _databaseContext.Reservations
+            var userId = _userManager.Get().Id;
+           
+            var reservationsQuery = _databaseContext.Reservations
                  .Include(r => r.FitnessRoom)
                  .Include(r => r.User)
                  .Include(r => r.Coach)
-                 .ToList();
+                 .AsQueryable();
+
+            if (_userManager.IsInRoles(Role.Client, Role.Coach))
+            {
+                reservationsQuery = reservationsQuery
+                    .Where(r => r.UserId == userId || r.CoachId == userId);
+            }
+            var resevarions = reservationsQuery.ToList();
 
             return View(new ReservationsIndexViewModel
             {
-                Reservations = reservations
+                Reservations = resevarions
             });
         }
 

@@ -1,5 +1,4 @@
 ﻿    @model UsersIndexViewModel
-    
 @{
     ViewData["Title"] = @Translations.Users;
 }
@@ -21,6 +20,7 @@
                     </tr>
                 </thead>
                 <tbody>
+
                     @foreach (var user in Model.Users)
                     {
                         <tr>
@@ -32,8 +32,7 @@
                         </tr>
                     }
                 </tbody>
-                </table>
+            </table>
         </div>
     </div>
 </div>
-           

@@ -1,95 +1,179 @@
-﻿@model ReservationsIndexViewModel
+﻿@using FitnessCenter.Web.Utilities.Constants
+@model ReservationsIndexViewModel
+@inject UserManager _userManager
 @{
     ViewData["Title"] = @Translations.Reservations;
 }
-
-<div class="card shadow mb-4">
-    <div class="card-header py-3">
-        <h5 class="m-0 font-weight-bold text-primary d-flex justify-content-between align-items-center">
-            @ViewData["Title"]
-            <a asp-action="Manage" asp-controller="Reservations" class="btn btn-sm btn-primary">
-                <i class="fas fa-plus"></i>
-                @Translations.Add
-            </a>
-        </h5>
-    </div>
-    <div class="card-body">
-        <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <thead>
-                    <tr>
-                        <th>@Translations.ReservedFrom</th>
-                        <th>@Translations.ReservedTo</th>
-                        <th>@Translations.FitnessRoom</th>
-                        <th>@Translations.User</th>
-                        <th>@Translations.Coach</th>
-                        <th>@Translations.Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @if (Model.Reservations.Any())
-                    {
-                        foreach (var reservation in Model.Reservations)
+@if (_userManager.IsInRoles(Role.Administrator))
+{
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>@Translations.ReservedFrom</th>
+                            <th>@Translations.ReservedTo</th>
+                            <th>@Translations.FitnessRoom</th>
+                            <th>@Translations.User</th>
+                            <th>@Translations.Coach</th>
+                            <th>@Translations.Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.Reservations.Any())
                         {
-                            <tr>
-                                <td>@reservation.DateTimeFrom.ToString("dd.MM.yyyy.")</td>
-                                <td>@reservation.DateTimeTo.ToString("dd.MM.yyyy.")</td>
-                                <td>@reservation.FitnessRoom.Name</td>
-                                <td>
-                                    @if (@reservation.User != null)
-                                    {
-                                        <span>@reservation.User.FirstName @reservation.User.LastName</span>
-                                    }
-                                </td>
-                                <td>@reservation.Coach.FirstName @reservation.Coach.LastName</td>
-                                <td class="action-column">
-                                    <a asp-action="Manage" asp-controller="Reservations" asp-route-id="@reservation.Id"
+                            foreach (var reservation in Model.Reservations)
+                            {
+                                <tr>
+                                    <td>@reservation.DateTimeFrom.ToString("dd.MM.yyyy.")</td>
+                                    <td>@reservation.DateTimeTo.ToString("dd.MM.yyyy.")</td>
+                                    <td>@reservation.FitnessRoom.Name</td>
+                                    <td>
+                                        @if (@reservation.User != null)
+                                        {
+                                            <span>@reservation.User.FirstName @reservation.User.LastName</span>
+                                        }
+                                    </td>
+                                    <td>@reservation.Coach.FirstName @reservation.Coach.LastName</td>
+                                    <td class="action-column">
+                                        <a asp-action="Manage" asp-controller="Reservations" asp-route-id="@reservation.Id"
                                class="btn btn-sm btn-outline-primary">
-                                        @Translations.Edit
-                                    </a>
-                                    <a asp-action="Delete" asp-controller="Reservations" asp-route-id="@reservation.Id"
+                                            @Translations.Edit
+                                        </a>
+                                        <a asp-action="Delete" asp-controller="Reservations" asp-route-id="@reservation.Id"
                                data-toggle="modal" data-target="#confirm-delete" class="btn btn-outline-danger btn-sm ">
-                                        @Translations.Delete
-                                    </a>
-                                    <div class="modal fade" id="confirm-delete"
+                                            @Translations.Delete
+                                        </a>
+                                        <div class="modal fade" id="confirm-delete"
                                  tabindex="-1" role="dialog" aria-labelledby="modalLabel"
                                  aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="modalLabel">@Translations.AreYouSure</h5>
+                                                        <button class="close" type="button" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                            <span aria-hidden="true">×</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">@Translations.DeleteConfirmation</div>
+                                                    <div class="modal-footer">
+                                                        <button class="btn btn-secondary" type="button"
+                                                    data-dismiss="modal">
+                                                            @Translations.Cancel
+                                                        </button>
+                                                        <a asp-action="Delete" asp-controller="Reservations"
+                                               asp-route-id="@reservation.Id"
+                                               class="btn btn-danger">@Translations.Delete</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="6" class="text-center">@Translations.NoResultsToShow</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h5 class="m-0 font-weight-bold text-primary d-flex justify-content-between align-items-center">
+                @ViewData["Title"]
+                <a asp-action="Manage" asp-controller="Reservations" class="btn btn-sm btn-primary">
+                    <i class="fas fa-plus"></i>
+                    @Translations.Add
+                </a>
+            </h5>
+        </div>
+
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>@Translations.ReservedFrom</th>
+                            <th>@Translations.ReservedTo</th>
+                            <th>@Translations.FitnessRoom</th>
+                            <th>@Translations.User</th>
+                            <th>@Translations.Coach</th>
+                            <th>@Translations.Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.Reservations.Any())
+                        {
+                            foreach (var reservation in Model.Reservations)
+                            {
+                                <tr>
+                                    <td>@reservation.DateTimeFrom.ToString("dd.MM.yyyy.")</td>
+                                    <td>@reservation.DateTimeTo.ToString("dd.MM.yyyy.")</td>
+                                    <td>@reservation.FitnessRoom.Name</td>
+                                    <td>
+                                        @if (@reservation.User != null)
+                                        {
+                                            <span>@reservation.User.FirstName @reservation.User.LastName</span>
+                                        }
+                                    </td>
+                                    <td>@reservation.Coach.FirstName @reservation.Coach.LastName</td>
+                                    <td class="action-column" style="white-space:nowrap">
+                                        <a asp-action="Manage" asp-controller="Reservations" asp-route-id="@reservation.Id"
+                               class="btn btn-sm btn-outline-primary">
+                                            @Translations.Edit
+                                        </a>
+                                        <a asp-action="Delete" asp-controller="Reservations" asp-route-id="@reservation.Id"
+                               data-toggle="modal" data-target="#confirm-delete" class="btn btn-outline-danger btn-sm ">
+                                            @Translations.Delete
+                                        </a>
+                                    </td>
+                                    <div class="modal fade" id="confirm-delete"
+                             tabindex="-1" role="dialog" aria-labelledby="modalLabel"
+                             aria-hidden="true">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h5 class="modal-title" id="modalLabel">@Translations.AreYouSure</h5>
                                                     <button class="close" type="button" data-dismiss="modal"
-                                                    aria-label="Close">
+                                                aria-label="Close">
                                                         <span aria-hidden="true">×</span>
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">@Translations.DeleteConfirmation</div>
                                                 <div class="modal-footer">
                                                     <button class="btn btn-secondary" type="button"
-                                                    data-dismiss="modal">
+                                                data-dismiss="modal">
                                                         @Translations.Cancel
                                                     </button>
                                                     <a asp-action="Delete" asp-controller="Reservations"
-                                               asp-route-id="@reservation.Id"
-                                               class="btn btn-danger">@Translations.Delete</a>
+                                           asp-route-id="@reservation.Id"
+                                           class="btn btn-danger">@Translations.Delete</a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="6" class="text-center">@Translations.NoResultsToShow</td>
                             </tr>
                         }
-                    }
-                    else
-                    {
-                        <tr>
-                            <td colspan="6" class="text-center">@Translations.NoResultsToShow</td>
-                        </tr>
-                    }
-
-
-                </tbody>
-            </table>
+                </table>
+            </div>
         </div>
     </div>
-</div>
+}

@@ -20,7 +20,11 @@ namespace FitnessCenter.Web.ViewModels
         public string Description { get; set; }
 
         [Required]
+        [Display(Name = nameof(Translations.Photo), ResourceType = typeof(Translations))]
+        public IFormFile Photo { get; set; }
+
         [Display(Name = nameof(Translations.Sponsor), ResourceType = typeof(Translations))]
         public int SponsorId { get; set; }
+
     }
 }

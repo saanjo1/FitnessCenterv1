@@ -23,6 +23,7 @@ namespace FitnessCenter.Data
         public DbSet<UserSubscription> UserSubscriptions { get; set; }
         public DbSet<UserSupplement> UserSupplements { get; set; }
         public DbSet<Workout> Workouts { get; set; }
+        public DbSet<Photo> Photo { get; set; }
 
 
         public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options)
