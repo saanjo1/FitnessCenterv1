@@ -5,572 +5,569 @@
 }
 
 
-@if(user.Role == Role.Client)
+@if (user.Role == Role.Client)
 {
     <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>@ViewData["Title"] - @Translations.ApplicationName</title>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>@ViewData["Title"] - @Translations.ApplicationName</title>
 
-    <link href="~/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-    <link href="~/css/sb-admin-2.css" rel="stylesheet">
-    <link href="~/css/custom.css" rel="stylesheet">
-</head>
-<body id="page-top">
-    <div id="wrapper">
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-            <a asp-action="Index" asp-controller="Home" 
-            class="sidebar-brand d-flex align-items-center justify-content-center">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-running"></i>
-                </div>
-                <div class="sidebar-brand-text mx-3">@Translations.ApplicationName</div>
-            </a>
-            <hr class="sidebar-divider my-0">
-
-            <li class="nav-item">
-                <a asp-action="Index" asp-controller="Reservations" class="nav-link">
-                    <i class="fas fa-calendar-check"></i>
-                    <span>@Translations.Reservations</span>
-                </a>
-            </li>
-
-             <hr class="sidebar-divider my-0">
-
-              <li class="nav-item">
-                <a asp-action="Index" asp-controller="Supplements" class="nav-link">
-                    <i class="fab fa-shopify"></i>
-                    <span>@Translations.Supplements</span>
-                </a>
-            </li>
-             <hr class="sidebar-divider my-0">
-
-
-            
-              <li class="nav-item">
-                <a asp-action="Index" asp-controller="Supplements" class="nav-link">
-                    <i class="fas fa-calendar-week"></i>
-                    <span>@Translations.Events</span>
-                </a>
-            </li>
-
-             <hr class="sidebar-divider my-0">
-
-            
-              <li class="nav-item">
-                <a asp-action="Index" asp-controller="Supplements" class="nav-link">
-                   <i class="fas fa-bullseye"></i>
-                    <span>@Translations.Goals</span>
-                </a>
-            </li>
-
-              <hr class="sidebar-divider my-0">
-
-            
-              <li class="nav-item">
-                <a asp-action="Index" asp-controller="Supplements" class="nav-link">
-                  <i class="fas fa-dumbbell"></i>
-                    <span>@Translations.Equipment</span>
-                </a>
-            </li>
-
-               <hr class="sidebar-divider my-0">
-
-            
-              <li class="nav-item">
-                <a asp-action="Index" asp-controller="Supplements" class="nav-link">
-                 <i class="fas fa-id-card-alt"></i>
-                    <span>@Translations.Contacts</span>
-                </a>
-            </li>
-
-              <hr class="sidebar-divider my-0">
-
-            
-              <li class="nav-item">
-                <a asp-action="Index" asp-controller="Supplements" class="nav-link">
-                 <i class="fas fa-bullhorn"></i>
-                    <span>@Translations.Announcements</span>
-                </a>
-            </li>
-
-
-            <hr class="sidebar-divider d-none d-md-block">
-     
-            <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
-        </ul>
-        <div id="content-wrapper" class="d-flex flex-column">
-            <div id="content">
-                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                        <i class="fa fa-bars"></i>
-                    </button>
-                    <div class="d-none d-sm-inline-block mr-auto ml-md-3 my-2 my-md-0 mw-100 font-weight-bold">
-                        @ViewData["Title"]
+        <link href="~/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+        <link href="~/css/sb-admin-2.css" rel="stylesheet">
+        <link href="~/css/custom.css" rel="stylesheet">
+    </head>
+    <body id="page-top">
+        <div id="wrapper">
+            <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+                <a asp-action="Index" asp-controller="Home"
+               class="sidebar-brand d-flex align-items-center justify-content-center">
+                    <div class="sidebar-brand-icon rotate-n-15">
+                        <i class="fas fa-running"></i>
                     </div>
-                            
-                    <ul class="navbar-nav ml-auto">
-                        @*cart*@
-                        <i class="fas fa-shopping-cart" style="margin-right:15px;margin-top:25px;"></i>
-                        <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                    <div class="sidebar-brand-text mx-3">@Translations.ApplicationName</div>
+                </a>
+                <hr class="sidebar-divider my-0">
+
+                <li class="nav-item">
+                    <a asp-action="Index" asp-controller="Reservations" class="nav-link">
+                        <i class="fas fa-calendar-check"></i>
+                        <span>@Translations.Reservations</span>
+                    </a>
+                </li>
+
+                <hr class="sidebar-divider my-0">
+
+                <li class="nav-item">
+                    <a asp-action="Index" asp-controller="Supplements" class="nav-link">
+                        <i class="fab fa-shopify"></i>
+                        <span>@Translations.Supplements</span>
+                    </a>
+                </li>
+                <hr class="sidebar-divider my-0">
+
+
+
+                <li class="nav-item">
+                    <a asp-action="Index" asp-controller="Supplements" class="nav-link">
+                        <i class="fas fa-calendar-week"></i>
+                        <span>@Translations.Events</span>
+                    </a>
+                </li>
+
+                <hr class="sidebar-divider my-0">
+
+
+                <li class="nav-item">
+                    <a asp-action="Index" asp-controller="Supplements" class="nav-link">
+                        <i class="fas fa-bullseye"></i>
+                        <span>@Translations.Goals</span>
+                    </a>
+                </li>
+
+                <hr class="sidebar-divider my-0">
+
+
+                <li class="nav-item">
+                    <a asp-action="Index" asp-controller="Supplements" class="nav-link">
+                        <i class="fas fa-dumbbell"></i>
+                        <span>@Translations.Equipment</span>
+                    </a>
+                </li>
+
+                <hr class="sidebar-divider my-0">
+
+
+                <li class="nav-item">
+                    <a asp-action="Index" asp-controller="Supplements" class="nav-link">
+                        <i class="fas fa-id-card-alt"></i>
+                        <span>@Translations.Contacts</span>
+                    </a>
+                </li>
+
+                <hr class="sidebar-divider my-0">
+
+
+                <li class="nav-item">
+                    <a asp-action="Index" asp-controller="Supplements" class="nav-link">
+                        <i class="fas fa-bullhorn"></i>
+                        <span>@Translations.Announcements</span>
+                    </a>
+                </li>
+
+
+                <hr class="sidebar-divider d-none d-md-block">
+
+                <div class="text-center d-none d-md-inline">
+                    <button class="rounded-circle border-0" id="sidebarToggle"></button>
+                </div>
+            </ul>
+            <div id="content-wrapper" class="d-flex flex-column">
+                <div id="content">
+                    <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                        <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <div class="d-none d-sm-inline-block mr-auto ml-md-3 my-2 my-md-0 mw-100 font-weight-bold">
+                            @ViewData["Title"]
+                        </div>
+
+                        <ul class="navbar-nav ml-auto">
+                            @*cart*@
+                            <i class="fas fa-shopping-cart" style="margin-right:15px;margin-top:25px;"></i>
+                            <li class="nav-item dropdown no-arrow">
+                                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">
-                                    @user.FirstName @user.LastName</span>
-                                <img class="img-profile rounded-circle"
+                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                                        @user.FirstName @user.LastName
+                                    </span>
+                                    <img class="img-profile rounded-circle"
                                      src="~/img/undraw_profile.svg">
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                  aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    @Translations.Profile
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#signOutModal">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    @Translations.SignOut
-                                </a>
-                            </div>
-                        </li>
-                    </ul>
-                </nav>
-                <div class="container-fluid">
-                    <flash />
-                    @RenderBody()
-                </div>
-            </div>
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>@Translations.Copyright &copy; @Translations.ApplicationName 2021</span>
+                                    <a class="dropdown-item" href="#">
+                                        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        @Translations.Profile
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#signOutModal">
+                                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        @Translations.SignOut
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </nav>
+                    <div class="container-fluid">
+                        <flash />
+                        @RenderBody()
                     </div>
                 </div>
-            </footer>
+                <footer class="sticky-footer bg-white">
+                    <div class="container my-auto">
+                        <div class="copyright text-center my-auto">
+                            <span>@Translations.Copyright &copy; @Translations.ApplicationName 2021</span>
+                        </div>
+                    </div>
+                </footer>
+            </div>
         </div>
-    </div>
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
-    <div class="modal fade" id="signOutModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fas fa-angle-up"></i>
+        </a>
+        <div class="modal fade" id="signOutModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
          aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="modalLabel">@Translations.AreYouSure</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">@Translations.SignOutConfirmation</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">@Translations.Cancel</button>
-                    <a asp-action="SignOut" asp-controller="Access" class="btn btn-danger">@Translations.SignOut</a>
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalLabel">@Translations.AreYouSure</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">@Translations.SignOutConfirmation</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">@Translations.Cancel</button>
+                        <a asp-action="SignOut" asp-controller="Access" class="btn btn-danger">@Translations.SignOut</a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <script src="~/vendor/jquery/jquery.min.js"></script>
-    <script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="~/vendor/jquery-easing/jquery.easing.min.js"></script>
-    <script src="~/js/sb-admin-2.min.js"></script>
-    <script src="~/vendor/chart.js/Chart.min.js"></script>
-</body>
-</html>
+        <script src="~/vendor/jquery/jquery.min.js"></script>
+        <script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="~/vendor/jquery-easing/jquery.easing.min.js"></script>
+        <script src="~/js/sb-admin-2.min.js"></script>
+        <script src="~/vendor/chart.js/Chart.min.js"></script>
+    </body>
+    </html>
 }
 
 
-@if(user.Role == Role.Coach)
+@if (user.Role == Role.Coach)
 {
     <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>@ViewData["Title"] - @Translations.ApplicationName</title>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>@ViewData["Title"] - @Translations.ApplicationName</title>
 
-    <link href="~/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-    <link href="~/css/sb-admin-2.css" rel="stylesheet">
-    <link href="~/css/custom.css" rel="stylesheet">
-</head>
-<body id="page-top">
-    <div id="wrapper">
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-            <a asp-action="Index" asp-controller="Home" 
-            class="sidebar-brand d-flex align-items-center justify-content-center">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-running"></i>
-                </div>
-                <div class="sidebar-brand-text mx-3">@Translations.ApplicationName</div>
-            </a>
-            <hr class="sidebar-divider my-0">
-
-            <li class="nav-item">
-                <a asp-action="Index" asp-controller="Reservations" class="nav-link">
-                    <i class="fas fa-calendar-check"></i>
-                    <span>@Translations.Reservations</span>
-                </a>
-            </li>
-             <hr class="sidebar-divider my-0">
-
-              <li class="nav-item">
-                <a asp-action="Index" asp-controller="Supplements" class="nav-link">
-                    <i class="fab fa-shopify"></i>
-                    <span>@Translations.Supplements</span>
-                </a>
-            </li>
-             <hr class="sidebar-divider my-0">
-
-              <li class="nav-item">
-                <a asp-action="Index" asp-controller="Supplements" class="nav-link">
-                      <i class="fas fa-calendar-week"></i>
-                    <span>@Translations.Events</span>
-                </a>
-            </li>
-
-          
-             <hr class="sidebar-divider my-0">
-
-            
-              <li class="nav-item">
-                <a asp-action="Index" asp-controller="Supplements" class="nav-link">
-                    <i class="fas fa-bullseye"></i>
-                  
-                    <span>@Translations.Goals</span>
-                </a>
-            </li>
-
-              <hr class="sidebar-divider my-0">
-
-            
-              <li class="nav-item">
-                <a asp-action="Index" asp-controller="Supplements" class="nav-link">
-                  <i class="fas fa-dumbbell"></i>
-                    <span>@Translations.Equipment</span>
-                </a>
-            </li>
-
-                 <hr class="sidebar-divider my-0">
-
-            
-              <li class="nav-item">
-                <a asp-action="Index" asp-controller="Supplements" class="nav-link">
-                  <i class="fas fa-id-card-alt"></i>
-                    <span>@Translations.Contacts</span>
-                </a>
-            </li>
-
-             <hr class="sidebar-divider my-0">
-
-            
-              <li class="nav-item">
-                <a asp-action="Index" asp-controller="Supplements" class="nav-link">
-                 <i class="fas fa-bullhorn"></i>
-                    <span>@Translations.Announcements</span>
-                </a>
-            </li>
-
-            <hr class="sidebar-divider d-none d-md-block">
-            <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
-        </ul>
-        <div id="content-wrapper" class="d-flex flex-column">
-            <div id="content">
-                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                        <i class="fa fa-bars"></i>
-                    </button>
-                    <div class="d-none d-sm-inline-block mr-auto ml-md-3 my-2 my-md-0 mw-100 font-weight-bold">
-                        @ViewData["Title"]
+        <link href="~/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+        <link href="~/css/sb-admin-2.css" rel="stylesheet">
+        <link href="~/css/custom.css" rel="stylesheet">
+    </head>
+    <body id="page-top">
+        <div id="wrapper">
+            <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+                <a asp-action="Index" asp-controller="Home"
+               class="sidebar-brand d-flex align-items-center justify-content-center">
+                    <div class="sidebar-brand-icon rotate-n-15">
+                        <i class="fas fa-running"></i>
                     </div>
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                    <div class="sidebar-brand-text mx-3">@Translations.ApplicationName</div>
+                </a>
+                <hr class="sidebar-divider my-0">
+
+                <li class="nav-item">
+                    <a asp-action="Index" asp-controller="Reservations" class="nav-link">
+                        <i class="fas fa-calendar-check"></i>
+                        <span>@Translations.Reservations</span>
+                    </a>
+                </li>
+                <hr class="sidebar-divider my-0">
+
+                <li class="nav-item">
+                    <a asp-action="Index" asp-controller="Supplements" class="nav-link">
+                        <i class="fab fa-shopify"></i>
+                        <span>@Translations.Supplements</span>
+                    </a>
+                </li>
+                <hr class="sidebar-divider my-0">
+
+                <li class="nav-item">
+                    <a asp-action="Index" asp-controller="Supplements" class="nav-link">
+                        <i class="fas fa-calendar-week"></i>
+                        <span>@Translations.Events</span>
+                    </a>
+                </li>
+
+
+                <hr class="sidebar-divider my-0">
+
+
+                <li class="nav-item">
+                    <a asp-action="Index" asp-controller="Supplements" class="nav-link">
+                        <i class="fas fa-bullseye"></i>
+
+                        <span>@Translations.Goals</span>
+                    </a>
+                </li>
+
+                <hr class="sidebar-divider my-0">
+
+
+                <li class="nav-item">
+                    <a asp-action="Index" asp-controller="Supplements" class="nav-link">
+                        <i class="fas fa-dumbbell"></i>
+                        <span>@Translations.Equipment</span>
+                    </a>
+                </li>
+
+                <hr class="sidebar-divider my-0">
+
+
+                <li class="nav-item">
+                    <a asp-action="Index" asp-controller="Supplements" class="nav-link">
+                        <i class="fas fa-id-card-alt"></i>
+                        <span>@Translations.Contacts</span>
+                    </a>
+                </li>
+
+                <hr class="sidebar-divider my-0">
+
+
+                <li class="nav-item">
+                    <a asp-action="Index" asp-controller="Supplements" class="nav-link">
+                        <i class="fas fa-bullhorn"></i>
+                        <span>@Translations.Announcements</span>
+                    </a>
+                </li>
+
+                <hr class="sidebar-divider d-none d-md-block">
+                <div class="text-center d-none d-md-inline">
+                    <button class="rounded-circle border-0" id="sidebarToggle"></button>
+                </div>
+            </ul>
+            <div id="content-wrapper" class="d-flex flex-column">
+                <div id="content">
+                    <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                        <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <div class="d-none d-sm-inline-block mr-auto ml-md-3 my-2 my-md-0 mw-100 font-weight-bold">
+                            @ViewData["Title"]
+                        </div>
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item dropdown no-arrow">
+                                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">
-                                    @user.FirstName @user.LastName</span>
-                                <img class="img-profile rounded-circle"
+                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                                        @user.FirstName @user.LastName
+                                    </span>
+                                    <img class="img-profile rounded-circle"
                                      src="~/img/undraw_profile.svg">
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                  aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    @Translations.Profile
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#signOutModal">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    @Translations.SignOut
-                                </a>
-                            </div>
-                        </li>
-                    </ul>
-                </nav>
-                <div class="container-fluid">
-                    <flash />
-                    @RenderBody()
-                </div>
-            </div>
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>@Translations.Copyright &copy; @Translations.ApplicationName 2021</span>
+                                    <a class="dropdown-item" href="#">
+                                        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        @Translations.Profile
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#signOutModal">
+                                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        @Translations.SignOut
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </nav>
+                    <div class="container-fluid">
+                        <flash />
+                        @RenderBody()
                     </div>
                 </div>
-            </footer>
+                <footer class="sticky-footer bg-white">
+                    <div class="container my-auto">
+                        <div class="copyright text-center my-auto">
+                            <span>@Translations.Copyright &copy; @Translations.ApplicationName 2021</span>
+                        </div>
+                    </div>
+                </footer>
+            </div>
         </div>
-    </div>
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
-    <div class="modal fade" id="signOutModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fas fa-angle-up"></i>
+        </a>
+        <div class="modal fade" id="signOutModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
          aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="modalLabel">@Translations.AreYouSure</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">@Translations.SignOutConfirmation</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">@Translations.Cancel</button>
-                    <a asp-action="SignOut" asp-controller="Access" class="btn btn-danger">@Translations.SignOut</a>
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalLabel">@Translations.AreYouSure</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">@Translations.SignOutConfirmation</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">@Translations.Cancel</button>
+                        <a asp-action="SignOut" asp-controller="Access" class="btn btn-danger">@Translations.SignOut</a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <script src="~/vendor/jquery/jquery.min.js"></script>
-    <script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="~/vendor/jquery-easing/jquery.easing.min.js"></script>
-    <script src="~/js/sb-admin-2.min.js"></script>
-    <script src="~/vendor/chart.js/Chart.min.js"></script>
-</body>
-</html>
+        <script src="~/vendor/jquery/jquery.min.js"></script>
+        <script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="~/vendor/jquery-easing/jquery.easing.min.js"></script>
+        <script src="~/js/sb-admin-2.min.js"></script>
+        <script src="~/vendor/chart.js/Chart.min.js"></script>
+    </body>
+    </html>
 }
 
 
-@if(user.Role == Role.Administrator)
+@if (user.Role == Role.Administrator)
 {
     <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>@ViewData["Title"] - @Translations.ApplicationName</title>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>@ViewData["Title"] - @Translations.ApplicationName</title>
 
-    <link href="~/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-    <link href="~/css/sb-admin-2.css" rel="stylesheet">
-    <link href="~/css/custom.css" rel="stylesheet">
-</head>
-<body id="page-top">
-    <div id="wrapper">
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-            <a asp-action="Index" asp-controller="Home" 
-            class="sidebar-brand d-flex align-items-center justify-content-center">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-running"></i>
-                    
-                </div>
-                <div class="sidebar-brand-text mx-3">@Translations.ApplicationName</div>
-            </a>
-            <hr class="sidebar-divider my-0">
+        <link href="~/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+        <link href="~/css/sb-admin-2.css" rel="stylesheet">
+        <link href="~/css/custom.css" rel="stylesheet">
+    </head>
+    <body id="page-top">
+        <div id="wrapper">
+            <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+                <a asp-action="Index" asp-controller="Home"
+               class="sidebar-brand d-flex align-items-center justify-content-center">
+                    <div class="sidebar-brand-icon rotate-n-15">
+                        <i class="fas fa-running"></i>
 
-              <li class="nav-item">
-                <a asp-action="Index" asp-controller="Users" class="nav-link">
-                    <i class="fas fa-fw fa-users"></i>
-                    <span>@Translations.Users</span>
-                </a>
-            </li>
-          
-
-            <hr class="sidebar-divider my-0">
-
-            <li class="nav-item">
-                <a asp-action="Index" asp-controller="Reservations" class="nav-link">
-                    <i class="fas fa-calendar-check"></i>
-                    <span>@Translations.Reservations</span>
-                </a>
-            </li>
-
-            
-              <hr class="sidebar-divider my-0">
-
-            
-              <li class="nav-item">
-                <a asp-action="Index" asp-controller="Supplements" class="nav-link">
-                <i class="fas fa-users"></i>
-                    <span>@Translations.Sponsors</span>
-                </a>
-            </li>
-
-             <hr class="sidebar-divider my-0">
-
-              <li class="nav-item">
-                <a asp-action="Index" asp-controller="Supplements" class="nav-link">
-                    <i class="fab fa-shopify"></i>
-                    <span>@Translations.Supplements</span>
-                </a>
-            </li>
-
-            <hr class="sidebar-divider my-0">
-
-              <li class="nav-item">
-                <a asp-action="Index" asp-controller="Supplements" class="nav-link">
-                    <i class="fas fa-calendar-week"></i>
-                    <span>@Translations.Events</span>
-                </a>
-            </li>
-
-             <hr class="sidebar-divider my-0">
-
-            
-              <li class="nav-item">
-                <a asp-action="Index" asp-controller="Supplements" class="nav-link">
-                   <i class="fas fa-bullseye"></i>
-                    <span>@Translations.Goals</span>
-                </a>
-            </li>
-
-              <hr class="sidebar-divider my-0">
-
-            
-              <li class="nav-item">
-                <a asp-action="Index" asp-controller="Supplements" class="nav-link">
-                  <i class="fas fa-dumbbell"></i>
-                    <span>@Translations.Equipment</span>
-                </a>
-            </li>
-          
-                 <hr class="sidebar-divider my-0">
-
-            
-              <li class="nav-item">
-                <a asp-action="Index" asp-controller="Supplements" class="nav-link">
-                  <i class="fas fa-id-card-alt"></i>
-                    <span>@Translations.Contacts</span>
-                </a>
-            </li>
-
-             <hr class="sidebar-divider my-0">
-
-            
-              <li class="nav-item">
-                <a asp-action="Index" asp-controller="Supplements" class="nav-link">
-                 <i class="fas fa-bullhorn"></i>
-                    <span>@Translations.Announcements</span>
-                </a>
-            </li>
-
-              <hr class="sidebar-divider my-0">
-
-            
-              <li class="nav-item">
-                <a asp-action="Index" asp-controller="Supplements" class="nav-link">
-                <i class="fas fa-percentage"></i>
-                    <span>@Translations.Discounts</span>
-                </a>
-            </li>
-
-
-
-            <hr class="sidebar-divider d-none d-md-block">
-            <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
-        </ul>
-        <div id="content-wrapper" class="d-flex flex-column">
-            <div id="content">
-                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                        <i class="fa fa-bars"></i>
-                    </button>
-                    <div class="d-none d-sm-inline-block mr-auto ml-md-3 my-2 my-md-0 mw-100 font-weight-bold">
-                        @ViewData["Title"]
                     </div>
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                    <div class="sidebar-brand-text mx-3">@Translations.ApplicationName</div>
+                </a>
+                <hr class="sidebar-divider my-0">
+
+                <li class="nav-item">
+                    <a asp-action="Index" asp-controller="Users" class="nav-link">
+                        <i class="fas fa-fw fa-users"></i>
+                        <span>@Translations.Users</span>
+                    </a>
+                </li>
+                <hr class="sidebar-divider my-0">
+                <li class="nav-item">
+                    <a asp-action="Index" asp-controller="Reservations" class="nav-link">
+                        <i class="fas fa-calendar-check"></i>
+                        <span>@Translations.Reservations</span>
+                    </a>
+                </li>
+                <hr class="sidebar-divider my-0">
+
+                <li class="nav-item">
+                    <a asp-action="Index" asp-controller="Supplements" class="nav-link">
+                        <i class="fas fa-users"></i>
+                        <span>@Translations.Sponsors</span>
+                    </a>
+                </li>
+
+                <hr class="sidebar-divider my-0">
+
+                <li class="nav-item">
+                    <a asp-action="Index" asp-controller="Supplements" class="nav-link">
+                        <i class="fab fa-shopify"></i>
+                        <span>@Translations.Supplements</span>
+                    </a>
+                </li>
+
+                <hr class="sidebar-divider my-0">
+
+                <li class="nav-item">
+                    <a asp-action="Index" asp-controller="Supplements" class="nav-link">
+                        <i class="fas fa-calendar-week"></i>
+                        <span>@Translations.Events</span>
+                    </a>
+                </li>
+
+                <hr class="sidebar-divider my-0">
+
+
+                <li class="nav-item">
+                    <a asp-action="Index" asp-controller="Supplements" class="nav-link">
+                        <i class="fas fa-bullseye"></i>
+                        <span>@Translations.Goals</span>
+                    </a>
+                </li>
+
+                <hr class="sidebar-divider my-0">
+
+
+                <li class="nav-item">
+                    <a asp-action="Index" asp-controller="Supplements" class="nav-link">
+                        <i class="fas fa-dumbbell"></i>
+                        <span>@Translations.Equipment</span>
+                    </a>
+                </li>
+
+                <hr class="sidebar-divider my-0">
+
+
+                <li class="nav-item">
+                    <a asp-action="Index" asp-controller="Supplements" class="nav-link">
+                        <i class="fas fa-id-card-alt"></i>
+                        <span>@Translations.Contacts</span>
+                    </a>
+                </li>
+
+                <hr class="sidebar-divider my-0">
+
+
+                <li class="nav-item">
+                    <a asp-action="Index" asp-controller="Supplements" class="nav-link">
+                        <i class="fas fa-bullhorn"></i>
+                        <span>@Translations.Announcements</span>
+                    </a>
+                </li>
+
+                <hr class="sidebar-divider my-0">
+
+
+                <li class="nav-item">
+                    <a asp-action="Index" asp-controller="Supplements" class="nav-link">
+                        <i class="fas fa-percentage"></i>
+                        <span>@Translations.Discounts</span>
+                    </a>
+                </li>
+
+
+
+                <hr class="sidebar-divider d-none d-md-block">
+                <div class="text-center d-none d-md-inline">
+                    <button class="rounded-circle border-0" id="sidebarToggle"></button>
+                </div>
+            </ul>
+            <div id="content-wrapper" class="d-flex flex-column">
+                <div id="content">
+                    <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                        <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <div class="d-none d-sm-inline-block mr-auto ml-md-3 my-2 my-md-0 mw-100 font-weight-bold">
+                            @ViewData["Title"]
+                        </div>
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item dropdown no-arrow">
+                                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">
-                                    @user.FirstName @user.LastName</span>
-                                <img class="img-profile rounded-circle"
+                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                                        @user.FirstName @user.LastName
+                                    </span>
+                                    <img class="img-profile rounded-circle"
                                      src="~/img/undraw_profile.svg">
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                  aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    @Translations.Profile
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#signOutModal">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    @Translations.SignOut
-                                </a>
-                            </div>
-                        </li>
-                    </ul>
-                </nav>
-                <div class="container-fluid">
-                    <flash />
-                    @RenderBody()
-                </div>
-            </div>
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>@Translations.Copyright &copy; @Translations.ApplicationName 2021</span>
+                                    <a class="dropdown-item" href="#">
+                                        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        @Translations.Profile
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#signOutModal">
+                                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        @Translations.SignOut
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </nav>
+                    <div class="container-fluid">
+                        <flash />
+                        @RenderBody()
                     </div>
                 </div>
-            </footer>
+                <footer class="sticky-footer bg-white">
+                    <div class="container my-auto">
+                        <div class="copyright text-center my-auto">
+                            <span>@Translations.Copyright &copy; @Translations.ApplicationName 2021</span>
+                        </div>
+                    </div>
+                </footer>
+            </div>
         </div>
-    </div>
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
-    <div class="modal fade" id="signOutModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fas fa-angle-up"></i>
+        </a>
+        <div class="modal fade" id="signOutModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
          aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="modalLabel">@Translations.AreYouSure</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">@Translations.SignOutConfirmation</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">@Translations.Cancel</button>
-                    <a asp-action="SignOut" asp-controller="Access" class="btn btn-danger">@Translations.SignOut</a>
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalLabel">@Translations.AreYouSure</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">@Translations.SignOutConfirmation</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">@Translations.Cancel</button>
+                        <a asp-action="SignOut" asp-controller="Access" class="btn btn-danger">@Translations.SignOut</a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <script src="~/vendor/jquery/jquery.min.js"></script>
-    <script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="~/vendor/jquery-easing/jquery.easing.min.js"></script>
-    <script src="~/js/sb-admin-2.min.js"></script>
-    <script src="~/vendor/chart.js/Chart.min.js"></script>
-</body>
-</html>
+        <script src="~/vendor/jquery/jquery.min.js"></script>
+        <script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="~/vendor/jquery-easing/jquery.easing.min.js"></script>
+        <script src="~/js/sb-admin-2.min.js"></script>
+        <script src="~/vendor/chart.js/Chart.min.js"></script>
+    </body>
+    </html>
 }
