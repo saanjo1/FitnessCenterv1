@@ -132,8 +132,14 @@
   <data name="AreYouSure" xml:space="preserve">
     <value>Are you sure?</value>
   </data>
+  <data name="AvailableEvents" xml:space="preserve">
+    <value>Available events</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>Cancel</value>
+  </data>
+  <data name="ChooseAnEvent" xml:space="preserve">
+    <value>Choose an event</value>
   </data>
   <data name="ChooseASupplement" xml:space="preserve">
     <value>Choose a supplement</value>

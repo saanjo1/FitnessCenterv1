@@ -177,6 +177,7 @@ namespace FitnessCenter.Data
                     Price = 25.00,
                 });
 
+
             modelBuilder.Entity<Announcement>()
                .HasOne(a => a.Author)
                .WithMany(a => a.AuthorAnnouncements)

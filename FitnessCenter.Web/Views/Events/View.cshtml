@@ -1,0 +1,40 @@
+﻿    @model EventsIndexViewModel
+@{
+    ViewData["Title"] = @Translations.Events;
+}
+
+    <div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">@Translations.Events</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Location</th>
+                        <th>Rate</th>
+                        <th>Photo</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var events in Model.Events)
+                    {
+                        <tr>
+                            <td>@events.Name</td>
+                            <td>@events.Description</td>
+                            <td>@events.Location</td>
+                            <td>@events.Rate</td>
+                            <td class="action-column"> <img class="card-img-top" src="@Url.Action("Index","Photos",new {id=events.PhotoId})"/ style="width:100px; height:100px;"></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+

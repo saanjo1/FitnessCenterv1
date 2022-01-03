@@ -1,8 +1,8 @@
 ﻿@using FitnessCenter.Web.Utilities.Constants
-@model SupplementsIndexViewModel
+@model EventsIndexViewModel
 @inject UserManager _userManager
 @{
-    ViewData["Title"] = @Translations.Supplements;
+    ViewData["Title"] = @Translations.Events;
 }
 @if (_userManager.IsInRoles(Role.Administrator))
 {
@@ -11,7 +11,7 @@
             <h5 class="m-0 font-weight-bold text-primary d-flex
 justify-content-between align-items-center">
                 @ViewData["Title"]
-                <a asp-action="Manage" asp-controller="Supplements" class="btn btn-sm btn-primary">
+                <a asp-action="Manage" asp-controller="Events" class="btn btn-sm btn-primary">
                     <i class="fas fa-plus"></i>
                     @Translations.Add
                 </a>
@@ -20,32 +20,25 @@ justify-content-between align-items-center">
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
-                        <td>Name</td>
-                                    <td>Description</td>
-                                    <td>Price</td>
-                                    <td>Photo</td>
-                                    <td>Action</td>
-                    </thead>
                     <tbody>
-                        @if (Model.Supplements.Any())
+                        @if (Model.Events.Any())
                         {
-                            foreach (var supplement in Model.Supplements)
+                            foreach (var events in Model.Events)
                             {
                                 <tr>
-                                    <td>@supplement.Name</td>
-                                    <td>@supplement.Description</td>
-                                    <td>@supplement.Price</td>
+                                    <td>@events.Name</td>
+                                    <td>@events.Description</td>
+                                    <td>@events.Rate</td>
                                     <td class="action-column">
-                                        <img class="rounded" src="@Url.Action("Index","Photos",new {id=supplement.PhotoId})" width="30" height="30" />
+                                        <img class="rounded" src="@Url.Action("Index","Photos",new {id=events.PhotoId})" width="30" height="30" />
                                     </td>
                                     <td class="action-column">
                                         <a asp-action="Manage" asp-controller="Reservations"
-                               asp-route-id="@supplement.Id"
+                               asp-route-id="@events.Id"
                                class="btn btn-sm btn-outline-primary">
                                             @Translations.Edit
                                         </a>
-                                        <a asp-action="Delete" asp-controller="Reservations" asp-route-id="@supplement.Id"
+                                        <a asp-action="Delete" asp-controller="Reservations" asp-route-id="@events.Id"
                                data-toggle="modal" data-target="#confirm-delete" class="btn btn-outline-danger btn-sm ">
                                             @Translations.Delete
                                         </a>
@@ -68,7 +61,7 @@ justify-content-between align-items-center">
                                                             @Translations.Cancel
                                                         </button>
                                                         <a asp-action="Delete" asp-controller="Reservations"
-                                               asp-route-id="@supplement.Id"
+                                               asp-route-id="@events.Id"
                                                class="btn btn-danger">@Translations.Delete</a>
                                                     </div>
                                                 </div>
@@ -95,23 +88,23 @@ else
     <div class="card shadow mb-4">
         <div class="card-header py-3">
          <h5 class="m-0 font-weight-bold text-primary d-flex
-justify-content-between align-items-center"> @Translations.ChooseASupplement
+justify-content-between align-items-center"> @Translations.AvailableEvents
          </h5>
         <div class="container">
             <div class="row">
-                @if (Model.Supplements.Any())
+                @if (Model.Events.Any())
                 {
-                    foreach (var supplement in Model.Supplements)
+                    foreach (var events in Model.Events)
                     {
                         <div class="col-lg-3 col-sm-6">
                             <br>
                             <div class="customCard" style="width: 16rem;">
-                                <img class="card-img-top" src="@Url.Action("Index","Photos",new {id=supplement.PhotoId})"/>
+                                <img class="card-img-top" src="@Url.Action("Index","Photos",new {id=events.PhotoId})"/>
                                 <div class="card-body">
                                     <center>
-                                        <h5 class="card-title">@supplement.Name</h5>
-                                        <p class="card-text">@supplement.Description</p>
-                                        <a href="#" class="btn btn-primary">Add to cart</a>
+                                        <h5 class="card-title">@events.Name</h5>
+                                        <p class="card-text">@events.Description</p>
+                                        <a asp-action="View" asp-controller="Events" asp-route-id="@events.Id" class="btn btn-primary">View event</a>
                                     </center>
                                 </div>
                             </div>

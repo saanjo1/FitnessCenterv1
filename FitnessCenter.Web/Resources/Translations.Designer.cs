@@ -106,11 +106,29 @@ namespace FitnessCenter.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Available events.
+        /// </summary>
+        public static string AvailableEvents {
+            get {
+                return ResourceManager.GetString("AvailableEvents", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
         public static string Cancel {
             get {
                 return ResourceManager.GetString("Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choose an event.
+        /// </summary>
+        public static string ChooseAnEvent {
+            get {
+                return ResourceManager.GetString("ChooseAnEvent", resourceCulture);
             }
         }
         
