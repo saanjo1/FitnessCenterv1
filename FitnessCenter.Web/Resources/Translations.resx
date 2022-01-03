@@ -123,6 +123,9 @@
   <data name="Add" xml:space="preserve">
     <value>Add</value>
   </data>
+  <data name="Announcements" xml:space="preserve">
+    <value>Announcements</value>
+  </data>
   <data name="ApplicationName" xml:space="preserve">
     <value>Fitness Center</value>
   </data>
@@ -137,6 +140,9 @@
   </data>
   <data name="Coach" xml:space="preserve">
     <value>Coach</value>
+  </data>
+  <data name="Contacts" xml:space="preserve">
+    <value>Contacts</value>
   </data>
   <data name="Copyright" xml:space="preserve">
     <value>Copyright</value>
@@ -165,17 +171,29 @@
   <data name="Description" xml:space="preserve">
     <value>Description</value>
   </data>
+  <data name="Discounts" xml:space="preserve">
+    <value>Discounts</value>
+  </data>
   <data name="Edit" xml:space="preserve">
     <value>Edit</value>
   </data>
   <data name="Email" xml:space="preserve">
     <value>E-mail</value>
   </data>
+  <data name="Equipment" xml:space="preserve">
+    <value>Equipment</value>
+  </data>
+  <data name="Events" xml:space="preserve">
+    <value>Events</value>
+  </data>
   <data name="FirstName" xml:space="preserve">
     <value>First name</value>
   </data>
   <data name="FitnessRoom" xml:space="preserve">
     <value>Fitness room</value>
+  </data>
+  <data name="Goals" xml:space="preserve">
+    <value>Goals</value>
   </data>
   <data name="InsertPassword" xml:space="preserve">
     <value>Please insert password.</value>
@@ -254,6 +272,9 @@
   </data>
   <data name="Sponsor" xml:space="preserve">
     <value>Sponsor</value>
+  </data>
+  <data name="Sponsors" xml:space="preserve">
+    <value>Sponsors</value>
   </data>
   <data name="Submit" xml:space="preserve">
     <value>Submit</value>

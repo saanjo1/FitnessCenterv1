@@ -28,7 +28,7 @@
             <a asp-action="Index" asp-controller="Home" 
             class="sidebar-brand d-flex align-items-center justify-content-center">
                 <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-dumbbell"></i>
+                    <i class="fas fa-running"></i>
                 </div>
                 <div class="sidebar-brand-text mx-3">@Translations.ApplicationName</div>
             </a>
@@ -49,8 +49,60 @@
                     <span>@Translations.Supplements</span>
                 </a>
             </li>
+             <hr class="sidebar-divider my-0">
+
+
+            
+              <li class="nav-item">
+                <a asp-action="Index" asp-controller="Supplements" class="nav-link">
+                    <i class="fas fa-calendar-week"></i>
+                    <span>@Translations.Events</span>
+                </a>
+            </li>
+
+             <hr class="sidebar-divider my-0">
+
+            
+              <li class="nav-item">
+                <a asp-action="Index" asp-controller="Supplements" class="nav-link">
+                   <i class="fas fa-bullseye"></i>
+                    <span>@Translations.Goals</span>
+                </a>
+            </li>
+
+              <hr class="sidebar-divider my-0">
+
+            
+              <li class="nav-item">
+                <a asp-action="Index" asp-controller="Supplements" class="nav-link">
+                  <i class="fas fa-dumbbell"></i>
+                    <span>@Translations.Equipment</span>
+                </a>
+            </li>
+
+               <hr class="sidebar-divider my-0">
+
+            
+              <li class="nav-item">
+                <a asp-action="Index" asp-controller="Supplements" class="nav-link">
+                 <i class="fas fa-id-card-alt"></i>
+                    <span>@Translations.Contacts</span>
+                </a>
+            </li>
+
+              <hr class="sidebar-divider my-0">
+
+            
+              <li class="nav-item">
+                <a asp-action="Index" asp-controller="Supplements" class="nav-link">
+                 <i class="fas fa-bullhorn"></i>
+                    <span>@Translations.Announcements</span>
+                </a>
+            </li>
+
 
             <hr class="sidebar-divider d-none d-md-block">
+     
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
@@ -64,7 +116,10 @@
                     <div class="d-none d-sm-inline-block mr-auto ml-md-3 my-2 my-md-0 mw-100 font-weight-bold">
                         @ViewData["Title"]
                     </div>
+                            
                     <ul class="navbar-nav ml-auto">
+                        @*cart*@
+                        <i class="fas fa-shopping-cart" style="margin-right:15px;margin-top:25px;"></i>
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -156,7 +211,7 @@
             <a asp-action="Index" asp-controller="Home" 
             class="sidebar-brand d-flex align-items-center justify-content-center">
                 <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-dumbbell"></i>
+                    <i class="fas fa-running"></i>
                 </div>
                 <div class="sidebar-brand-text mx-3">@Translations.ApplicationName</div>
             </a>
@@ -168,13 +223,62 @@
                     <span>@Translations.Reservations</span>
                 </a>
             </li>
-
              <hr class="sidebar-divider my-0">
 
               <li class="nav-item">
                 <a asp-action="Index" asp-controller="Supplements" class="nav-link">
                     <i class="fab fa-shopify"></i>
                     <span>@Translations.Supplements</span>
+                </a>
+            </li>
+             <hr class="sidebar-divider my-0">
+
+              <li class="nav-item">
+                <a asp-action="Index" asp-controller="Supplements" class="nav-link">
+                      <i class="fas fa-calendar-week"></i>
+                    <span>@Translations.Events</span>
+                </a>
+            </li>
+
+          
+             <hr class="sidebar-divider my-0">
+
+            
+              <li class="nav-item">
+                <a asp-action="Index" asp-controller="Supplements" class="nav-link">
+                    <i class="fas fa-bullseye"></i>
+                  
+                    <span>@Translations.Goals</span>
+                </a>
+            </li>
+
+              <hr class="sidebar-divider my-0">
+
+            
+              <li class="nav-item">
+                <a asp-action="Index" asp-controller="Supplements" class="nav-link">
+                  <i class="fas fa-dumbbell"></i>
+                    <span>@Translations.Equipment</span>
+                </a>
+            </li>
+
+                 <hr class="sidebar-divider my-0">
+
+            
+              <li class="nav-item">
+                <a asp-action="Index" asp-controller="Supplements" class="nav-link">
+                  <i class="fas fa-id-card-alt"></i>
+                    <span>@Translations.Contacts</span>
+                </a>
+            </li>
+
+             <hr class="sidebar-divider my-0">
+
+            
+              <li class="nav-item">
+                <a asp-action="Index" asp-controller="Supplements" class="nav-link">
+                 <i class="fas fa-bullhorn"></i>
+                    <span>@Translations.Announcements</span>
                 </a>
             </li>
 
@@ -284,16 +388,38 @@
             <a asp-action="Index" asp-controller="Home" 
             class="sidebar-brand d-flex align-items-center justify-content-center">
                 <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-dumbbell"></i>
+                    <i class="fas fa-running"></i>
+                    
                 </div>
                 <div class="sidebar-brand-text mx-3">@Translations.ApplicationName</div>
             </a>
+            <hr class="sidebar-divider my-0">
+
+              <li class="nav-item">
+                <a asp-action="Index" asp-controller="Users" class="nav-link">
+                    <i class="fas fa-fw fa-users"></i>
+                    <span>@Translations.Users</span>
+                </a>
+            </li>
+          
+
             <hr class="sidebar-divider my-0">
 
             <li class="nav-item">
                 <a asp-action="Index" asp-controller="Reservations" class="nav-link">
                     <i class="fas fa-calendar-check"></i>
                     <span>@Translations.Reservations</span>
+                </a>
+            </li>
+
+            
+              <hr class="sidebar-divider my-0">
+
+            
+              <li class="nav-item">
+                <a asp-action="Index" asp-controller="Supplements" class="nav-link">
+                <i class="fas fa-users"></i>
+                    <span>@Translations.Sponsors</span>
                 </a>
             </li>
 
@@ -308,13 +434,64 @@
 
             <hr class="sidebar-divider my-0">
 
-            <li class="nav-item">
-                <a asp-action="Index" asp-controller="Users" class="nav-link">
-                    <i class="fas fa-fw fa-users"></i>
-                    <span>@Translations.Users</span>
+              <li class="nav-item">
+                <a asp-action="Index" asp-controller="Supplements" class="nav-link">
+                    <i class="fas fa-calendar-week"></i>
+                    <span>@Translations.Events</span>
+                </a>
+            </li>
+
+             <hr class="sidebar-divider my-0">
+
+            
+              <li class="nav-item">
+                <a asp-action="Index" asp-controller="Supplements" class="nav-link">
+                   <i class="fas fa-bullseye"></i>
+                    <span>@Translations.Goals</span>
+                </a>
+            </li>
+
+              <hr class="sidebar-divider my-0">
+
+            
+              <li class="nav-item">
+                <a asp-action="Index" asp-controller="Supplements" class="nav-link">
+                  <i class="fas fa-dumbbell"></i>
+                    <span>@Translations.Equipment</span>
                 </a>
             </li>
           
+                 <hr class="sidebar-divider my-0">
+
+            
+              <li class="nav-item">
+                <a asp-action="Index" asp-controller="Supplements" class="nav-link">
+                  <i class="fas fa-id-card-alt"></i>
+                    <span>@Translations.Contacts</span>
+                </a>
+            </li>
+
+             <hr class="sidebar-divider my-0">
+
+            
+              <li class="nav-item">
+                <a asp-action="Index" asp-controller="Supplements" class="nav-link">
+                 <i class="fas fa-bullhorn"></i>
+                    <span>@Translations.Announcements</span>
+                </a>
+            </li>
+
+              <hr class="sidebar-divider my-0">
+
+            
+              <li class="nav-item">
+                <a asp-action="Index" asp-controller="Supplements" class="nav-link">
+                <i class="fas fa-percentage"></i>
+                    <span>@Translations.Discounts</span>
+                </a>
+            </li>
+
+
 
             <hr class="sidebar-divider d-none d-md-block">
             <div class="text-center d-none d-md-inline">
