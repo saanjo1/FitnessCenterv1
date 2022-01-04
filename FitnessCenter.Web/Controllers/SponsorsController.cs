@@ -29,6 +29,7 @@ namespace FitnessCenter.Web.Controllers
         public IActionResult Index()
         {
             var _sponsors = _databaseContext.Sponsors
+                .Include(s=>s.User)
                 .ToList();
 
             return View(new SponsorsIndexViewModel
@@ -46,7 +47,7 @@ namespace FitnessCenter.Web.Controllers
             {
                 viewModel = new SponsorsManageViewModel()
                 {
-
+                    UserId = _userManager.Get().Id
                 };
             }
             else
@@ -61,7 +62,6 @@ namespace FitnessCenter.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Manage(SponsorsManageViewModel viewModel)
         {
-
             try
             {
                 Sponsor sponsor;
@@ -75,7 +75,7 @@ namespace FitnessCenter.Web.Controllers
                 {
                     sponsor = _databaseContext.Sponsors.Find(viewModel.Id);
                 }
-
+                sponsor.UserId = _userManager.Get().Id;
                 sponsor.Photo = new Photo
                 {
                     Data = await viewModel.Photo.GetBytes()

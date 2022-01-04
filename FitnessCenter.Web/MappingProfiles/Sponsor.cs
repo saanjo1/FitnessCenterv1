@@ -8,7 +8,8 @@ namespace FitnessCenter.Web.MappingProfiles
     {
         public SponsorProfile()
         {
-            CreateMap<Sponsor, SponsorsManageViewModel>().ReverseMap();
+            CreateMap<Sponsor, SponsorsManageViewModel>();
+            CreateMap<SponsorsManageViewModel, Sponsor>().ForMember(x => x.Photo, obj => obj.Ignore());
         }
     }
 }
