@@ -79,6 +79,15 @@ namespace FitnessCenter.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add new reservation.
+        /// </summary>
+        public static string AddAReservation {
+            get {
+                return ResourceManager.GetString("AddAReservation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Announcements.
         /// </summary>
         public static string Announcements {
@@ -286,6 +295,15 @@ namespace FitnessCenter.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Here are some events you might like....
+        /// </summary>
+        public static string EventsYouMightLike {
+            get {
+                return ResourceManager.GetString("EventsYouMightLike", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to First name.
         /// </summary>
         public static string FirstName {
@@ -336,6 +354,24 @@ namespace FitnessCenter.Web.Resources {
         public static string LastName {
             get {
                 return ResourceManager.GetString("LastName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Leave a review.
+        /// </summary>
+        public static string LeaveAReview {
+            get {
+                return ResourceManager.GetString("LeaveAReview", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Location.
+        /// </summary>
+        public static string Location {
+            get {
+                return ResourceManager.GetString("Location", resourceCulture);
             }
         }
         
@@ -399,6 +435,15 @@ namespace FitnessCenter.Web.Resources {
         public static string Profile {
             get {
                 return ResourceManager.GetString("Profile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rate.
+        /// </summary>
+        public static string Rate {
+            get {
+                return ResourceManager.GetString("Rate", resourceCulture);
             }
         }
         
@@ -480,6 +525,15 @@ namespace FitnessCenter.Web.Resources {
         public static string ReservedTo {
             get {
                 return ResourceManager.GetString("ReservedTo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Review.
+        /// </summary>
+        public static string Review {
+            get {
+                return ResourceManager.GetString("Review", resourceCulture);
             }
         }
         

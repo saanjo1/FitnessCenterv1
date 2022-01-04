@@ -85,8 +85,7 @@ justify-content-between align-items-center">
 }
 else
 {
-    <div class="card shadow mb-4">
-        <div class="card-header py-3">
+    
          <h5 class="m-0 font-weight-bold text-primary d-flex
 justify-content-between align-items-center"> @Translations.AvailableEvents
          </h5>
@@ -103,7 +102,6 @@ justify-content-between align-items-center"> @Translations.AvailableEvents
                                 <div class="card-body">
                                     <center>
                                         <h5 class="card-title">@events.Name</h5>
-                                        <p class="card-text">@events.Description</p>
                                         <a asp-action="View" asp-controller="Events" asp-route-id="@events.Id" class="btn btn-primary">View event</a>
                                     </center>
                                 </div>
@@ -113,7 +111,6 @@ justify-content-between align-items-center"> @Translations.AvailableEvents
                 }
             </div>
         </div>
-    </div>
-            </div>
+ 
 }
 

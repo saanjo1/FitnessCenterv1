@@ -123,6 +123,9 @@
   <data name="Add" xml:space="preserve">
     <value>Add</value>
   </data>
+  <data name="AddAReservation" xml:space="preserve">
+    <value>Add new reservation</value>
+  </data>
   <data name="Announcements" xml:space="preserve">
     <value>Announcements</value>
   </data>
@@ -192,6 +195,9 @@
   <data name="Events" xml:space="preserve">
     <value>Events</value>
   </data>
+  <data name="EventsYouMightLike" xml:space="preserve">
+    <value>Here are some events you might like...</value>
+  </data>
   <data name="FirstName" xml:space="preserve">
     <value>First name</value>
   </data>
@@ -209,6 +215,12 @@
   </data>
   <data name="LastName" xml:space="preserve">
     <value>Last name</value>
+  </data>
+  <data name="LeaveAReview" xml:space="preserve">
+    <value>Leave a review</value>
+  </data>
+  <data name="Location" xml:space="preserve">
+    <value>Location</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>Name</value>
@@ -230,6 +242,9 @@
   </data>
   <data name="Profile" xml:space="preserve">
     <value>Profile</value>
+  </data>
+  <data name="Rate" xml:space="preserve">
+    <value>Rate</value>
   </data>
   <data name="ReservationAdd" xml:space="preserve">
     <value>Adding reservation</value>
@@ -257,6 +272,9 @@
   </data>
   <data name="ReservedTo" xml:space="preserve">
     <value>Reserved to</value>
+  </data>
+  <data name="Review" xml:space="preserve">
+    <value>Review</value>
   </data>
   <data name="Role" xml:space="preserve">
     <value>Role</value>

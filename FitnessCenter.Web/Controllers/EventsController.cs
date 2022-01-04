@@ -19,7 +19,6 @@ namespace FitnessCenter.Web.Controllers
         {
             var events = _databaseContext.Events.ToList();
 
-
             return View(new EventsIndexViewModel
             {
                 Events = events
@@ -28,13 +27,13 @@ namespace FitnessCenter.Web.Controllers
         [HttpGet]
         public IActionResult View(int id)
         {
-            var events = _databaseContext.Events.Where(e => e.Id == id).ToList();
+            var _event = _databaseContext.Events.Where(e => e.Id == id).Single();
+           
             return View(new EventsIndexViewModel
             {
-                Events = events
+                Event = _event
             });
         }
-
 
         [HttpPost]
         public IActionResult Manage()
