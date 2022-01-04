@@ -279,6 +279,24 @@
   <data name="Sponsor" xml:space="preserve">
     <value>Sponsor</value>
   </data>
+  <data name="SponsorAdd" xml:space="preserve">
+    <value>Adding sponsor</value>
+  </data>
+  <data name="SponsorAddFailure" xml:space="preserve">
+    <value>An error ocurred while adding a new sponsor.</value>
+  </data>
+  <data name="SponsorAddSuccess" xml:space="preserve">
+    <value>Sponsor added successfully.</value>
+  </data>
+  <data name="SponsorEdit" xml:space="preserve">
+    <value>Editing sponsor</value>
+  </data>
+  <data name="SponsorEditFailure" xml:space="preserve">
+    <value>An error occured while editing a sponsor.</value>
+  </data>
+  <data name="SponsorEditSuccess" xml:space="preserve">
+    <value>Sponsor edited sucessfully,</value>
+  </data>
   <data name="Sponsors" xml:space="preserve">
     <value>Sponsors</value>
   </data>
