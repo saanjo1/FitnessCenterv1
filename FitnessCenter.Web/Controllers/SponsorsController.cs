@@ -59,6 +59,22 @@ namespace FitnessCenter.Web.Controllers
             return View(viewModel);
         }
 
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            try
+            {
+                var sponsor = _databaseContext.Sponsors.Find(id);
+                _databaseContext.RemoveRange(sponsor);
+                _databaseContext.SaveChanges();
+                _flashMessage.Confirmation(Translations.DeleteSuccess);
+            }
+            catch
+            {
+                _flashMessage.Danger(Translations.DeleteFail);
+            }
+            return RedirectToAction("Index");
+        }
         [HttpPost]
         public async Task<IActionResult> Manage(SponsorsManageViewModel viewModel)
         {
@@ -75,7 +91,6 @@ namespace FitnessCenter.Web.Controllers
                 {
                     sponsor = _databaseContext.Sponsors.Find(viewModel.Id);
                 }
-                sponsor.UserId = _userManager.Get().Id;
                 sponsor.Photo = new Photo
                 {
                     Data = await viewModel.Photo.GetBytes()
@@ -100,23 +115,6 @@ namespace FitnessCenter.Web.Controllers
             return RedirectToAction("Index");
         }
 
-        [HttpGet]
-        public IActionResult Delete(int id)
-        {
-            try
-            {
-                var sponsor = _databaseContext.Sponsors.Find(id);
-                _databaseContext.Remove(sponsor);
-                _databaseContext.SaveChanges();
-
-                _flashMessage.Confirmation(Translations.DeleteSuccess);
-            }
-            catch
-            {
-                _flashMessage.Confirmation(Translations.DeleteFail);
-            }
-
-            return RedirectToAction("Index");
-        }
+      
     }
 }
