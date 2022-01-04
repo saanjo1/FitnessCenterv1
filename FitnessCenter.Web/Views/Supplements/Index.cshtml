@@ -40,12 +40,12 @@ justify-content-between align-items-center">
                                         <img class="rounded" src="@Url.Action("Index","Photos",new {id=supplement.PhotoId})" width="30" height="30" />
                                     </td>
                                     <td class="action-column">
-                                        <a asp-action="Manage" asp-controller="Reservations"
+                                        <a asp-action="Manage" asp-controller="Supplements"
                                asp-route-id="@supplement.Id"
                                class="btn btn-sm btn-outline-primary">
                                             @Translations.Edit
                                         </a>
-                                        <a asp-action="Delete" asp-controller="Reservations" asp-route-id="@supplement.Id"
+                                        <a asp-action="Delete" asp-controller="Supplements" asp-route-id="@supplement.Id"
                                data-toggle="modal" data-target="#confirm-delete" class="btn btn-outline-danger btn-sm ">
                                             @Translations.Delete
                                         </a>
@@ -67,7 +67,7 @@ justify-content-between align-items-center">
                                                     data-dismiss="modal">
                                                             @Translations.Cancel
                                                         </button>
-                                                        <a asp-action="Delete" asp-controller="Reservations"
+                                                        <a asp-action="Delete" asp-controller="Supplements"
                                                asp-route-id="@supplement.Id"
                                                class="btn btn-danger">@Translations.Delete</a>
                                                     </div>

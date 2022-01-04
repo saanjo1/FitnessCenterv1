@@ -601,6 +601,60 @@ namespace FitnessCenter.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Adding sponsor.
+        /// </summary>
+        public static string SponsorAdd {
+            get {
+                return ResourceManager.GetString("SponsorAdd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An error ocurred while adding a new sponsor..
+        /// </summary>
+        public static string SponsorAddFailure {
+            get {
+                return ResourceManager.GetString("SponsorAddFailure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sponsor added successfully..
+        /// </summary>
+        public static string SponsorAddSuccess {
+            get {
+                return ResourceManager.GetString("SponsorAddSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Editing sponsor.
+        /// </summary>
+        public static string SponsorEdit {
+            get {
+                return ResourceManager.GetString("SponsorEdit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An error occured while editing a sponsor..
+        /// </summary>
+        public static string SponsorEditFailure {
+            get {
+                return ResourceManager.GetString("SponsorEditFailure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sponsor edited sucessfully,.
+        /// </summary>
+        public static string SponsorEditSuccess {
+            get {
+                return ResourceManager.GetString("SponsorEditSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sponsors.
         /// </summary>
         public static string Sponsors {
