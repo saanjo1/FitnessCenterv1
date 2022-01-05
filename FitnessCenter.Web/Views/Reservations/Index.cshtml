@@ -42,34 +42,9 @@
                                             @Translations.Edit
                                         </a>
                                         <a asp-action="Delete" asp-controller="Reservations" asp-route-id="@reservation.Id"
-                               data-toggle="modal" data-target="#confirm-delete" class="btn btn-outline-danger btn-sm ">
+                                class="btn btn-outline-danger btn-sm ">
                                             @Translations.Delete
                                         </a>
-                                        <div class="modal fade" id="confirm-delete"
-                                 tabindex="-1" role="dialog" aria-labelledby="modalLabel"
-                                 aria-hidden="true">
-                                            <div class="modal-dialog" role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="modalLabel">@Translations.AreYouSure</h5>
-                                                        <button class="close" type="button" data-dismiss="modal"
-                                                    aria-label="Close">
-                                                            <span aria-hidden="true">×</span>
-                                                        </button>
-                                                    </div>
-                                                    <div class="modal-body">@Translations.DeleteConfirmation</div>
-                                                    <div class="modal-footer">
-                                                        <button class="btn btn-secondary" type="button"
-                                                    data-dismiss="modal">
-                                                            @Translations.Cancel
-                                                        </button>
-                                                        <a asp-action="Delete" asp-controller="Reservations"
-                                               asp-route-id="@reservation.Id"
-                                               class="btn btn-danger">@Translations.Delete</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </td>
                                 </tr>
                             }
@@ -134,35 +109,10 @@ else
                                             @Translations.Edit
                                         </a>
                                         <a asp-action="Delete" asp-controller="Reservations" asp-route-id="@reservation.Id"
-                               data-toggle="modal" data-target="#confirm-delete" class="btn btn-outline-danger btn-sm ">
+                               class="btn btn-outline-danger btn-sm ">
                                             @Translations.Delete
                                         </a>
                                     </td>
-                                    <div class="modal fade" id="confirm-delete"
-                             tabindex="-1" role="dialog" aria-labelledby="modalLabel"
-                             aria-hidden="true">
-                                        <div class="modal-dialog" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="modalLabel">@Translations.AreYouSure</h5>
-                                                    <button class="close" type="button" data-dismiss="modal"
-                                                aria-label="Close">
-                                                        <span aria-hidden="true">×</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">@Translations.DeleteConfirmation</div>
-                                                <div class="modal-footer">
-                                                    <button class="btn btn-secondary" type="button"
-                                                data-dismiss="modal">
-                                                        @Translations.Cancel
-                                                    </button>
-                                                    <a asp-action="Delete" asp-controller="Reservations"
-                                           asp-route-id="@reservation.Id"
-                                           class="btn btn-danger">@Translations.Delete</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </tr>
                             }
                         }

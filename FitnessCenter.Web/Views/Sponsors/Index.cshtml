@@ -6,117 +6,93 @@
     ViewData["Title"] = @Translations.Sponsors;
 }
 
-@if(_userManager.IsInRoles(Role.Administrator))
+@if (_userManager.IsInRoles(Role.Administrator))
 {
     <div class="card shadow mb-4">
-    <div class="card-header py-3">
-        <h5 class="m-0 font-weight-bold text-primary d-flex
+        <div class="card-header py-3">
+            <h5 class="m-0 font-weight-bold text-primary d-flex
 justify-content-between align-items-center">
-            @ViewData["Title"]
-            <a asp-action="Manage" asp-controller="Sponsors" class="btn btn-sm btn-primary">
-                <i class="fas fa-plus"></i>
-                @Translations.Add
-            </a>
-        </h5>
-    </div>
-    <div class="card-body">
-        <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <thead>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Photo</th>
-                <th>Action</th>
-                </thead>
-                <tbody>
-                    @if (Model.Sponsors.Any())
-                    {
-                        foreach (var sponsor in Model.Sponsors)
+                @ViewData["Title"]
+                <a asp-action="Manage" asp-controller="Sponsors" class="btn btn-sm btn-primary">
+                    <i class="fas fa-plus"></i>
+                    @Translations.Add
+                </a>
+            </h5>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Photo</th>
+                    <th>Action</th>
+                    </thead>
+                    <tbody>
+                        @if (Model.Sponsors.Any())
                         {
-                            <tr>
-                                <td>@sponsor.Name</td>
-                                <td>@sponsor.Description</td>
-                                <td class="action-column">
-                                    <img class="rounded" src="@Url.Action("Index","Photos",new {id=sponsor.PhotoId})" width="30" height="30" />
-                                </td>
-                                <td class="action-column">
-                                    <a asp-action="Manage" asp-controller="Sponsors"
+                            foreach (var sponsor in Model.Sponsors)
+                            {
+                                <tr>
+                                    <td>@sponsor.Name</td>
+                                    <td>@sponsor.Description</td>
+                                    <td class="action-column">
+                                        <img class="rounded" src="@Url.Action("Index","Photos",new {id=sponsor.PhotoId})" width="30" height="30" />
+                                    </td>
+                                    <td class="action-column">
+                                        <a asp-action="Manage" asp-controller="Sponsors"
                                asp-route-id="@sponsor.Id"
                                class="btn btn-sm btn-outline-primary">
-                                        @Translations.Edit
-                                    </a>
-                                    <a asp-action="Delete" asp-controller="Sponsors" asp-route-id="@sponsor.Id"
-                               data-toggle="modal" data-target="#confirm-delete" class="btn btn-outline-danger btn-sm ">
-                                        @Translations.Delete
-                                    </a>
-                                    <div class="modal fade" id="confirm-delete"
-                                 tabindex="-1" role="dialog" aria-labelledby="modalLabel"
-                                 aria-hidden="true">
-                                        <div class="modal-dialog" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="modalLabel">@Translations.AreYouSure</h5>
-                                                    <button class="close" type="button" data-dismiss="modal"
-                                                    aria-label="Close">
-                                                        <span aria-hidden="true">×</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">@Translations.DeleteConfirmation</div>
-                                                <div class="modal-footer">
-                                                    <button class="btn btn-secondary" type="button"
-                                                    data-dismiss="modal">
-                                                        @Translations.Cancel
-                                                    </button>
-                                                    <a asp-action="Delete" asp-controller="Sponsors"
-                                               asp-route-id="@sponsor.Id"
-                                               class="btn btn-danger">@Translations.Delete</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
+                                            @Translations.Edit
+                                        </a>
+                                        <a asp-action="Delete" asp-controller="Sponsors" asp-route-id="@sponsor.Id"
+                               class="btn btn-outline-danger btn-sm ">
+                                            @Translations.Delete
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="6" class="text-center">@Translations.NoResultsToShow</td>
                             </tr>
                         }
-                    }
-                    else
-                    {
-                        <tr>
-                            <td colspan="6" class="text-center">@Translations.NoResultsToShow</td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </div>
         </div>
-    </div>
     </div>
 }
 else
 {
-         <h5 class="m-0 font-weight-bold text-primary d-flex
-justify-content-between align-items-center"> @Translations.Sponsors
-         </h5>
-        <div class="container">
-            <div class="row">
-                @if (Model.Sponsors.Any())
+    <h5 class="m-0 font-weight-bold text-primary d-flex
+justify-content-between align-items-center">
+        @Translations.Sponsors
+    </h5>
+    <div class="container">
+        <div class="row">
+            @if (Model.Sponsors.Any())
+            {
+                foreach (var sponsor in Model.Sponsors)
                 {
-                    foreach (var sponsor in Model.Sponsors)
-                    {
-                        <div class="col-lg-3 col-sm-6">
-                            <br>
-                            <div class="customCard" style="width: 16rem;">
-                                <img class="card-img-top" src="@Url.Action("Index","Photos",new {id=sponsor.PhotoId})"/>
-                                <div class="card-body">
-                                    <center>
-                                        <h5 class="card-title">@sponsor.Name</h5>
-                                        <h6 class="card-title">@sponsor.Description</h6>
-                                    </center>
-                                </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <br>
+                        <div class="customCard" style="width: 16rem;">
+                            <img class="card-img-top" src="@Url.Action("Index","Photos",new {id=sponsor.PhotoId})" />
+                            <div class="card-body">
+                                <center>
+                                    <h5 class="card-title">@sponsor.Name</h5>
+                                    <h6 class="card-title">@sponsor.Description</h6>
+                                </center>
                             </div>
                         </div>
-                    }
+                    </div>
                 }
-            </div>
+            }
         </div>
+    </div>
 }
 
 
