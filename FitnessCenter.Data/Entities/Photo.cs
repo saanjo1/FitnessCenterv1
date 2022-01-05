@@ -10,5 +10,6 @@ namespace FitnessCenter.Data.Entities
         public ICollection<Event> Events { get; set; }
         public ICollection<Equipment> Equipment { get; set; }
         public ICollection<Discount> Discount { get; set; }
+        public ICollection<Contact> Contact { get; set; }
     }
 }
