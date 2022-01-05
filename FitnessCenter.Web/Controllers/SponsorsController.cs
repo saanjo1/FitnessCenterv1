@@ -65,7 +65,12 @@ namespace FitnessCenter.Web.Controllers
             try
             {
                 var sponsor = _databaseContext.Sponsors.Find(id);
-                _databaseContext.RemoveRange(sponsor);
+                _databaseContext.Remove(sponsor);
+
+                var supplements = _databaseContext.Supplements.Where(s => s.SponsorId == s.Id).ToList();
+                supplements.ForEach(s => { s.SponsorId = null; });
+
+
                 _databaseContext.SaveChanges();
                 _flashMessage.Confirmation(Translations.DeleteSuccess);
             }

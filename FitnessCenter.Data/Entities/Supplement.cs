@@ -9,7 +9,7 @@ namespace FitnessCenter.Data.Entities
         public string Description { get; set; }
         public double Price { get; set; }
 
-        public int SponsorId { get; set; }
+        public int? SponsorId { get; set; }
         public Sponsor Sponsor { get; set; }
 
         public int PhotoId { get; set; }
