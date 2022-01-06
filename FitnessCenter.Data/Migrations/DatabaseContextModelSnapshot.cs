@@ -49,6 +49,16 @@ namespace FitnessCenter.Data.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Announcements");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AuthorId = 1,
+                            Description = "Free weekend for all clients",
+                            Title = "Free weekend",
+                            UserId = 3
+                        });
                 });
 
             modelBuilder.Entity("FitnessCenter.Data.Entities.Contact", b =>
@@ -62,6 +72,9 @@ namespace FitnessCenter.Data.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("PhotoId")
+                        .HasColumnType("int");
+
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
@@ -69,6 +82,8 @@ namespace FitnessCenter.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("PhotoId");
 
                     b.HasIndex("UserId");
 
@@ -724,11 +739,19 @@ namespace FitnessCenter.Data.Migrations
 
             modelBuilder.Entity("FitnessCenter.Data.Entities.Contact", b =>
                 {
+                    b.HasOne("FitnessCenter.Data.Entities.Photo", "Photo")
+                        .WithMany("Contact")
+                        .HasForeignKey("PhotoId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.HasOne("FitnessCenter.Data.Entities.User", "User")
                         .WithMany("Contacts")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.Navigation("Photo");
 
                     b.Navigation("User");
                 });
@@ -969,6 +992,8 @@ namespace FitnessCenter.Data.Migrations
 
             modelBuilder.Entity("FitnessCenter.Data.Entities.Photo", b =>
                 {
+                    b.Navigation("Contact");
+
                     b.Navigation("Discount");
 
                     b.Navigation("Equipment");

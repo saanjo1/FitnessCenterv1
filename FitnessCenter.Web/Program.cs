@@ -1,6 +1,7 @@
 using FitnessCenter.Data;
 using FitnessCenter.Web.Services;
 using FitnessCenter.Web.Utilities.Constants;
+using FitnessCenter.Web.ViewComponents;
 using Microsoft.EntityFrameworkCore;
 using Vereyon.Web;
 

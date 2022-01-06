@@ -177,6 +177,17 @@ namespace FitnessCenter.Data
                     Price = 25.00,
                 });
 
+            modelBuilder.Entity<Announcement>()
+              .HasData(
+                new Announcement
+                {
+                    Id = 1,
+                    AuthorId = 1,
+                    Title = "Free weekend",
+                    Description = "Free weekend for all clients",
+                    UserId = 3
+                });
+
 
             modelBuilder.Entity<Announcement>()
                .HasOne(a => a.Author)

@@ -53,15 +53,6 @@
     e.preventDefault();
   });
 
-    $(document).ready(function () {
-        $("#input-21b").on("rating.change", function (event, value, caption) {
-
-            var ratingValue = $('#<%=hdfRatingValue.ClientID%>').val();
-            ratingValue = value;
-            alert(ratingValue);
-        });
-    });
-
     $('#confirm-delete').on('show.bs.modal', function (e) {
         $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
     });
