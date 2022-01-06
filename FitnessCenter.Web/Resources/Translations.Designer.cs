@@ -124,6 +124,15 @@ namespace FitnessCenter.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete?.
+        /// </summary>
+        public static string AreYouSureDelete {
+            get {
+                return ResourceManager.GetString("AreYouSureDelete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Available events.
         /// </summary>
         public static string AvailableEvents {

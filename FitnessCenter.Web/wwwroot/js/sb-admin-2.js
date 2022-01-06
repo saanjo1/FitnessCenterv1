@@ -61,4 +61,8 @@
             alert(ratingValue);
         });
     });
+
+    $('#confirm-delete').on('show.bs.modal', function (e) {
+        $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+    });
 })(jQuery); // End of use strict

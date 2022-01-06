@@ -138,6 +138,9 @@
   <data name="AreYouSure" xml:space="preserve">
     <value>Are you sure?</value>
   </data>
+  <data name="AreYouSureDelete" xml:space="preserve">
+    <value>Are you sure you want to delete?</value>
+  </data>
   <data name="AvailableEvents" xml:space="preserve">
     <value>Available events</value>
   </data>
