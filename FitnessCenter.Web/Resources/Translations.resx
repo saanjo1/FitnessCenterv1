@@ -156,6 +156,24 @@
   <data name="Coach" xml:space="preserve">
     <value>Coach</value>
   </data>
+  <data name="ContactAdd" xml:space="preserve">
+    <value>Adding contact</value>
+  </data>
+  <data name="ContactAddFailure" xml:space="preserve">
+    <value>An error occured while adding a new contact.</value>
+  </data>
+  <data name="ContactAddSuccess" xml:space="preserve">
+    <value>Contact added successfully.</value>
+  </data>
+  <data name="ContactEdit" xml:space="preserve">
+    <value>Editing contact</value>
+  </data>
+  <data name="ContactEditFailure" xml:space="preserve">
+    <value>An error occured while editing a contact.</value>
+  </data>
+  <data name="ContactEditSuccess" xml:space="preserve">
+    <value>Contact edited successfully.</value>
+  </data>
   <data name="Contacts" xml:space="preserve">
     <value>Contacts</value>
   </data>
@@ -359,5 +377,8 @@
   </data>
   <data name="UserSupplements" xml:space="preserve">
     <value>User supplements</value>
+  </data>
+  <data name="Value" xml:space="preserve">
+    <value>Value</value>
   </data>
 </root>
