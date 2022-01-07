@@ -178,6 +178,60 @@ namespace FitnessCenter.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Adding contact.
+        /// </summary>
+        public static string ContactAdd {
+            get {
+                return ResourceManager.GetString("ContactAdd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An error occured while adding a new contact..
+        /// </summary>
+        public static string ContactAddFailure {
+            get {
+                return ResourceManager.GetString("ContactAddFailure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Contact added successfully..
+        /// </summary>
+        public static string ContactAddSuccess {
+            get {
+                return ResourceManager.GetString("ContactAddSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Editing contact.
+        /// </summary>
+        public static string ContactEdit {
+            get {
+                return ResourceManager.GetString("ContactEdit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An error occured while editing a contact..
+        /// </summary>
+        public static string ContactEditFailure {
+            get {
+                return ResourceManager.GetString("ContactEditFailure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Contact edited successfully..
+        /// </summary>
+        public static string ContactEditSuccess {
+            get {
+                return ResourceManager.GetString("ContactEditSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Contacts.
         /// </summary>
         public static string Contacts {
@@ -201,6 +255,15 @@ namespace FitnessCenter.Web.Resources {
         public static string Dashboard {
             get {
                 return ResourceManager.GetString("Dashboard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Date and time.
+        /// </summary>
+        public static string DateTime {
+            get {
+                return ResourceManager.GetString("DateTime", resourceCulture);
             }
         }
         
@@ -300,6 +363,60 @@ namespace FitnessCenter.Web.Resources {
         public static string Equipment {
             get {
                 return ResourceManager.GetString("Equipment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Adding a new event.
+        /// </summary>
+        public static string EventAdd {
+            get {
+                return ResourceManager.GetString("EventAdd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An error occurred while adding a new event..
+        /// </summary>
+        public static string EventAddFailure {
+            get {
+                return ResourceManager.GetString("EventAddFailure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Successfully added event..
+        /// </summary>
+        public static string EventAddSuccess {
+            get {
+                return ResourceManager.GetString("EventAddSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Editing an existing event.
+        /// </summary>
+        public static string EventEdit {
+            get {
+                return ResourceManager.GetString("EventEdit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An error occurred while editing event..
+        /// </summary>
+        public static string EventEditFailure {
+            get {
+                return ResourceManager.GetString("EventEditFailure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Successfully edited event..
+        /// </summary>
+        public static string EventEditSuccess {
+            get {
+                return ResourceManager.GetString("EventEditSuccess", resourceCulture);
             }
         }
         
@@ -786,6 +903,15 @@ namespace FitnessCenter.Web.Resources {
         public static string UserSupplements {
             get {
                 return ResourceManager.GetString("UserSupplements", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Value.
+        /// </summary>
+        public static string Value {
+            get {
+                return ResourceManager.GetString("Value", resourceCulture);
             }
         }
     }
