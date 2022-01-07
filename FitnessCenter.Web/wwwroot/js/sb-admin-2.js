@@ -56,4 +56,8 @@
     $('#confirm-delete').on('show.bs.modal', function (e) {
         $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
     });
+
+    $('#alertsDropdown').click(function () {
+        $(".badge").fadeOut("slow");
+    });
 })(jQuery); // End of use strict
