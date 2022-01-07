@@ -259,6 +259,15 @@ namespace FitnessCenter.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Date and time.
+        /// </summary>
+        public static string DateTime {
+            get {
+                return ResourceManager.GetString("DateTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Date time from.
         /// </summary>
         public static string DateTimeFrom {
@@ -354,6 +363,60 @@ namespace FitnessCenter.Web.Resources {
         public static string Equipment {
             get {
                 return ResourceManager.GetString("Equipment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Adding a new event.
+        /// </summary>
+        public static string EventAdd {
+            get {
+                return ResourceManager.GetString("EventAdd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An error occurred while adding a new event..
+        /// </summary>
+        public static string EventAddFailure {
+            get {
+                return ResourceManager.GetString("EventAddFailure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Successfully added event..
+        /// </summary>
+        public static string EventAddSuccess {
+            get {
+                return ResourceManager.GetString("EventAddSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Editing an existing event.
+        /// </summary>
+        public static string EventEdit {
+            get {
+                return ResourceManager.GetString("EventEdit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An error occurred while editing event..
+        /// </summary>
+        public static string EventEditFailure {
+            get {
+                return ResourceManager.GetString("EventEditFailure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Successfully edited event..
+        /// </summary>
+        public static string EventEditSuccess {
+            get {
+                return ResourceManager.GetString("EventEditSuccess", resourceCulture);
             }
         }
         

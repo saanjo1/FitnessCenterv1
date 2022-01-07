@@ -183,6 +183,9 @@
   <data name="Dashboard" xml:space="preserve">
     <value>Dashboard</value>
   </data>
+  <data name="DateTime" xml:space="preserve">
+    <value>Date and time</value>
+  </data>
   <data name="DateTimeFrom" xml:space="preserve">
     <value>Date time from</value>
   </data>
@@ -215,6 +218,24 @@
   </data>
   <data name="Equipment" xml:space="preserve">
     <value>Equipment</value>
+  </data>
+  <data name="EventAdd" xml:space="preserve">
+    <value>Adding a new event</value>
+  </data>
+  <data name="EventAddFailure" xml:space="preserve">
+    <value>An error occurred while adding a new event.</value>
+  </data>
+  <data name="EventAddSuccess" xml:space="preserve">
+    <value>Successfully added event.</value>
+  </data>
+  <data name="EventEdit" xml:space="preserve">
+    <value>Editing an existing event</value>
+  </data>
+  <data name="EventEditFailure" xml:space="preserve">
+    <value>An error occurred while editing event.</value>
+  </data>
+  <data name="EventEditSuccess" xml:space="preserve">
+    <value>Successfully edited event.</value>
   </data>
   <data name="Events" xml:space="preserve">
     <value>Events</value>
