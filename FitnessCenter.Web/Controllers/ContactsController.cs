@@ -96,6 +96,25 @@ namespace FitnessCenter.Web.Controllers
 
             return RedirectToAction("Index");
         }
-}
+
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            try
+            {
+                var contact = _databaseContext.Contacts.Find(id);
+                _databaseContext.Remove(contact);
+                _databaseContext.SaveChanges();
+
+                _flashMessage.Confirmation(Translations.DeleteSuccess);
+            }
+            catch
+            {
+                _flashMessage.Confirmation(Translations.DeleteFail);
+            }
+
+            return RedirectToAction("Index");
+        }
+    }
     }
 

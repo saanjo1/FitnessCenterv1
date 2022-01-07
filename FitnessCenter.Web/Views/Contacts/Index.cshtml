@@ -2,43 +2,87 @@
 @model ContactsIndexViewModel
 @inject UserManager _userManager
 @{
+    var user = _userManager.Get();
     ViewData["Title"] = @Translations.Contacts;
 }
-<h5 class="m-0 font-weight-bold text-primary d-flex
+
+@if (_userManager.IsInRoles(Role.Administrator))
+{
+    <h5 class="m-0 font-weight-bold text-primary d-flex
 justify-content-between align-items-center">
-    @Translations.Contacts
-    <a asp-action="Manage" asp-controller="Contacts" class="btn btn-sm btn-primary">
-                    <i class="fas fa-plus"></i>
-                    @Translations.Add
-                </a>
-            </h5>
-</h5>
-<div class="container">
-    <div class="row">
-        @if (Model.Contacts.Any())
-        {
-            foreach (var contact in Model.Contacts)
+        @Translations.Contacts
+        <a asp-action="Manage" asp-controller="Contacts" class="btn btn-sm btn-primary">
+            <i class="fas fa-plus"></i>
+            @Translations.Add
+        </a>
+    </h5>
+    <div class="container">
+        <div class="row">
+            @if (Model.Contacts.Any())
             {
-                <div class="col-lg-3 col-sm-6">
-                    <br>
-                    <div class="customCard" style="width: 16rem;">
-                        <img class="card-img-top" src="@Url.Action("Index","Photos",new {id=contact.PhotoId})" />
-                        <div class="card-body">
-                            <center>
-                                <h5 class="card-title">@contact.Name</h5>
-                                <h5 class="card-title">@contact.Value</h5>
-                            </center>
+                foreach (var contact in Model.Contacts)
+                {
+                    <div class="col-lg-3 col-sm-6">
+                        <br>
+                        <div class="customCard" style="width: 16rem;">
+                            <img class="card-img-top" src="@Url.Action("Index","Photos",new {id=contact.PhotoId})" />
+                            <div class="card-body">
+                                <center>
+                                    <h5 class="card-title">@contact.Name</h5>
+                                    <h5 class="card-title">@contact.Value</h5>
+                                    <a asp-action="Manage" asp-controller="Contacts"
+                           asp-route-id="@contact.Id"
+                           class="btn btn-sm btn-outline-primary">
+                                        @Translations.Edit
+                                    </a>
+                                    <a asp-action="Delete" asp-controller="Contacts"
+                           asp-route-id="@contact.Id"
+                           class="btn btn-sm btn-outline-primary">
+                                        @Translations.Delete
+                                    </a>
+                                </center>
+                            </div>
                         </div>
                     </div>
-                </div>
+                }
             }
-        }
-        else
+            else
+            {
+                <h3 style="margin-top:25%; margin-left:40%">@Translations.NoResultsToShow</h3>
+            }
+        </div>
+    </div>
+}
+else
+{
+    <h5 class="m-0 font-weight-bold text-primary d-flex
+justify-content-between align-items-center">
+        @Translations.Sponsors
+    </h5>
+    <div class="container">
+        <div class="row">
+            @if (Model.Contacts.Any())
+            {
+                foreach (var sponsor in Model.Contacts)
+                {
+                    <div class="col-lg-3 col-sm-6">
+                        <br>
+                        <div class="customCard" style="width: 16rem;">
+                            <img class="card-img-top" src="@Url.Action("Index","Photos",new {id=sponsor.PhotoId})" />
+                            <div class="card-body">
+                                <center>
+                                    <h5 class="card-title">@sponsor.Name</h5>
+                                    <h6 class="card-title">@sponsor.Value</h6>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+            else
         {
             <h3 style="margin-top:25%; margin-left:40%">@Translations.NoResultsToShow</h3>
         }
+        </div>
     </div>
-</div>
-
-
-
+}
