@@ -108,8 +108,9 @@ else
                                class="btn btn-sm btn-outline-primary">
                                             @Translations.Edit
                                         </a>
-                                        <a asp-route-id="@reservation.Id" data-href="/reservations/delete?id=@reservation.Id" data-toggle="modal" 
+                                        <a asp-route-id="@reservation.Id" data-href="~/reservations/delete?id=@reservation.Id" data-toggle="modal" 
                                         data-target="#confirm-delete" class="btn btn-sm btn-outline-danger">Delete</a>
+                                       
                                         <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
