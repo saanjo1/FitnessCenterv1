@@ -72,11 +72,13 @@ namespace FitnessCenter.Web.Controllers
                     contact = _databaseContext.Contacts.Find(viewModel.Id);
                 }
 
-                contact.Photo = new Photo
+                if(viewModel.Photo != null)
                 {
-                    Data = await viewModel.Photo.GetBytes()
-                };
-
+                    contact.Photo = new Photo
+                    {
+                        Data = await viewModel.Photo.GetBytes()
+                    };
+                }
                 _mapper.Map(viewModel, contact);
                 _databaseContext.SaveChanges();
 

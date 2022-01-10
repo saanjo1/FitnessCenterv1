@@ -96,10 +96,13 @@ namespace FitnessCenter.Web.Controllers
                 {
                     sponsor = _databaseContext.Sponsors.Find(viewModel.Id);
                 }
-                sponsor.Photo = new Photo
+                if (viewModel.Photo != null)
                 {
-                    Data = await viewModel.Photo.GetBytes()
-                };
+                    sponsor.Photo = new Photo
+                    {
+                        Data = await viewModel.Photo.GetBytes()
+                    };
+                }
 
                 _mapper.Map(viewModel, sponsor);
                 _databaseContext.SaveChanges();
