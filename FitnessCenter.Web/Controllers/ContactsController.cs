@@ -19,8 +19,8 @@ namespace FitnessCenter.Web.Controllers
         {
             _databaseContext = databaseContext;
             _mapper = mapper;
-            _flashMessage= flashMessage;
-            _userManager= userManager;  
+            _flashMessage = flashMessage;
+            _userManager = userManager;
         }
         public IActionResult Index()
         {
@@ -37,7 +37,7 @@ namespace FitnessCenter.Web.Controllers
 
             ContactsManageViewModel viewModel;
 
-            if(id == 0)
+            if (id == 0)
             {
                 viewModel = new ContactsManageViewModel
                 {
@@ -72,7 +72,7 @@ namespace FitnessCenter.Web.Controllers
                     contact = _databaseContext.Contacts.Find(viewModel.Id);
                 }
 
-                if(viewModel.Photo != null)
+                if (viewModel.Photo != null)
                 {
                     contact.Photo = new Photo
                     {
@@ -118,5 +118,5 @@ namespace FitnessCenter.Web.Controllers
             return RedirectToAction("Index");
         }
     }
-    }
+}
 
