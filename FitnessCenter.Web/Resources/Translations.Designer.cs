@@ -367,6 +367,60 @@ namespace FitnessCenter.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Adding equipment.
+        /// </summary>
+        public static string EquipmentAdd {
+            get {
+                return ResourceManager.GetString("EquipmentAdd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An error occured while adding an equipment..
+        /// </summary>
+        public static string EquipmentAddFailure {
+            get {
+                return ResourceManager.GetString("EquipmentAddFailure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Equipment added successfully..
+        /// </summary>
+        public static string EquipmentAddSuccess {
+            get {
+                return ResourceManager.GetString("EquipmentAddSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Editing equipment.
+        /// </summary>
+        public static string EquipmentEdit {
+            get {
+                return ResourceManager.GetString("EquipmentEdit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An error occured while editing an equipment..
+        /// </summary>
+        public static string EquipmentEditFailure {
+            get {
+                return ResourceManager.GetString("EquipmentEditFailure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Equipment edited successfully..
+        /// </summary>
+        public static string EquipmentEditSuccess {
+            get {
+                return ResourceManager.GetString("EquipmentEditSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Adding a new event.
         /// </summary>
         public static string EventAdd {

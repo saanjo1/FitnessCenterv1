@@ -4,12 +4,12 @@ using FitnessCenter.Web.ViewModels;
 
 namespace FitnessCenter.Web.MappingProfiles
 {
-    public class ContactProfile : Profile
+    public class EventProfile : Profile
     {
-        public ContactProfile()
+        public EventProfile()
         {
-            CreateMap<Contact, ContactsManageViewModel>();
-            CreateMap<ContactsManageViewModel, Contact>().ForMember(x => x.Photo, obj => obj.Ignore());
+            CreateMap<Event, EventsManageViewModel>();
+            CreateMap<EventsManageViewModel, Event>().ForMember(x => x.Photo, obj => obj.Ignore());
         }
     }
 }

@@ -1,42 +1,41 @@
 ﻿@using FitnessCenter.Web.Utilities.Constants
-@model ContactsIndexViewModel
+@model EquipmentIndexViewModel
 @inject UserManager _userManager
 @{
     var user = _userManager.Get();
-    ViewData["Title"] = @Translations.Contacts;
+    ViewData["Title"] = @Translations.Equipment;
 }
 
 @if (_userManager.IsInRoles(Role.Administrator))
 {
     <h5 class="m-0 font-weight-bold text-primary d-flex
 justify-content-between align-items-center">
-        @Translations.Contacts
-        <a asp-action="Manage" asp-controller="Contacts" class="btn btn-sm btn-primary">
+        @Translations.Equipment
+        <a asp-action="Manage" asp-controller="Equipment" class="btn btn-sm btn-primary">
             <i class="fas fa-plus"></i>
             @Translations.Add
         </a>
     </h5>
     <div class="container">
         <div class="row">
-            @if (Model.Contacts.Any())
+            @if (Model.equipment.Any())
             {
-                foreach (var contact in Model.Contacts)
+                foreach (var equipment in Model.equipment)
                 {
                     <div class="col-lg-3 col-sm-6">
                         <br>
                         <div class="customCard" style="width: 16rem;">
-                            <img class="card-img-top" src="@Url.Action("Index","Photos",new {id=contact.PhotoId})" />
+                            <img class="card-img-top" src="@Url.Action("Index","Photos",new {id=equipment.PhotoId})" />
                             <div class="card-body">
                                 <center>
-                                    <h5 class="card-title">@contact.Name</h5>
-                                    <h5 class="card-title">@contact.Value</h5>
-                                    <a asp-action="Manage" asp-controller="Contacts"
-                           asp-route-id="@contact.Id"
+                                    <h5 class="card-title">@equipment.Name</h5>
+                                    <a asp-action="Manage" asp-controller="Equipment"
+                           asp-route-id="@equipment.Id"
                            class="btn btn-sm btn-outline-primary">
                                         @Translations.Edit
                                     </a>
-                                    <a asp-action="Delete" asp-controller="Contacts"
-                           asp-route-id="@contact.Id"
+                                    <a asp-action="Delete" asp-controller="Equipment"
+                           asp-route-id="@equipment.Id"
                            class="btn btn-sm btn-outline-primary">
                                         @Translations.Delete
                                     </a>
@@ -61,18 +60,17 @@ justify-content-between align-items-center">
     </h5>
     <div class="container">
         <div class="row">
-            @if (Model.Contacts.Any())
+            @if (Model.equipment.Any())
             {
-                foreach (var contact in Model.Contacts)
+                foreach (var equipment in Model.equipment)
                 {
                     <div class="col-lg-3 col-sm-6">
                         <br>
                         <div class="customCard" style="width: 16rem;">
-                            <img class="card-img-top" src="@Url.Action("Index","Photos",new {id=contact.PhotoId})" />
+                            <img class="card-img-top" src="@Url.Action("Index","Photos",new {id=equipment.PhotoId})" />
                             <div class="card-body">
                                 <center>
-                                    <h5 class="card-title">@contact.Name</h5>
-                                    <h6 class="card-title">@contact.Value</h6>
+                                    <h5 class="card-title">@equipment.Name</h5>
                                 </center>
                             </div>
                         </div>
