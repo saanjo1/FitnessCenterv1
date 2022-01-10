@@ -1,0 +1,31 @@
+﻿@model GoalTypesManageViewModel
+
+@{
+    if (Model.Id == 0)
+    {
+        ViewData["Title"] = Translations.GoalTypeAdd;
+    }
+    else
+    {
+        ViewData["Title"] = Translations.GoalTypeEdit;
+    }
+}
+<form asp-action="Manage" asp-controller="GoalTypes" method="post" enctype="multipart/form-data">
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h5 class="m-0 font-weight-bold text-primary">@ViewData["Title"]</h5>
+        </div>
+        <div class="card-body">
+            <input asp-for="Id" type="hidden" />
+            <input asp-for="UserId" type="hidden" />
+
+            <div class="form-group">
+                <label asp-for="Name"></label>
+                <input class="form-control" asp-for="Name" placeholder="Name"/>
+            </div>
+        </div>
+        <div class="card-footer py-3">
+            <button type="submit" class="btn btn-primary">@Translations.Submit</button>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,61 @@
+﻿@using FitnessCenter.Web.Utilities.Constants
+@model GoalTypesIndexViewModel
+@inject UserManager _userManager
+
+@{
+    var user = _userManager.Get();
+    ViewData["Title"] = @Translations.GoalTypes;
+}
+
+@if (_userManager.IsInRoles(Role.Administrator))
+{
+     <h5 class="m-0 font-weight-bold text-primary d-flex
+justify-content-between align-items-center">
+        @Translations.GoalTypes
+        <a asp-action="Manage" asp-controller="GoalTypes" class="btn btn-sm btn-primary">
+            <i class="fas fa-plus"></i>
+            @Translations.Add
+        </a>
+    </h5>
+   <div class="card shadow mb-4">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>@Translations.Name</th>
+                            <th>@Translations.Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.goalTypes.Any())
+                        {
+                            foreach (var gType in Model.goalTypes)
+                            {
+                                <tr>
+                                    <td>@gType.Name</td>
+                                    <td>
+                                        <a asp-action="Manage" asp-controller="GoalTypes" asp-route-id="@gType.Id"
+                               class="btn btn-sm btn-outline-primary">
+                                            @Translations.Edit
+                                        </a>
+                                        <a asp-action="Delete" asp-controller="GoalTypes" asp-route-id="@gType.Id"
+                               class="btn btn-outline-danger btn-sm ">
+                                            @Translations.Delete
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="6" class="text-center">@Translations.NoResultsToShow</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+}

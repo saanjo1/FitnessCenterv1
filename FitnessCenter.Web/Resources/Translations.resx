@@ -270,6 +270,27 @@
   <data name="Goals" xml:space="preserve">
     <value>Goals</value>
   </data>
+  <data name="GoalTypeAdd" xml:space="preserve">
+    <value>Adding goal type</value>
+  </data>
+  <data name="GoalTypeAddFailure" xml:space="preserve">
+    <value>An error occured while adding a new goal type.</value>
+  </data>
+  <data name="GoalTypeAddSuccess" xml:space="preserve">
+    <value>Goal type added successfully.</value>
+  </data>
+  <data name="GoalTypeEdit" xml:space="preserve">
+    <value>Editing goal type</value>
+  </data>
+  <data name="GoalTypeEditFailure" xml:space="preserve">
+    <value>An error occured while editing a goal type.</value>
+  </data>
+  <data name="GoalTypeEditSuccess" xml:space="preserve">
+    <value>Goal type edited successfully.</value>
+  </data>
+  <data name="GoalTypes" xml:space="preserve">
+    <value>Goal types</value>
+  </data>
   <data name="InsertPassword" xml:space="preserve">
     <value>Please insert password.</value>
   </data>
