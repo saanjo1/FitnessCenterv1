@@ -9,13 +9,13 @@ using Vereyon.Web;
 
 namespace FitnessCenter.Web.Controllers
 {
-    public class ContactsController : Controller
+    public class GoalTypesController : Controller
     {
         private readonly IMapper _mapper;
         private readonly IFlashMessage _flashMessage;
         private readonly DatabaseContext _databaseContext;
         private readonly UserManager _userManager;
-        public ContactsController(IMapper mapper, DatabaseContext databaseContext, UserManager userManager, IFlashMessage flashMessage)
+        public GoalTypesController(IMapper mapper, DatabaseContext databaseContext, UserManager userManager, IFlashMessage flashMessage)
         {
             _databaseContext = databaseContext;
             _mapper = mapper;
@@ -24,10 +24,10 @@ namespace FitnessCenter.Web.Controllers
         }
         public IActionResult Index()
         {
-            var contacts = _databaseContext.Contacts.ToList();
-            return View(new ContactsIndexViewModel
+            var goalTypes = _databaseContext.GoalTypes.ToList();
+            return View(new GoalTypesIndexViewModel
             {
-                Contacts = contacts
+                goalTypes = goalTypes
             });
         }
 
@@ -35,20 +35,20 @@ namespace FitnessCenter.Web.Controllers
         public IActionResult Manage(int id)
         {
 
-            ContactsManageViewModel viewModel;
+            GoalTypesManageViewModel viewModel;
 
             if (id == 0)
             {
-                viewModel = new ContactsManageViewModel
+                viewModel = new GoalTypesManageViewModel
                 {
                     UserId = _userManager.Get().Id
                 };
             }
             else
             {
-                viewModel = _databaseContext.Contacts
-                    .Where(c => c.Id == id)
-                    .Select(c => _mapper.Map<ContactsManageViewModel>(c)).Single();
+                viewModel = _databaseContext.GoalTypes
+                    .Where(gt => gt.Id == id)
+                    .Select(gt => _mapper.Map<GoalTypesManageViewModel>(gt)).Single();
             }
             return View(viewModel);
         }
@@ -56,43 +56,35 @@ namespace FitnessCenter.Web.Controllers
 
         [HttpPost]
 
-        public async Task<IActionResult> Manage(ContactsManageViewModel viewModel)
+        public IActionResult Manage(GoalTypesManageViewModel viewModel)
         {
             try
             {
-                Contact contact;
+                GoalType gType;
 
                 if (viewModel.Id == 0)
                 {
-                    contact = new Contact();
-                    _databaseContext.Add(contact);
+                    gType = new GoalType();
+                    _databaseContext.Add(gType);
                 }
                 else
                 {
-                    contact = _databaseContext.Contacts.Find(viewModel.Id);
+                    gType = _databaseContext.GoalTypes.Find(viewModel.Id);
                 }
-
-                if (viewModel.Photo != null)
-                {
-                    contact.Photo = new Photo
-                    {
-                        Data = await viewModel.Photo.GetBytes()
-                    };
-                }
-                _mapper.Map(viewModel, contact);
+                _mapper.Map(viewModel, gType);
                 _databaseContext.SaveChanges();
 
                 if (viewModel.Id == 0)
-                    _flashMessage.Confirmation(Translations.ContactAddSuccess);
+                    _flashMessage.Confirmation(Translations.GoalTypeAddSuccess);
                 else
-                    _flashMessage.Confirmation(Translations.ContactEditSuccess);
+                    _flashMessage.Confirmation(Translations.GoalTypeEditSuccess);
             }
             catch
             {
                 if (viewModel.Id == 0)
-                    _flashMessage.Danger(Translations.ContactAddFailure);
+                    _flashMessage.Danger(Translations.GoalTypeAddFailure);
                 else
-                    _flashMessage.Danger(Translations.ContactEditFailure);
+                    _flashMessage.Danger(Translations.GoalTypeEditFailure);
             }
 
 
@@ -104,8 +96,8 @@ namespace FitnessCenter.Web.Controllers
         {
             try
             {
-                var contact = _databaseContext.Contacts.Find(id);
-                _databaseContext.Remove(contact);
+                var gTypes = _databaseContext.GoalTypes.Find(id);
+                _databaseContext.Remove(gTypes);
                 _databaseContext.SaveChanges();
 
                 _flashMessage.Confirmation(Translations.DeleteSuccess);

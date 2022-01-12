@@ -9,46 +9,49 @@ using Vereyon.Web;
 
 namespace FitnessCenter.Web.Controllers
 {
-    public class ContactsController : Controller
+    public class EquipmentController : Controller
     {
         private readonly IMapper _mapper;
         private readonly IFlashMessage _flashMessage;
         private readonly DatabaseContext _databaseContext;
         private readonly UserManager _userManager;
-        public ContactsController(IMapper mapper, DatabaseContext databaseContext, UserManager userManager, IFlashMessage flashMessage)
+        public EquipmentController(IMapper mapper, DatabaseContext databaseContext, UserManager userManager, IFlashMessage flashMessage)
         {
             _databaseContext = databaseContext;
             _mapper = mapper;
             _flashMessage = flashMessage;
             _userManager = userManager;
         }
+
+        [HttpGet]
         public IActionResult Index()
         {
-            var contacts = _databaseContext.Contacts.ToList();
-            return View(new ContactsIndexViewModel
+            var equipment = _databaseContext.Equipment.ToList();
+            return View(new EquipmentIndexViewModel
             {
-                Contacts = contacts
+                equipment = equipment
             });
         }
+
 
         [HttpGet]
         public IActionResult Manage(int id)
         {
 
-            ContactsManageViewModel viewModel;
+            EquipmentManageViewModel viewModel;
 
             if (id == 0)
             {
-                viewModel = new ContactsManageViewModel
+                viewModel = new EquipmentManageViewModel
                 {
                     UserId = _userManager.Get().Id
                 };
             }
             else
             {
-                viewModel = _databaseContext.Contacts
-                    .Where(c => c.Id == id)
-                    .Select(c => _mapper.Map<ContactsManageViewModel>(c)).Single();
+                viewModel = _databaseContext.Equipment
+                    .Where(e => e.Id == id)
+                    .Select(e => _mapper.Map<EquipmentManageViewModel>(e)).Single();
             }
             return View(viewModel);
         }
@@ -56,43 +59,43 @@ namespace FitnessCenter.Web.Controllers
 
         [HttpPost]
 
-        public async Task<IActionResult> Manage(ContactsManageViewModel viewModel)
+        public async Task<IActionResult> Manage(EquipmentManageViewModel viewModel)
         {
             try
             {
-                Contact contact;
+                Equipment equipment;
 
                 if (viewModel.Id == 0)
                 {
-                    contact = new Contact();
-                    _databaseContext.Add(contact);
+                    equipment = new Equipment();
+                    _databaseContext.Add(equipment);
                 }
                 else
                 {
-                    contact = _databaseContext.Contacts.Find(viewModel.Id);
+                    equipment = _databaseContext.Equipment.Find(viewModel.Id);
                 }
 
                 if (viewModel.Photo != null)
                 {
-                    contact.Photo = new Photo
+                    equipment.Photo = new Photo
                     {
                         Data = await viewModel.Photo.GetBytes()
                     };
                 }
-                _mapper.Map(viewModel, contact);
+                _mapper.Map(viewModel, equipment);
                 _databaseContext.SaveChanges();
 
                 if (viewModel.Id == 0)
-                    _flashMessage.Confirmation(Translations.ContactAddSuccess);
+                    _flashMessage.Confirmation(Translations.EquipmentAddSuccess);
                 else
-                    _flashMessage.Confirmation(Translations.ContactEditSuccess);
+                    _flashMessage.Confirmation(Translations.EquipmentEditSuccess);
             }
             catch
             {
                 if (viewModel.Id == 0)
-                    _flashMessage.Danger(Translations.ContactAddFailure);
+                    _flashMessage.Danger(Translations.EquipmentAddFailure);
                 else
-                    _flashMessage.Danger(Translations.ContactEditFailure);
+                    _flashMessage.Danger(Translations.EquipmentEditFailure);
             }
 
 
@@ -104,8 +107,8 @@ namespace FitnessCenter.Web.Controllers
         {
             try
             {
-                var contact = _databaseContext.Contacts.Find(id);
-                _databaseContext.Remove(contact);
+                var equipment = _databaseContext.Equipment.Find(id);
+                _databaseContext.Remove(equipment);
                 _databaseContext.SaveChanges();
 
                 _flashMessage.Confirmation(Translations.DeleteSuccess);
@@ -119,4 +122,3 @@ namespace FitnessCenter.Web.Controllers
         }
     }
 }
-

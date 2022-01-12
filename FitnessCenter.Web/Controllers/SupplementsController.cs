@@ -77,11 +77,13 @@ namespace FitnessCenter.Web.Controllers
                     supplement = _databaseContext.Supplements.Find(viewModel.Id);
                 }
 
-                supplement.Photo = new Photo
+                if (viewModel.Photo != null)
                 {
-                    Data = await viewModel.Photo.GetBytes()
-                };
-
+                    supplement.Photo = new Photo
+                    {
+                        Data = await viewModel.Photo.GetBytes()
+                    };
+                }
                 _mapper.Map(viewModel, supplement);
                 _databaseContext.SaveChanges();
 

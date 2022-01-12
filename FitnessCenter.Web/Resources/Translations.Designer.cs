@@ -367,6 +367,60 @@ namespace FitnessCenter.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Adding equipment.
+        /// </summary>
+        public static string EquipmentAdd {
+            get {
+                return ResourceManager.GetString("EquipmentAdd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An error occured while adding an equipment..
+        /// </summary>
+        public static string EquipmentAddFailure {
+            get {
+                return ResourceManager.GetString("EquipmentAddFailure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Equipment added successfully..
+        /// </summary>
+        public static string EquipmentAddSuccess {
+            get {
+                return ResourceManager.GetString("EquipmentAddSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Editing equipment.
+        /// </summary>
+        public static string EquipmentEdit {
+            get {
+                return ResourceManager.GetString("EquipmentEdit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An error occured while editing an equipment..
+        /// </summary>
+        public static string EquipmentEditFailure {
+            get {
+                return ResourceManager.GetString("EquipmentEditFailure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Equipment edited successfully..
+        /// </summary>
+        public static string EquipmentEditSuccess {
+            get {
+                return ResourceManager.GetString("EquipmentEditSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Adding a new event.
         /// </summary>
         public static string EventAdd {
@@ -462,6 +516,69 @@ namespace FitnessCenter.Web.Resources {
         public static string Goals {
             get {
                 return ResourceManager.GetString("Goals", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Adding goal type.
+        /// </summary>
+        public static string GoalTypeAdd {
+            get {
+                return ResourceManager.GetString("GoalTypeAdd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An error occured while adding a new goal type..
+        /// </summary>
+        public static string GoalTypeAddFailure {
+            get {
+                return ResourceManager.GetString("GoalTypeAddFailure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Goal type added successfully..
+        /// </summary>
+        public static string GoalTypeAddSuccess {
+            get {
+                return ResourceManager.GetString("GoalTypeAddSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Editing goal type.
+        /// </summary>
+        public static string GoalTypeEdit {
+            get {
+                return ResourceManager.GetString("GoalTypeEdit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An error occured while editing a goal type..
+        /// </summary>
+        public static string GoalTypeEditFailure {
+            get {
+                return ResourceManager.GetString("GoalTypeEditFailure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Goal type edited successfully..
+        /// </summary>
+        public static string GoalTypeEditSuccess {
+            get {
+                return ResourceManager.GetString("GoalTypeEditSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Goal types.
+        /// </summary>
+        public static string GoalTypes {
+            get {
+                return ResourceManager.GetString("GoalTypes", resourceCulture);
             }
         }
         
