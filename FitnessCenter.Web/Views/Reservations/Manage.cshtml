@@ -37,6 +37,10 @@
                 <label asp-for="DateTimeTo"></label>
                 <input asp-for="DateTimeTo" type="date" class="form-control" placeholder="@Translations.PickDate">
             </div>
+            <div class="form-group mb-0">
+                <label asp-for="Confirmed"></label>
+                <input asp-for="Confirmed" type="checkbox" class="form-control" checked="true" placeholder="@Translations.PickDate">
+            </div>
         </div>
         <div class="card-footer py-3">
             <button type="submit" class="btn btn-primary">@Translations.Submit</button>

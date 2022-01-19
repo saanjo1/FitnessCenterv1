@@ -156,6 +156,15 @@
   <data name="Coach" xml:space="preserve">
     <value>Coach</value>
   </data>
+  <data name="Confirmed" xml:space="preserve">
+    <value>Confirmed</value>
+  </data>
+  <data name="ConfirmReservationFailure" xml:space="preserve">
+    <value>An error occured while confirming a reservation.</value>
+  </data>
+  <data name="ConfirmReservationSuccess" xml:space="preserve">
+    <value>Confirmation of reservation changed successfully!</value>
+  </data>
   <data name="ContactAdd" xml:space="preserve">
     <value>Adding contact</value>
   </data>

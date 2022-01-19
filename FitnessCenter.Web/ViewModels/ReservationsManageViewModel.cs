@@ -25,5 +25,10 @@ namespace FitnessCenter.Web.ViewModels
         [Required]
         [Display(Name = nameof(Translations.FitnessRoom), ResourceType = typeof(Translations))]
         public int FitnessRoomId { get; set; }
+
+        [Required]
+        [Display(Name = nameof(Confirmed), ResourceType = typeof(Translations))]
+        public bool Confirmed { get; set; }
+
     }
 }

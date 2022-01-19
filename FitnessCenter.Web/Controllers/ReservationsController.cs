@@ -48,6 +48,47 @@ namespace FitnessCenter.Web.Controllers
                 Reservations = resevarions
             });
         }
+        [HttpGet]
+        [ActionName("change_status")]
+        public IActionResult Confirm(int id)
+        {
+            var viewModel = new ReservationsConfirmViewModel
+            {
+                Confirmed = _databaseContext.Reservations.Where(r => r.Id == id).Single().Confirmed,
+                Id = id
+            };
+
+            return PartialView("Confirm", viewModel);
+
+        }
+
+        [HttpPost]
+        [ActionName("change_status")]
+        public IActionResult Confirm(ReservationsConfirmViewModel m)
+        {
+            if (!ModelState.IsValid)
+                return RedirectToAction("Index");
+            try
+            {
+                Reservation reservation = _databaseContext.Reservations.Find(m.Id);
+                reservation.Confirmed = m.Confirmed;
+
+                _databaseContext.Reservations.Update(reservation);
+                _databaseContext.SaveChanges();
+
+                _flashMessage.Confirmation(Translations.ConfirmReservationSuccess);
+            }
+            catch
+            {
+                _flashMessage.Danger(Translations.ConfirmReservationFailure);
+            }
+
+            return RedirectToAction("Index");
+
+        }
+
+
+
 
         [HttpGet]
         public IActionResult Manage(int id)

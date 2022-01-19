@@ -178,6 +178,33 @@ namespace FitnessCenter.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Confirmed.
+        /// </summary>
+        public static string Confirmed {
+            get {
+                return ResourceManager.GetString("Confirmed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An error occured while confirming a reservation..
+        /// </summary>
+        public static string ConfirmReservationFailure {
+            get {
+                return ResourceManager.GetString("ConfirmReservationFailure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirmation of reservation changed successfully!.
+        /// </summary>
+        public static string ConfirmReservationSuccess {
+            get {
+                return ResourceManager.GetString("ConfirmReservationSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Adding contact.
         /// </summary>
         public static string ContactAdd {

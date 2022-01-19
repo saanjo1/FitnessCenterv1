@@ -4,6 +4,7 @@ using FitnessCenter.Web.Utilities.Constants;
 using FitnessCenter.Web.ViewComponents;
 using Microsoft.EntityFrameworkCore;
 using Vereyon.Web;
+using FitnessCenter.Web.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("Main");
@@ -17,6 +18,7 @@ builder.Services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(c
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 builder.Services.AddSession();
 builder.Services.AddResponseCaching();
+builder.Services.AddSignalR();
 var app = builder.Build();
 
 if (!app.Environment.IsDevelopment())
@@ -34,4 +36,5 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}"
 );
+app.MapHub<MyHub>("/MyHub");
 app.Run();
