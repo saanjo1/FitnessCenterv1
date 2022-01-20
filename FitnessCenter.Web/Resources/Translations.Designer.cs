@@ -97,6 +97,60 @@ namespace FitnessCenter.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Adding announcement.
+        /// </summary>
+        public static string AnnouncementAdd {
+            get {
+                return ResourceManager.GetString("AnnouncementAdd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An error occured while adding a new announcement.
+        /// </summary>
+        public static string AnnouncementAddFailure {
+            get {
+                return ResourceManager.GetString("AnnouncementAddFailure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Announcement added successfully..
+        /// </summary>
+        public static string AnnouncementAddSuccess {
+            get {
+                return ResourceManager.GetString("AnnouncementAddSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Editing announcement.
+        /// </summary>
+        public static string AnnouncementEdit {
+            get {
+                return ResourceManager.GetString("AnnouncementEdit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An error occured while editing a announcement..
+        /// </summary>
+        public static string AnnouncementEditFailure {
+            get {
+                return ResourceManager.GetString("AnnouncementEditFailure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Announcement edited successfully..
+        /// </summary>
+        public static string AnnouncementEditSuccess {
+            get {
+                return ResourceManager.GetString("AnnouncementEditSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Announcements.
         /// </summary>
         public static string Announcements {
@@ -129,6 +183,15 @@ namespace FitnessCenter.Web.Resources {
         public static string AreYouSureDelete {
             get {
                 return ResourceManager.GetString("AreYouSureDelete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Author.
+        /// </summary>
+        public static string Author {
+            get {
+                return ResourceManager.GetString("Author", resourceCulture);
             }
         }
         
@@ -1011,6 +1074,15 @@ namespace FitnessCenter.Web.Resources {
         public static string Supplements {
             get {
                 return ResourceManager.GetString("Supplements", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Title.
+        /// </summary>
+        public static string Title {
+            get {
+                return ResourceManager.GetString("Title", resourceCulture);
             }
         }
         

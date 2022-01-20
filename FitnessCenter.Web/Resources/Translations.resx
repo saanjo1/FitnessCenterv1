@@ -129,6 +129,24 @@
   <data name="AddAReservation" xml:space="preserve">
     <value>Add new reservation</value>
   </data>
+  <data name="AnnouncementAdd" xml:space="preserve">
+    <value>Adding announcement</value>
+  </data>
+  <data name="AnnouncementAddFailure" xml:space="preserve">
+    <value>An error occured while adding a new announcement</value>
+  </data>
+  <data name="AnnouncementAddSuccess" xml:space="preserve">
+    <value>Announcement added successfully.</value>
+  </data>
+  <data name="AnnouncementEdit" xml:space="preserve">
+    <value>Editing announcement</value>
+  </data>
+  <data name="AnnouncementEditFailure" xml:space="preserve">
+    <value>An error occured while editing a announcement.</value>
+  </data>
+  <data name="AnnouncementEditSuccess" xml:space="preserve">
+    <value>Announcement edited successfully.</value>
+  </data>
   <data name="Announcements" xml:space="preserve">
     <value>Announcements</value>
   </data>
@@ -140,6 +158,9 @@
   </data>
   <data name="AreYouSureDelete" xml:space="preserve">
     <value>Are you sure you want to delete?</value>
+  </data>
+  <data name="Author" xml:space="preserve">
+    <value>Author</value>
   </data>
   <data name="AvailableEvents" xml:space="preserve">
     <value>Available events</value>
@@ -434,6 +455,9 @@
   </data>
   <data name="Supplements" xml:space="preserve">
     <value>Supplements</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Title</value>
   </data>
   <data name="User" xml:space="preserve">
     <value>User</value>

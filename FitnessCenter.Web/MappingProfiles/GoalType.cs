@@ -4,11 +4,11 @@ using FitnessCenter.Web.ViewModels;
 
 namespace FitnessCenter.Web.MappingProfiles
 {
-    public class ReservationProfile : Profile
+    public class GoalTypeProfile : Profile
     {
-        public ReservationProfile()
+        public GoalTypeProfile()
         {
-            CreateMap<Reservation, ReservationsManageViewModel>().ReverseMap();
+            CreateMap<GoalType, GoalTypesManageViewModel>().ReverseMap();
         }
     }
 }
