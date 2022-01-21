@@ -34,7 +34,7 @@ namespace FitnessCenter.Web.Controllers
             {
                 viewModel = new AnnouncementsManageViewModel
                 {
-                    AuthorId = 1,
+                    AuthorId = _userManager.Get().Id,
                     UserId = _userManager.Get().Id
                 };
             }
