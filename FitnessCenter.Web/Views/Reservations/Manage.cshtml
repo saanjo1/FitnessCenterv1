@@ -12,8 +12,9 @@
         ViewData["Title"] = Translations.ReservationEdit;
     }
 }
-
-<form asp-action="Manage" asp-controller="Reservations" method="post">
+@if(_userManager.IsInRoles(Role.Administrator))
+{
+    <form asp-action="Manage" asp-controller="Reservations" method="post">
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h5 class="m-0 font-weight-bold text-primary">@ViewData["Title"]</h5>
@@ -45,3 +46,7 @@
         </div>
     </div>
 </form>
+}
+else {
+    <a href="/Home/Index">Back</a>
+}

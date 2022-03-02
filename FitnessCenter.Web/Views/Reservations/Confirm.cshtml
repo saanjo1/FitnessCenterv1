@@ -4,46 +4,34 @@
     ViewData["Title"] = @Translations.Reservations;
 }
 
-<style>
-
-    .modal-body {
-        height: 175px;
-    }
-
-    .formWidth {
-        width: 565px;
-    }
-
-</style>
-<div class="modal fade" tabindex="-1" id="confirmStatusModal" data-keyboard="false" data-backdrop="static">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <label>Select the checkbox to confirm reservation</label>
-                <button type="button" class="close" data-dismiss="modal">
-                    ×
-                </button>
-            </div>
-            <div class="modal-body" style="padding-left: 50px; padding-top: 50px">
-                <form asp-controller="Reservations" asp-action="change_status" method="POST" id="formId" class="formWidth">
-                   <label>Reservation ID: </label>
-                    <input asp-for="Id" readonly />
+<div class="modal" id="confirmStatusModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Change password</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+            <form asp-controller="Reservations" asp-action="change_status" method="POST" id="formId" class="formWidth">
+                    <input asp-for="Id" hidden="hidden" />
                     <div class="form-group">
                         <label>Confirmation:</label>
                         <input asp-for="Confirmed" type="checkbox" name="Confirmed" />
                     </div>
                 </form>
-            </div>
-            <div class="modal-footer">
-                <div id="submitBtn">
-                    <label>
-                        <input class="btn btn-primary" type="submit" value="submit">
-                    </label>
-                </div>
-            </div>
-        </div>
+      </div>
+      <div class="modal-footer">
+          <div id="submitBtn">
+         <input type="button" class="btn btn-primary" value="Save changes" name="Save changes">
+          </div>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
     </div>
+  </div>
 </div>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
@@ -62,3 +50,5 @@
         });
     });
 </script>
+
+
