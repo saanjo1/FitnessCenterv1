@@ -250,6 +250,24 @@ namespace FitnessCenter.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to An error occurred while changing a password..
+        /// </summary>
+        public static string ConfirmPasswordFailure {
+            get {
+                return ResourceManager.GetString("ConfirmPasswordFailure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password changed successfully..
+        /// </summary>
+        public static string ConfirmPasswordSuccess {
+            get {
+                return ResourceManager.GetString("ConfirmPasswordSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to An error occured while confirming a reservation..
         /// </summary>
         public static string ConfirmReservationFailure {
@@ -745,6 +763,15 @@ namespace FitnessCenter.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Passwords doesn&apos;t match. Try again..
+        /// </summary>
+        public static string PasswordsMatchFailure {
+            get {
+                return ResourceManager.GetString("PasswordsMatchFailure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Photo.
         /// </summary>
         public static string Photo {
@@ -1092,6 +1119,69 @@ namespace FitnessCenter.Web.Resources {
         public static string User {
             get {
                 return ResourceManager.GetString("User", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Adding a new user.
+        /// </summary>
+        public static string UserAdd {
+            get {
+                return ResourceManager.GetString("UserAdd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An error occurred while adding a new user..
+        /// </summary>
+        public static string UserAddFailure {
+            get {
+                return ResourceManager.GetString("UserAddFailure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User added successfully..
+        /// </summary>
+        public static string UserAddSuccess {
+            get {
+                return ResourceManager.GetString("UserAddSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Editing an existing user.
+        /// </summary>
+        public static string UserEdit {
+            get {
+                return ResourceManager.GetString("UserEdit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An error occurred while editing a existing user..
+        /// </summary>
+        public static string UserEditFailure {
+            get {
+                return ResourceManager.GetString("UserEditFailure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User edited successfully..
+        /// </summary>
+        public static string UserEditSuccess {
+            get {
+                return ResourceManager.GetString("UserEditSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Username.
+        /// </summary>
+        public static string Username {
+            get {
+                return ResourceManager.GetString("Username", resourceCulture);
             }
         }
         

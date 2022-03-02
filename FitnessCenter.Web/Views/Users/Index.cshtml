@@ -1,40 +1,68 @@
-﻿    @model UsersIndexViewModel
-@{
+﻿@using FitnessCenter.Web.Utilities.Constants
+@model UsersIndexViewModel
+@inject UserManager _userManager
+
+    @{
     ViewData["Title"] = @Translations.Users;
 }
 
-    <div class="card shadow mb-4">
-    <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">@Translations.Users</h6>
-    </div>
-    <div class="card-body">
-        <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <thead>
-                    <tr>
-                        <th>First name</th>
-                        <th>Last name</th>
-                        <th>Username</th>
-                        <th>Email</th>
-                        <th>Role</th>
-                    </tr>
-                </thead>
-                <tbody>
+@if (_userManager.IsInRoles(Role.Administrator))
+{
 
-                    @foreach (var user in Model.Users)
-                    {
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">@Translations.Users</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
                         <tr>
-                            <td>@user.FirstName</td>
-                            <td>@user.LastName</td>
-                            <td>@user.Username</td>
-                            <td>@user.Email</td>
-                            <td>@user.Role</td>
+                            <th>First name</th>
+                            <th>Last name</th>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Action</th>
                         </tr>
-                    }
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var user in Model.Users)
+                        {
+                            <tr>
+                                <td>@user.FirstName</td>
+                                <td>@user.LastName</td>
+                                <td>@user.Username</td>
+                                <td>@user.Email</td>
+                                <td>@user.Role</td>
+                                 <td class="action-column">
+                                        <a asp-action="Manage" asp-controller="Users"
+                               asp-route-id="@user.Id"
+                               class="btn btn-sm btn-outline-primary">
+                                            @Translations.Edit
+                                        </a>
+                                        <a asp-action="Delete" asp-controller="Users" asp-route-id="@user.Id"
+                               class="btn btn-outline-danger btn-sm ">
+                                            @Translations.Delete
+                                        </a>
+                                    </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-</div>
 
-
+    <a asp-action="Manage" asp-controller="Users" class="btn btn-sm btn-primary">
+        <i class="fas fa-plus"></i>
+        @Translations.Add
+    </a>
+}
+else
+{
+    <tr>
+        <td colspan="6" class="text-center">@Translations.NoResultsToShow</td>
+    </tr>
+}

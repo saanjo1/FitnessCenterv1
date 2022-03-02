@@ -1,0 +1,61 @@
+﻿@model UserManageViewModel
+
+@{
+    if (Model.Id == 0)
+    {
+        ViewData["Title"] = Translations.Users;
+    }
+    else
+    {
+        ViewData["Title"] = Translations.Users;
+    }
+}
+
+<form asp-action="Manage" asp-controller="Users" method="post" enctype="multipart/form-data">
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h5 class="m-0 font-weight-bold text-primary">@ViewData["Title"]</h5>
+        </div>
+        <div class="card-body">
+            <input asp-for="Id" type="hidden" />
+
+            <div class="form-group">
+                <label asp-for="FirstName"></label>
+                <input class="form-control" asp-for="FirstName" placeholder="Name" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="LastName"></label>
+                <input asp-for="LastName" class="form-control" placeholder="@Translations.LastName">
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Username"></label>
+                <input asp-for="Username" class="form-control" placeholder="@Translations.Username">
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Email"></label>
+                <input asp-for="Email" class="form-control" placeholder="@Translations.Email">
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Role"></label>
+                <select asp-for="Role" asp-items="Html.GetEnumSelectList<Role>()" class="form-control" placeholder="@Translations.Email"></select>
+            </div>
+
+        </div>
+        <div class="card-footer py-3">
+            <button type="submit" class="btn btn-primary">@Translations.Submit</button>
+         <a class="btn btn-warning" href="/users/change_password?Id=@Model.Id" ajax-event="yes" ajax-result="ajaxDiv5">Change password</a>
+
+        </div>
+
+    </div>
+</form>
+<div class="clearFix">
+</div>
+<div id="ajaxDiv5">
+</div>
+<script src="~/js/jsAjax.js"></script>
+

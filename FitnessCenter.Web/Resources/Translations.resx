@@ -180,6 +180,12 @@
   <data name="Confirmed" xml:space="preserve">
     <value>Confirmed</value>
   </data>
+  <data name="ConfirmPasswordFailure" xml:space="preserve">
+    <value>An error occurred while changing a password.</value>
+  </data>
+  <data name="ConfirmPasswordSuccess" xml:space="preserve">
+    <value>Password changed successfully.</value>
+  </data>
   <data name="ConfirmReservationFailure" xml:space="preserve">
     <value>An error occured while confirming a reservation.</value>
   </data>
@@ -345,6 +351,9 @@
   <data name="Password" xml:space="preserve">
     <value>Password</value>
   </data>
+  <data name="PasswordsMatchFailure" xml:space="preserve">
+    <value>Passwords doesn't match. Try again.</value>
+  </data>
   <data name="Photo" xml:space="preserve">
     <value>Photo</value>
   </data>
@@ -461,6 +470,27 @@
   </data>
   <data name="User" xml:space="preserve">
     <value>User</value>
+  </data>
+  <data name="UserAdd" xml:space="preserve">
+    <value>Adding a new user</value>
+  </data>
+  <data name="UserAddFailure" xml:space="preserve">
+    <value>An error occurred while adding a new user.</value>
+  </data>
+  <data name="UserAddSuccess" xml:space="preserve">
+    <value>User added successfully.</value>
+  </data>
+  <data name="UserEdit" xml:space="preserve">
+    <value>Editing an existing user</value>
+  </data>
+  <data name="UserEditFailure" xml:space="preserve">
+    <value>An error occurred while editing a existing user.</value>
+  </data>
+  <data name="UserEditSuccess" xml:space="preserve">
+    <value>User edited successfully.</value>
+  </data>
+  <data name="Username" xml:space="preserve">
+    <value>Username</value>
   </data>
   <data name="Users" xml:space="preserve">
     <value>Users</value>

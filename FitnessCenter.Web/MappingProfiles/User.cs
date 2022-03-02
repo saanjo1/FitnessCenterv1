@@ -1,0 +1,14 @@
+﻿using AutoMapper;
+using FitnessCenter.Data.Entities;
+using FitnessCenter.Web.ViewModels;
+
+namespace FitnessCenter.Web.MappingProfiles
+{
+    public class UserProfile : Profile
+    {
+        public UserProfile()
+        { 
+            CreateMap<UserManageViewModel, User>().ReverseMap();
+        }
+    }
+}
