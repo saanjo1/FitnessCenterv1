@@ -35,6 +35,7 @@ namespace FitnessCenter.Web.Controllers
                 Email = selector.Email,
                 Username = selector.Username,
                 Role = selector.Role,
+                NotificationNumber = selector.NotificationNumber,
                 Id = selector.Id
             }).ToList();
 
@@ -122,6 +123,7 @@ namespace FitnessCenter.Web.Controllers
                 {
                     user = _databaseContext.Users.Find(viewModel.Id);
                 }
+                _mapper.Map(viewModel, user);
                 _databaseContext.SaveChanges();
 
                 if (viewModel.Id == 0)

@@ -25,7 +25,11 @@ namespace FitnessCenter.Web.ViewModels
         [Required]
         [Display(Name = nameof(Role), ResourceType = typeof(Translations))]
         public Role Role { get; set; }
-        
+
+        [Required]
+        [Display(Name = nameof(NotificationNumber), ResourceType = typeof(Translations))]
+        public int NotificationNumber { get; set; }
+
         public double? ServicePrice { get; set; }
     }
 }

@@ -12,7 +12,7 @@
         ViewData["Title"] = Translations.ReservationEdit;
     }
 }
-@if(_userManager.IsInRoles(Role.Administrator))
+@if(_userManager.IsInRoles(Role.Client))
 {
     <form asp-action="Manage" asp-controller="Reservations" method="post">
     <div class="card shadow mb-4">

@@ -47,17 +47,13 @@
                                             <span>No</span>
                                         }
                                     </td>
-
                                     <td class="action-column">
-                                        <a asp-action="Manage" asp-controller="Reservations" asp-route-id="@reservation.Id"
-                               class="btn btn-sm btn-outline-primary">
-                                            @Translations.Edit
-                                        </a>
+                                       
                                         <a asp-action="Delete" asp-controller="Reservations" asp-route-id="@reservation.Id"
                                class="btn btn-outline-danger btn-sm ">
                                             @Translations.Delete
                                         </a>
-                                        <a class="btn btn-warning" href="/reservations/change_status?Id=@reservation.Id" ajax-event="yes" ajax-result="ajaxDiv4">Change status</a>
+                                        <a class="btn btn-outline-danger btn-sm" href="/reservations/change_status?Id=@reservation.Id" ajax-event="yes" ajax-result="ajaxDiv4">Change status</a>
                                     </td>
                                 </tr>
                             }
@@ -100,6 +96,7 @@ else
                             <th>@Translations.FitnessRoom</th>
                             <th>@Translations.User</th>
                             <th>@Translations.Coach</th>
+                            <th>@Translations.Confirmed</th>
                             <th>@Translations.Action</th>
                         </tr>
                     </thead>
@@ -119,6 +116,16 @@ else
                                         }
                                     </td>
                                     <td>@reservation.Coach.FirstName @reservation.Coach.LastName</td>
+                                    <td>
+                                        @if (reservation.Confirmed == true)
+                                        {
+                                            <span>Yes</span>
+                                        }
+                                        else
+                                        {
+                                            <span>No</span>
+                                        }
+                                    </td>
                                     <td class="action-column" style="white-space:nowrap">
                                         <a asp-action="Manage" asp-controller="Reservations" asp-route-id="@reservation.Id"
                                class="btn btn-sm btn-outline-primary">

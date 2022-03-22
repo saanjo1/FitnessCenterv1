@@ -348,6 +348,9 @@
   <data name="NoResultsToShow" xml:space="preserve">
     <value>No results to show</value>
   </data>
+  <data name="NotificationNumber" xml:space="preserve">
+    <value>Notification number</value>
+  </data>
   <data name="Password" xml:space="preserve">
     <value>Password</value>
   </data>

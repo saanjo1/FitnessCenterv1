@@ -11,6 +11,7 @@
         public string PasswordHash { get; set; }
         public Role Role { get; set; }
         public double? ServicePrice { get; set; }
+        public int NotificationNumber { get; set; }
 
         public ICollection<Announcement> UserAnnouncements { get; set; } //userId
         public ICollection<Announcement> AuthorAnnouncements { get; set; } //authorId

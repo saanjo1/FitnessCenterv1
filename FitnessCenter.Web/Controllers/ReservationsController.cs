@@ -1,10 +1,12 @@
 ﻿using AutoMapper;
 using FitnessCenter.Data;
 using FitnessCenter.Data.Entities;
+using FitnessCenter.Web.Hubs;
 using FitnessCenter.Web.Resources;
 using FitnessCenter.Web.Utilities.Constants;
 using FitnessCenter.Web.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using Vereyon.Web;
 
@@ -16,13 +18,15 @@ namespace FitnessCenter.Web.Controllers
         private readonly IFlashMessage _flashMessage;
         private readonly DatabaseContext _databaseContext;
         private readonly UserManager _userManager;
+        private IHubContext<MyHub> _hubContext;
 
-        public ReservationsController(IMapper mapper, IFlashMessage flashMessage, DatabaseContext databaseContext,UserManager userManager)
+        public ReservationsController(IMapper mapper, IHubContext<MyHub> hubContext, IFlashMessage flashMessage, DatabaseContext databaseContext,UserManager userManager)
         {
             _mapper = mapper;
             _flashMessage = flashMessage;
             _databaseContext = databaseContext;
             _userManager = userManager;
+            _hubContext = hubContext;
         }
 
         [HttpGet]
@@ -75,6 +79,15 @@ namespace FitnessCenter.Web.Controllers
 
                 _databaseContext.Reservations.Update(reservation);
                 _databaseContext.SaveChanges();
+                SendMessage("changed", reservation.UserId);
+
+                var user = _databaseContext.Users.Where(x => x.Id == reservation.UserId).FirstOrDefault();
+                user.NotificationNumber = ++user.NotificationNumber;
+
+                _databaseContext.Update(user);
+                _databaseContext.SaveChanges();
+
+
 
                 _flashMessage.Confirmation(Translations.ConfirmReservationSuccess);
             }
@@ -86,9 +99,6 @@ namespace FitnessCenter.Web.Controllers
             return RedirectToAction("Index");
 
         }
-
-
-
 
         [HttpGet]
         public IActionResult Manage(int id)
@@ -112,6 +122,9 @@ namespace FitnessCenter.Web.Controllers
             }
             return View(viewModel);
         }
+
+        
+
         [HttpGet]
         public IActionResult Delete(int id)
         {
@@ -156,6 +169,7 @@ namespace FitnessCenter.Web.Controllers
                 _mapper.Map(viewModel, reservation);
 
                 _databaseContext.SaveChanges();
+                SendMessage("added", null);
 
                 if (viewModel.Id == 0)
                     _flashMessage.Confirmation(Translations.ReservationAddSuccess);
@@ -171,6 +185,49 @@ namespace FitnessCenter.Web.Controllers
             }
 
             return RedirectToAction("Index");
+        }
+
+        public IActionResult ResetAdminCounter(int id)
+        {
+            var users = _databaseContext.Users.Where(x => x.Role == Role.Administrator || x.Role == Role.Coach).ToList();
+
+            foreach(var user in users)
+            {
+                user.NotificationNumber = 0;
+                _databaseContext.Update(user);
+            }
+
+            _databaseContext.SaveChanges();
+
+            return Redirect("Index");
+        }
+
+        public IActionResult ResetCounter(int id)
+        {
+            var user = _databaseContext.Users.Where(i => i.Id == id).FirstOrDefault();
+
+            user.NotificationNumber = 0;
+            _databaseContext.Update(user);
+            _databaseContext.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
+        private void SendMessage(string message, int? id)
+        {
+            if (id.HasValue)
+            {
+                var user = _databaseContext.Users.Where(x => x.Id == id).FirstOrDefault();
+
+                if (user == null)
+                    _hubContext.Clients.All.SendAsync("RecieveNotification", message);
+                else
+                    _hubContext.Clients.All.SendAsync("RecieveNotification", message, user.Id);
+            }
+            else
+            {
+                _hubContext.Clients.All.SendAsync("RecieveNotification", message);
+            }
         }
     }
 }

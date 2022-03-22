@@ -754,6 +754,15 @@ namespace FitnessCenter.Web.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Notification number.
+        /// </summary>
+        public static string NotificationNumber {
+            get {
+                return ResourceManager.GetString("NotificationNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Password.
         /// </summary>
         public static string Password {

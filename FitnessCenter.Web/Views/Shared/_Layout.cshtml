@@ -21,6 +21,8 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
         <link href="~/css/sb-admin-2.css" rel="stylesheet">
         <link href="~/css/custom.css" rel="stylesheet">
+        <script src="~/js/signalr/dist/browser/signalr.min.js"></script>
+
 
     </head>
     <body id="page-top">
@@ -38,7 +40,10 @@
                 <li class="nav-item">
                     <a asp-action="Index" asp-controller="Reservations" class="nav-link">
                         <i class="fas fa-calendar-check"></i>
-                        <span>@Translations.Reservations</span>
+                        <span>
+                            @Translations.Reservations
+                        </span>
+                        <span class="badge badge-light"><span class="counter">@user.NotificationNumber</span></span>
                     </a>
                 </li>
 
@@ -145,7 +150,7 @@
                                 </li>
 
                                 @await Component.InvokeAsync("Announcements")
-                               
+
                                 <li class="nav-item dropdown no-arrow mx-1">
                                     <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -283,6 +288,54 @@
         <script src="~/js/sb-admin-2.min.js"></script>
         <script src="~/js/sb-admin-2.js"></script>
         <script src="~/vendor/chart.js/Chart.min.js"></script>
+
+
+        <script>
+            function resetCounter(){
+                $.ajax({
+                url: '/Reservations/ResetCounter',
+                type: 'GET',   data: {id: @user.Id},
+                error: function (error){
+                console.log(error);
+                }
+             });
+          }
+
+        $("span.badge").click(function(d) {
+            d.stopPropagation();
+            var count = 0;
+            count = parseInt($('span.counter').html()) || 0;
+            $('span.count', this).html('0');
+            resetCounter();
+        });
+
+        function updateNotificationsCounter(id) {
+            if(id == @user.Id){
+                var count = 0;
+                count = parseInt($("span.counter").html()) || 0;
+                count++;
+                $("span.counter").html(count);
+            }
+        }
+
+        $(function () {
+            var myHub = new signalR.HubConnectionBuilder().withUrl('/myHub').build();
+
+            myHub.start().then(function(){
+                console.log("Hub started");
+            });
+
+            myHub.on("RecieveNotification", function(message, id){
+                if(message && message.toLowerCase() == "changed") {
+                    updateNotificationsCounter(id);
+                }
+            });
+        });
+
+        </script>
+
+
+
     </body>
     </html>
 }
@@ -304,6 +357,8 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
         <link href="~/css/sb-admin-2.css" rel="stylesheet">
         <link href="~/css/custom.css" rel="stylesheet">
+                <script src="~/js/signalr/dist/browser/signalr.min.js"></script>
+
     </head>
     <body id="page-top">
         <div id="wrapper">
@@ -321,6 +376,7 @@
                     <a asp-action="Index" asp-controller="Reservations" class="nav-link">
                         <i class="fas fa-calendar-check"></i>
                         <span>@Translations.Reservations</span>
+                        <span class="badge badge-light"><span class="counter">@user.NotificationNumber</span></span>
                     </a>
                 </li>
                 <hr class="sidebar-divider my-0">
@@ -462,6 +518,52 @@
         <script src="~/js/sb-admin-2.js"></script>
         <script src="~/js/sb-admin-2.min.js"></script>
         <script src="~/vendor/chart.js/Chart.min.js"></script>
+
+
+           <script>
+            function resetAdminCounter(){
+                $.ajax({
+                url: '/Reservations/ResetAdminCounter',
+                type: 'GET',   data: {id: @user.Id},
+                error: function (error){
+                console.log(error);
+                }
+             });
+          }
+
+        $("span.badge").click(function(d) {
+            d.stopPropagation();
+            var count = 0;
+            count = parseInt($('span.counter').html()) || 0;
+            $('span.count', this).html('0');
+            resetAdminCounter();
+        });
+
+        function updateNotificationsCounter(id) {
+            if(id == @user.Id){
+                var count = 0;
+                count = parseInt($("span.counter").html()) || 0;
+                count++;
+                $("span.counter").html(count);
+            }
+        }
+
+        $(function () {
+            var myHub = new signalR.HubConnectionBuilder().withUrl('/myHub').build();
+
+            myHub.start().then(function(){
+                console.log("Hub started");
+            });
+
+            myHub.on("RecieveNotification", function(message, id){
+                if(message && message.toLowerCase() == "added") {
+                    updateNotificationsCounter(id);
+                }
+            });
+        });
+
+        </script>
+
     </body>
     </html>
 }
@@ -490,7 +592,9 @@
         <script src="~/js/sb-admin-2.min.js"></script>
         <script src="~/js/sb-admin-2.js"></script>
         <script src="~/vendor/chart.js/Chart.min.js"></script>
-        
+                <script src="~/js/signalr/dist/browser/signalr.min.js"></script>
+
+
 
     </head>
     <body id="page-top">
@@ -517,6 +621,8 @@
                     <a asp-action="Index" asp-controller="Reservations" class="nav-link">
                         <i class="fas fa-calendar-check"></i>
                         <span>@Translations.Reservations</span>
+                       <span class="badge badge-light"><span class="counter">@user.NotificationNumber</span></span>
+
                     </a>
                 </li>
                 <hr class="sidebar-divider my-0">
@@ -672,6 +778,52 @@
                 </div>
             </div>
         </div>
+
+
+         <script>
+            function resetAdminCounter(){
+                $.ajax({
+                url: '/Reservations/ResetAdminCounter',
+                type: 'GET',  
+                error: function (error){
+                console.log(error);
+                }
+             });
+          }
+
+        $("span.badge").click(function(d) {
+            d.stopPropagation();
+            var count = 0;
+            count = parseInt($('span.counter').html()) || 0;
+            $('span.count', this).html('0');
+            resetAdminCounter();
+        });
+
+        function updateNotificationsCounter(id) {
+                var count = 0;
+                count = parseInt($("span.counter").html()) || 0;
+                count++;
+                $("span.counter").html(count);
+        }
+        
+
+        $(function () {
+            var myHub = new signalR.HubConnectionBuilder().withUrl('/myHub').build();
+
+            myHub.start().then(function(){
+                console.log("Hub started");
+            });
+
+            myHub.on("RecieveNotification", function(message, id){
+                if(message && message.toLowerCase() == "added") {
+                    updateNotificationsCounter(id);
+                }
+            });
+        });
+
+        </script>
+
+
 
     </body>
     </html>
